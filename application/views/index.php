@@ -369,7 +369,7 @@
                                     style="display: flex;justify-content: space-between;">
                                     <ul class="nav-links ">
                                         <li>
-                                            <a href="<?=base_url()?>" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>home" style="color: white;font-size: large;"><span
                                                     class="fa fa-home" style="color:white;"></span> Home</a>
                                         </li>
                                         <li>
@@ -413,7 +413,7 @@
                                     <ul class="nav-links">
                                         
                                         <li>
-                                            <a href="about.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>about" style="color: white;font-size: large;"><span
                                                     class="fa fa-male" style="color:white;"></span> About</a>
                                         </li>
 

@@ -1,13 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'Home';
+$route['default_controller'] = 'Home/index';
 $route['404_override'] = 'home/pnf';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['home'] = 'Home/index';
 $route['artist'] = 'Home/artist';
 $route['artist-details/(:any)'] = 'Home/artistdetails/$1';
 $route['art-details/(:any)'] = 'Home/artdetails/$1';
+
+$route['view-about'] = 'About/index';
 
 $route['artist-login'] = 'Artist/login';
 $route['artistlogin'] = 'Artist/artistlogin';

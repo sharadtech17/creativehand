@@ -23,7 +23,7 @@ $config['timezone'] = 'Asia/Kolkata';
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/creative/';
+$config['base_url'] = 'http://localhost/creativehand/';
 
 /*
 |--------------------------------------------------------------------------
