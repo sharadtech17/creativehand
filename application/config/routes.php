@@ -1,38 +1,65 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'Home/index';
-$route['404_override'] = 'home/pnf';
+$route['default_controller'] = 'HomeController/index';
+$route['404_override'] = 'homeController/pnf';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['home'] = 'Home/index';
-$route['artist'] = 'Home/artist';
-$route['artist-details/(:any)'] = 'Home/artistdetails/$1';
-$route['art-details/(:any)'] = 'Home/artdetails/$1';
+$route['home'] = 'HomeController/index';
 
-$route['view-about'] = 'About/index';
+// hand arts
+$route['hand-made-art'] = 'HandArtController/index';
+$route['view-shop'] = 'ShopController/index';
+$route['view-event'] = 'EventController/index';
+$route['view-painting'] = 'HandArtController/viewPainting';
+$route['view-contact'] = 'ContactController/index';
 
-$route['artist-login'] = 'Artist/login';
-$route['artistlogin'] = 'Artist/artistlogin';
-$route['artistlogout'] = 'Artist/artistlogout';
-$route['newregister'] = 'Artist/newregister';
-$route['artist-register'] = 'Artist/artistregister';
-$route['artist-panel/dashboard'] = 'Artist';
-$route['artist-panel/view-profile'] = 'Artist/viewprofile';
-$route['artist-panel/edit-profile'] = 'Artist/editprofile';
-$route['artist-panel/view-all-arts'] = 'Artist/viewallarts';
-$route['artist-panel/add-art'] = 'Artist/addart';
-$route['artist-panel/my-subscription'] = 'Artist/mysubscription';
-$route['artist-panel/subscription-history'] = 'Artist/subscriptionhistory';
-$route['artist-panel/event-list'] = 'Artist/eventlist';
-$route['artist-panel/add-event'] = 'Artist/addevent';
-$route['artist-panel/events-payments'] = 'Artist/eventspayments';
+$route['view-blog'] = 'BlogController/index';
+$route['view-blog-detail'] = 'BlogController/viewBlogDetails';
 
-$route['administrator'] = 'Admin';
-$route['administrator/login'] = 'Admin';
-$route['administratorlogin'] = 'Admin/administratorlogin';
-$route['administratorlogout'] = 'Admin/adminlogout';
-$route['administrator/dashboard'] = 'Admin/dashboard';
-$route['administrator/artist-list'] = 'Admin/artistlist';
-$route['administrator/artist-detail/(:any)'] = 'Admin/artistdetail/$1';
-$route['administrator/list-arts'] = 'Admin/listarts';
+$route['artist'] = 'HomeController/artist';
+$route['artist-details/(:any)'] = 'HomeController/artistdetails/$1';
+$route['art-details/(:any)'] = 'HomeController/artdetails/$1';
+
+$route['view-about'] = 'AboutController/index';
+
+$route['artist-login'] = 'ArtistController/login';
+$route['artistlogin'] = 'ArtistController/artistlogin';
+$route['artistlogout'] = 'ArtistController/artistlogout';
+$route['newregister'] = 'ArtistController/newregister';
+$route['artist-register'] = 'ArtistController/artistregister';
+$route['artist-panel/dashboard'] = 'ArtistController';
+$route['artist-panel/view-profile'] = 'ArtistController/viewprofile';
+$route['artist-panel/edit-profile'] = 'ArtistController/editprofile';
+$route['artist-panel/view-all-arts'] = 'ArtistController/viewallarts';
+$route['artist-panel/add-art'] = 'ArtistController/addart';
+$route['artist-panel/my-subscription'] = 'ArtistController/mysubscription';
+$route['artist-panel/subscription-history'] = 'ArtistController/subscriptionhistory';
+$route['artist-panel/event-list'] = 'ArtistController/eventlist';
+$route['artist-panel/add-event'] = 'ArtistController/addevent';
+$route['artist-panel/events-payments'] = 'ArtistController/eventspayments';
+
+//================== Admin =====================
+$route['administrator'] = 'AdminController';
+$route['administrator/login'] = 'AdminController';
+$route['administratorlogin'] = 'AdminController/administratorlogin';
+$route['administratorlogout'] = 'AdminController/adminlogout';
+$route['administrator/dashboard'] = 'AdminController/dashboard';
+$route['administrator/artist-list'] = 'AdminController/artistlist';
+$route['administrator/artist-detail/(:any)'] = 'AdminController/artistdetail/$1';
+$route['administrator/list-arts'] = 'AdminController/listarts';
+
+// banner
+$route['administrator/banner-list'] = 'BannerController/ViewBannerList';
+$route['addBannerPost'] = 'BannerController/StoreBannerPost';
+$route['editBanner'] = 'BannerController/updateBanner';
+
+// Blog
+$route['administrator/blog-list'] = 'BlogController/ViewBlogList';
+$route['addBlogPost'] = 'BlogController/StoreBlogPost';
+$route['editBlog'] = 'BlogController/updateBlog';
+
+// Event
+$route['administrator/event-list'] = 'EventController/ViewEventList';
+$route['addEventPost'] = 'EventController/StoreEventPost';
+$route['EditEventPost'] = 'EventController/updateEvent';

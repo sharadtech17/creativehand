@@ -373,11 +373,11 @@
                                                     class="fa fa-home" style="color:white;"></span> Home</a>
                                         </li>
                                         <li>
-                                            <a href="Hand Made Art.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>hand-made-art" style="color: white;font-size: large;"><span
                                                     class="fa fa-image" style="color:white;"></span> Hand Made Arts</a>
                                         </li>
                                         <li>
-                                            <a href="Painting Arts.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-painting" style="color: white;font-size: large;"><span
                                                     class="fa fa-paint-brush" style="color:white;"></span>Painting</a>
                                         </li>
                                         <li>
@@ -387,43 +387,28 @@
                                         
                                         <li>
                                             
-                                            <a href="events.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-event" style="color: white;font-size: large;"><span
                                                     class="fa fa-envira" style="color:white;"></span> Events</a>
                                         </li>
                                         <li>
-                                            <a href="shop.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-shop" style="color: white;font-size: large;"><span
                                                     class="fa fa-shopping-cart" style="color:white;"></span> Shop</a>
-                                        </li>
-
-
-                                        <li class="moblie-sub-link">
-                                            <a href="events.html" style="color: white;font-size: large;"><span
-                                                    class="fa fa-envira" style="color:white;"></span> Events</a>
-                                        </li>
-
-                                        <li class="moblie-sub-link">
-                                            <a href="blog.html" style="color: white;font-size: large;"><span
-                                                    class="fa fa-paste" style="color:white;"></span>blog</a>
-                                        </li>
-                                        <li class="moblie-sub-link">
-                                            <a href="contact.html" style="color: white;font-size: large;"><span
-                                                    class="fa fa-address-card" style="color:white;"></span> connect Us</a>
                                         </li>
                                     </ul>
                                     <ul class="nav-links">
                                         
                                         <li>
-                                            <a href="<?=base_url()?>about" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-about" style="color: white;font-size: large;"><span
                                                     class="fa fa-male" style="color:white;"></span> About</a>
                                         </li>
 
 
                                         <li>
-                                            <a href="blog.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-blog" style="color: white;font-size: large;"><span
                                                     class="fa fa-paste" style="color:white;"></span>blog</a>
                                         </li>
                                         <li>
-                                            <a href="contact.html" style="color: white;font-size: large;"><span
+                                            <a href="<?=base_url()?>view-contact" style="color: white;font-size: large;"><span
                                                     class="fa fa-address-card" style="color:white;"></span>Contact us</a>
                                         </li>
                                     </ul>

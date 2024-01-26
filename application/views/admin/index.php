@@ -167,6 +167,24 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 								</ul>
 							</div>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Event List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/event-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Events</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Blog List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/blog-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Blog</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'bannerlist') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/banner-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Banner</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

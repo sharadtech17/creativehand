@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Artist extends CI_Controller {
+class ShopController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 	}
 	public function index()
 	{
-		$data['title'] = "Dashboard";
-		$data['content'] = "dashboard.php";
-		$this->load->view('artist/index',$data);
+		$data['title'] = "Shop";
+		$data['content'] = "shop.php";
+		$this->load->view('index',$data);
 	}
 	public function login()
 	{
