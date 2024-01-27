@@ -3,12 +3,15 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Add Events</h4>
+                    <h4 class="mb-sm-0">Edit Events</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-        <form  accept-charset="UTF-8" action="<?=base_url()?>addEventPost" method="POST" enctype="multipart/form-data">
+        <form  accept-charset="UTF-8" action="<?=base_url()?>EditEventPost" method="POST" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" name="event_id" value="<?=$event->id?>">
+        <input type="hidden" class="form-control" name="artist_id" value="<?= $this->session->userdata['creativehandsartist']['usr_id']; ?>">
+        <input type="hidden" class="form-control" name="is_artist" value="1">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
@@ -16,23 +19,13 @@
                             <div class="col-lg-3">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-name-input">Event Title</label>
-                                    <input type="text" class="form-control" name="name" id="manufacturer-name-input" placeholder="Event Title">
+                                    <input type="text" class="form-control" name="name" id="manufacturer-name-input" value="<?=$event->name?>" placeholder="Event Title">
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
-                                <label class="form-label" for="stocks-input">Artist Name</label>
-                                <select class="form-select" id="choices-category-input" name="artist_id" data-choices data-choices-search-false>
-                                    <option value="" selected disabled>Select Artist</option>
-                                    <?php foreach($artistlist as $artist): ?>
-                                        <option value="<?=$artist->id?>"><?=$artist->name?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-brand-input">Event Details</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea" name="event_details" placeholder="Enter your Details" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea" name="event_details" placeholder="Enter your Details" rows="3"><?=$event->event_details?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +35,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="stocks-input">Date</label>
-                                <input type="date" class="form-control" id="stocks-input" name="date" placeholder="Stocks" required>
+                                <input type="date" class="form-control" id="stocks-input" name="date" placeholder="Stocks" required value="<?=$event->date ?>">
                                 <div class="invalid-feedback">Please Enter a product stocks.</div>
                             </div>
                         </div>
@@ -52,7 +45,7 @@
                                 <div class="input-group has-validation mb-3">
                                     <input type="time" class="form-control" id="product-price-input" name="time"
                                         placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon"
-                                        required>
+                                        required value="<?=$event->time ?>">
                                     <div class="invalid-feedback">Please Enter a product price.</div>
                                 </div>
 
@@ -65,14 +58,14 @@
 
                                     <input type="text" class="form-control" id="product-discount-input" name="address"
                                         placeholder="Address" aria-label="discount"
-                                        aria-describedby="product-discount-addon">
+                                        aria-describedby="product-discount-addon" value="<?=$event->address ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Type</label>
-                                <input type="text" class="form-control" id="orders-input" name="event_type" placeholder="Event Type" required>
+                                <input type="text" class="form-control" id="orders-input" name="event_type" placeholder="Event Type" required value="<?=$event->event_type ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -81,7 +74,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Total Seat</label>
                                 <input type="number" class="form-control" id="orders-input" name="total_seat" placeholder="Total Seat"
-                                    required>
+                                    required value="<?=$event->total_seat ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -90,7 +83,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Ticket Price</label>
                                 <input type="number" class="form-control" id="orders-input" name="ticket_price" placeholder="Ticket Price"
-                                    required>
+                                    required value="<?=$event->ticket_price ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -98,7 +91,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Status</label>
                                 <input type="number" class="form-control" id="orders-input" name="event_status" placeholder="Event Status"
-                                    required>
+                                    required value="<?=$event->event_status ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -106,22 +99,23 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Banner</label>
-                                <input type="file" class="form-control" id="orders-input" name="banner_image" placeholder="Banner Event" required>
+                                <input type="file" class="form-control" id="orders-input" name="banner_image" placeholder="Banner Event">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
+                            <img src="<?=base_url().$event->event_image?>" alt="" height="45">
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Google Loction Link</label>
                                 <input type="link" class="form-control" id="orders-input" name="goolge_location_link" placeholder="Google Loction Link"
-                                    required>
+                                    required value="<?=$event->goolge_location_link ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub Link</label>
-                                <input type="link" class="form-control" id="orders-input" name="youtube_link" placeholder="Link" required>
+                                <input type="link" class="form-control" id="orders-input" name="youtube_link" placeholder="Link" required value="<?=$event->youtube_link ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -129,7 +123,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub video Details</label>
-                                <input type="link" class="form-control" id="orders-input" name="youtube_video_desc" required>
+                                <input type="link" class="form-control" id="orders-input" name="youtube_video_desc" required value="<?=$event->youtube_video_desc ?>">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -147,9 +141,18 @@
                                 <div class="mb-3">
                                     <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
                                 </div>
-
                                 <h5>Drop files here or click to upload.</h5>
                             </div>
+                            <?php
+                                $product_img_arr=json_decode($event->product_image);
+                                if (!empty($product_img_arr)) {
+                                    foreach ($product_img_arr as $value) {
+                                        ?>
+                                        <img src="<?=base_url().$value?>" alt="" height="45">
+                                        <?php
+                                    }
+                                }
+                            ?>
                         </div>
 
                         <ul class="list-unstyled mb-0" id="dropzone-preview">

@@ -31,9 +31,61 @@ class Query extends CI_Model {
 	public function fetchcategories($category)
 	{
 		$this->db->where('activeflag', '0');
-		$this->db->where('category', $category);
 		$query = $this->db->get('categories');
 		return $query->result();
+	}
+	// category
+	public function getCategoryList()
+	{
+		$query = $this->db->get('categories');
+		return $query->result();
+	}
+	public function store_Category($data) {
+        $this->db->insert('categories', $data);
+        return $this->db->insert_id(); // Return the ID of the inserted row
+    }
+	public function update_Category($id,$data) {
+		$this->db->where('id', $id);
+        return $this->db->update('categories', $data);
+    }
+	public function get_Category_by_id($id) {
+        $query = $this->db->get_where('categories', array('id' => $id));
+        return $query->row();
+    }
+	public function delete_Category($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('categories');
+    }
+	// Subcategory
+	public function getSubCategoryList()
+	{
+		$this->db->select('subcategories.*, categories.categoriesname as categoryname');
+		$this->db->from('subcategories');
+		$this->db->join('categories', 'categories.id = subcategories.categories', 'left');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function store_SubCategory($data) {
+        $this->db->insert('subcategories', $data);
+        return $this->db->insert_id(); // Return the ID of the inserted row
+    }
+	public function update_SubCategory($id,$data) {
+		$this->db->where('id', $id);
+        return $this->db->update('subcategories', $data);
+    }
+	public function get_SubCategory_by_id($id) {
+        $query = $this->db->get_where('subcategories', array('id' => $id));
+        return $query->row();
+    }
+	public function delete_SubCategory($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('subcategories');
+    }
+	
+	public function fetchSubcategoriesByCategoryID($categories)
+	{
+		$this->db->where('categories', $categories);
+    	return $this->db->get('subcategories')->result_array();
 	}
 	public function fetchsubcategories($categories)
 	{
@@ -166,15 +218,15 @@ class Query extends CI_Model {
 		return $this->db->update('art', $data);
 	}
 	public function deletearts($artId) {
-	$data = array(
-	  'activeflag' => '1',
-	);
+		$data = array(
+		'activeflag' => '1',
+		);
 
-	$this->db->where('id', $artId);
-	$result = $this->db->update('art', $data);
+		$this->db->where('id', $artId);
+		$result = $this->db->update('art', $data);
 
-	return $result;
-  }
+		return $result;
+	}
 	public function getGalleryProducts($artistid)
 	{
 		$this->db->where('artist_id', $artistid);
@@ -182,6 +234,46 @@ class Query extends CI_Model {
 		$this->db->order_by('id', "desc");
 		$query = $this->db->get('art');
 		return $query->result();
+	}
+	public function getArtByHandArtArtist()
+	{
+		$this->db->select('art.*, artist.name as artistname');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Hand Made Arts');
+		$this->db->order_by('art.id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getPaintingByArtist()
+	{
+		$this->db->select('art.*, artist.name as artistname');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Painting');
+		$this->db->order_by('art.id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	public function getHandArtArtistByArtId($id)
+	{
+		$this->db->select('art.*, artist.*, artist.description as artist_desc, art.description as art_desc');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->where('art.id', $id);
+		$query = $this->db->get();
+		
+		// Check if any row is returned
+		if ($query->num_rows() > 0) {
+			// Return the first row
+			return $query->row();
+		} else {
+			// No data found, return null or handle it accordingly
+			return null;
+		}
 	}
 }
 ?>

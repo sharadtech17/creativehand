@@ -9,14 +9,15 @@ $route['home'] = 'HomeController/index';
 
 // hand arts
 $route['hand-made-art'] = 'HandArtController/index';
+$route['hand-made-art-details/(:any)'] = 'HandArtController/viewHandArtDetails/$1';
 $route['view-shop'] = 'ShopController/index';
 $route['view-event'] = 'EventController/index';
 $route['view-painting'] = 'HandArtController/viewPainting';
-$route['view-contact'] = 'ContactController/index';
+$route['painting-details/(:any)'] = 'HandArtController/viewPaintingDetails/$1';
 
+$route['view-contact'] = 'ContactController/index';
 $route['view-blog'] = 'BlogController/index';
 $route['view-blog-detail'] = 'BlogController/viewBlogDetails';
-
 $route['artist'] = 'HomeController/artist';
 $route['artist-details/(:any)'] = 'HomeController/artistdetails/$1';
 $route['art-details/(:any)'] = 'HomeController/artdetails/$1';
@@ -63,3 +64,35 @@ $route['editBlog'] = 'BlogController/updateBlog';
 $route['administrator/event-list'] = 'EventController/ViewEventList';
 $route['addEventPost'] = 'EventController/StoreEventPost';
 $route['EditEventPost'] = 'EventController/updateEvent';
+
+// artist
+$route['artist-panel/event-list'] = 'EventController/ViewArtistEvent';
+$route['addEventPost'] = 'EventController/StoreEventPost';
+$route['EditEventPost'] = 'EventController/updateEvent';
+
+// category
+$route['administrator/category-list'] = 'AdminController/ViewCategoryList';
+$route['addCategoryPost'] = 'AdminController/StoreCategoryPost';
+$route['editCategory'] = 'AdminController/updateCategory';
+
+// Subcategory
+$route['administrator/subcategories-list'] = 'AdminController/ViewSubCategoryList';
+$route['addSubCategoryPost'] = 'AdminController/StoreSubCategoryPost';
+$route['editSubCategory'] = 'AdminController/updateSubCategory';
+
+// art-shop-list
+$route['administrator/art-shop-list'] = 'ShopController/ViewArtShopList';
+$route['addArtShopPost'] = 'ShopController/StoreArtShopPost';
+$route['editArtShopPost'] = 'ShopController/updateArtShop';
+$route['view-shop-detail/(:any)'] = 'ShopController/viewShopDetail/$1';
+
+// cart
+$route['view-cart'] = 'ShopController/viewShopCart';
+$route['view-checkout'] = 'ShopController/viewShopCheckout';
+
+// user login
+$route['user-login'] = 'ShopController/viewUserlogin';
+$route['userlogin'] = 'ShopController/userlogin';
+$route['userlogout'] = 'ShopController/userlogout';
+$route['user-register'] = 'ShopController/userregister';
+$route['addregisteruser'] = 'ShopController/storeUser';

@@ -1318,7 +1318,7 @@ select::-ms-expand {
 .latest-picture .product img {
     width: 100%;
     height: auto;
-    border: 15px solid
+    border: 2px solid
 }
 
 .article-page hr,

@@ -132,7 +132,6 @@ class ArtistController extends CI_Controller {
 			$update_data['profileimage'] = $image_path;
 		}
 		$result = $this->query->updateartistprofile($artist_id, $update_data);
-
 		if ($result) {
 			echo json_encode(['success' => true]);
 		} else {
@@ -150,6 +149,12 @@ class ArtistController extends CI_Controller {
 		$categories = $this->input->post('categories');
 		$subcategories = $this->query->fetchsubcategories($categories);
 		echo json_encode(['subcategories' => $subcategories]);
+	}
+	public function getSubcategoriesByCategoryID()
+	{
+		$categories = $this->input->post('category_id');
+		$subcategories = $this->query->fetchSubcategoriesByCategoryID($categories);
+		echo json_encode($subcategories);
 	}
 	public function viewallarts()
 	{
@@ -179,25 +184,6 @@ class ArtistController extends CI_Controller {
 		$data['content'] = "subscriptionhistory.php";
 		$this->load->view('artist/index',$data);
 	}
-	public function eventlist()
-	{
-		$data['title'] = "View All Events";
-		$data['content'] = "eventlist.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function addevent()
-	{
-		$data['title'] = "Add Event";
-		$data['content'] = "addevent.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function eventspayments()
-	{
-		$data['title'] = "Events + Payments";
-		$data['content'] = "eventspayments.php";
-		$this->load->view('artist/index',$data);
-	}
-
 	public function addnewart() {
 		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
 		$this->load->library('upload');

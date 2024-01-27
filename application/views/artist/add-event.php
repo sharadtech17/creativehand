@@ -9,6 +9,8 @@
         </div>
         <!-- end page title -->
         <form  accept-charset="UTF-8" action="<?=base_url()?>addEventPost" method="POST" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" name="artist_id" value="<?= $this->session->userdata['creativehandsartist']['usr_id']; ?>">
+        <input type="hidden" class="form-control" name="is_artist" value="1">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
@@ -19,16 +21,6 @@
                                     <input type="text" class="form-control" name="name" id="manufacturer-name-input" placeholder="Event Title">
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
-                                <label class="form-label" for="stocks-input">Artist Name</label>
-                                <select class="form-select" id="choices-category-input" name="artist_id" data-choices data-choices-search-false>
-                                    <option value="" selected disabled>Select Artist</option>
-                                    <?php foreach($artistlist as $artist): ?>
-                                        <option value="<?=$artist->id?>"><?=$artist->name?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-brand-input">Event Details</label>

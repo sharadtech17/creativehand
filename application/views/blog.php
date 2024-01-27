@@ -1,5 +1,19 @@
 <!--=================== Main Content Container ===================-->
 <main class="blog-page">
+	<section class="breadcrumb-container paira-margin-bottom-3">
+        <div class=" breadcrumb" style="background: linear-gradient(#070606b3, rgba(30, 23, 23, 0)) ,url(<?=base_url()?>assets/images/banner/home-banner-big.jpg); ">
+            <div class="container-fluid padding-fix">
+
+                <ul class="list-inline text-center" style="padding-top: 100px; padding-bottom: 100px;">
+                    <h1 class="" style="color:white;">Our Latest Blog</h1>
+                    <li><a href="<?=base_url()?>" style="font-size: larger;color: white;">Home <i
+                                class="fa fa-angle-right"></i></a>
+                    </li>
+                    <li class="" style="color:#c66b15;">Blog</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 	<!--=================== latest Collection Section ===================-->
 	<section class="latest-blog paira-margin-bottom-3">
 		<div class="container">

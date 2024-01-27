@@ -190,7 +190,12 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 								</ul>
 							</div>
 						</li>
-						<!-- <li class="nav-item">
+						<li class="nav-item">
+							<a href="<?=base_url()?>artist-panel/event-list" class="nav-link <?= ($title === 'Event List') ? 'active' : ''; ?>" data-key="t-calendar">
+							<i class="ri-layout-3-line"></i>Events
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'My Subscription' || $title ==='Subscription History') ? 'active' : ''; ?>" href="#sidebarLayouts1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
 								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Subscription</span>
 							</a>
@@ -208,27 +213,6 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link menu-link <?= ($title === 'View All Events' || $title === 'Add Event' || $title ==='Events + Payments') ? 'active' : ''; ?>" href="#sidebarLayouts2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts2">
-								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Events</span>
-							</a>
-							<div class="collapse menu-dropdown <?= ($title === 'View All Events' || $title === 'Add Event' || $title ==='Events + Payments') ? 'show' : ''; ?>" id="sidebarLayouts2">
-								<ul class="nav nav-sm flex-column">
-									<li class="nav-item">
-										<a href="<?=base_url()?>artist-panel/event-list" class="nav-link <?= ($title === 'View All Events') ? 'active' : ''; ?>" data-key="t-horizontal">
-											View All Events
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="<?=base_url()?>artist-panel/add-event" class="nav-link <?= ($title === 'Add Event') ? 'active' : ''; ?>" data-key="t-detached">Add Event </a>
-									</li>
-									<li class="nav-item">
-										<a href="<?=base_url()?>artist-panel/events-payments" class="nav-link <?= ($title === 'Events + Payments') ? 'active' : ''; ?>" data-key="t-detached">Events +
-										Payments </a>
-									</li>
-								</ul>
-							</div>
-						</li> -->
 					</ul>
 				</div>
 			</div>

@@ -319,7 +319,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 	function getsubcategories() {
 		var selectedSubcategory = $('#categoriesSelect').val();
 		$.ajax({
-			url: '<?= base_url('Artist/getSubcategories') ?>',
+			url: '<?= base_url('ArtistController/getSubcategories') ?>',
 			type: 'post',
 			dataType: 'json',
 			data: { categories: selectedSubcategory },
@@ -343,7 +343,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 		$('#categorySelect').change(function () {
 			var selectedCategory = $(this).val();
 			$.ajax({
-				url: '<?= base_url('Artist/getCategories') ?>',
+				url: '<?= base_url('ArtistController/getCategories') ?>',
 				type: 'post',
 				dataType: 'json',
 				data: { category: selectedCategory },
@@ -370,7 +370,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 			if (validateForm()) {
 				var formData = new FormData($(this)[0]);
 				$.ajax({
-					url: '<?= base_url('Artist/updateprofile') ?>',
+					url: '<?= base_url('ArtistController/updateprofile') ?>',
 					type: 'post',
 					data: formData,
 					dataType: "JSON",

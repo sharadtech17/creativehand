@@ -12,7 +12,7 @@ class HomeController extends CI_Controller {
 	{
 		$data['bannerlist'] = $this->Banner->getBannerList(); 
 		$data['bloglist'] = $this->Blog->getBlogList(); 
-		$data['eventlist'] = $this->Event->getEventList(); 
+		$data['eventlist'] = $this->Event->getActiveEventList(); 
 		$data['content'] = 'home.php';
 		$this->load->view('index',$data);
 	}

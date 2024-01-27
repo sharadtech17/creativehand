@@ -29,7 +29,6 @@
                                     <?php endforeach ?>
                                 </select>
                             </div>
-
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-brand-input">Event Details</label>
@@ -162,7 +161,13 @@
                                 }
                             ?>
                         </div>
-
+                        <div class="col-lg-3 col-sm-6">
+                            <label class="form-label" for="stocks-input">Event Status</label>
+                            <select class="form-select" id="choices-category-input" name="status" data-choices data-choices-search-false>
+                                <option value="1" <?= $event->status==='1' ? 'selected' : '' ?>>Pandding</option>
+                                <option value="0" <?= $event->status==='0' ? 'selected' : '' ?>>Approved</option>
+                            </select>
+                        </div>
                         <ul class="list-unstyled mb-0" id="dropzone-preview">
                             <li class="mt-2" id="dropzone-preview-list">
                                 <!-- This is used as the file preview template -->

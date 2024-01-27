@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Events</h4>
+                <h4 class="mb-sm-0">Shop Arts</h4>
             </div>
         </div>
     </div>
@@ -14,57 +14,16 @@
             <div class="card" id="invoiceList">
                 <div class="card-header border-0">
                     <div class="d-flex align-items-center">
-                        <h5 class="card-title mb-0 flex-grow-1">Events</h5>
+                        <h5 class="card-title mb-0 flex-grow-1">Shop Arts</h5>
                         <div class="flex-shrink-0">
                             <div class="d-flex gap-2 flex-wrap">
                                 <button class="btn btn-primary" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
-                                <a href="<?=base_url()?>EventController/addViewEvent" class="btn btn-success"><i
-                                        class="ri-add-line align-bottom me-1"></i> Add Event</a>
+                                <a href="<?= base_url() ?>ShopController/addViewArtShop" class="btn btn-success"><i
+                                        class="ri-add-line align-bottom me-1"></i> Add art</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body bg-soft-light border border-dashed border-start-0 border-end-0">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-xxl-5 col-sm-12">
-                                <div class="search-box">
-                                    <input type="text" class="form-control search bg-light border-light"
-                                        placeholder="Search for customer, email, country, status or something...">
-                                    <i class="ri-search-line search-icon"></i>
-                                </div>
-                            </div>
-                            <!--end col-->
-                            <div class="col-xxl-3 col-sm-4">
-                                <input type="text" class="form-control bg-light border-light" id="datepicker-range"
-                                    placeholder="Select date">
-                            </div>
-                            <!--end col-->
-                            <div class="col-xxl-3 col-sm-4">
-                                <div class="input-light">
-                                    <select class="form-control" data-choices data-choices-search-false
-                                        name="choices-single-default" id="idStatus">
-                                        <option value="">Status</option>
-                                        <option value="all" selected>All</option>
-                                        <option value="Unpaid">Unpaid</option>
-                                        <option value="Paid">Paid</option>
-                                        <option value="Cancel">Cancel</option>
-                                        <option value="Refund">Refund</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xxl-1 col-sm-4">
-                                <button type="button" class="btn btn-primary w-100" onclick="SearchData();">
-                                    <i class="ri-equalizer-fill me-1 align-bottom"></i> Filters
-                                </button>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                    </form>
                 </div>
                 <div class="card-body">
                     <div class="tab-content text-muted">
@@ -87,7 +46,7 @@
                                                     <th data-column-id="product"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 360px;">
-                                                        <div class="gridjs-th-content">Event Name</div>
+                                                        <div class="gridjs-th-content">Art Name</div>
                                                     </th>
 
                                                     <th data-column-id="product"
@@ -98,31 +57,25 @@
                                                     <th data-column-id="rating"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 105px;">
-                                                        <div class="gridjs-th-content">Time</div>
+                                                        <div class="gridjs-th-content">Category</div>
                                                     </th>
                                                     <th data-column-id="published"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 220px;">
-                                                        <div class="gridjs-th-content">Date
+                                                        <div class="gridjs-th-content">Price
                                                         </div>
                                                     </th>
 
                                                     <th data-column-id="published"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 220px;">
-                                                        <div class="gridjs-th-content">Location
+                                                        <div class="gridjs-th-content">Size
                                                         </div>
                                                     </th>
                                                     <th data-column-id="published"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 220px;">
-                                                        <div class="gridjs-th-content">Event status
-                                                        </div>
-                                                    </th>
-                                                    <th data-column-id="published"
-                                                        class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
-                                                        style="width: 220px;">
-                                                        <div class="gridjs-th-content">status
+                                                        <div class="gridjs-th-content">Published
                                                         </div>
                                                     </th>
                                                     <th data-column-id="action" class="gridjs-th text-muted"
@@ -135,7 +88,7 @@
                                                 <?php
                                                 $i = 1;
                                                 ?>
-                                                <?php foreach ($eventlist as $event): ?>
+                                                <?php foreach ($shoplist as $Shop): ?>
                                                     <tr class="gridjs-tr">
                                                         <td data-column-id="#" class="gridjs-td"><span>
                                                                 <div class="form-check checkbox-product-list">
@@ -153,8 +106,9 @@
 
                                                                     </div>
                                                                     <div class="flex-grow-1">
-                                                                        <h5 class="fs-14 mb-1"><a
-                                                                                class="text-dark"><?= $event->name ?></a>
+                                                                        <h5 class="fs-14 mb-1"><a class="text-dark">
+                                                                                <?= $Shop->title ?>
+                                                                            </a>
                                                                         </h5>
                                                                     </div>
                                                                 </div>
@@ -162,26 +116,30 @@
                                                         </td>
                                                         <td data-column-id="rating" class="gridjs-td">
                                                             <div class="flex-grow-1">
-                                                                <h5 class="fs-14 mb-1"><a
-                                                                        class="text-dark"><?= $event->artistname ?></a>
+                                                                <h5 class="fs-14 mb-1"><a class="text-dark">
+                                                                        <?= $Shop->artistname ?>
+                                                                    </a>
                                                                 </h5>
                                                             </div>
                                                         </td>
                                                         <td data-column-id="rating" class="gridjs-td">
-                                                            <span><small class=""><?= $event->time ?></small></span>
+                                                            <span><small class="">
+                                                                    <?= $Shop->categoryname ?>
+                                                                </small></span>
                                                         </td>
                                                         <td data-column-id="published" class="gridjs-td">
-                                                            <span><?= $event->date ?></span>
+                                                            <span>
+                                                                <?= $Shop->price ?>
+                                                            </span>
                                                         </td>
 
                                                         <td data-column-id="published" class="gridjs-td">
-                                                            <span><?= $event->address ?></span>
+                                                            <span>
+                                                                <?= $Shop->size ?>
+                                                            </span>
                                                         </td>
                                                         <td>
-                                                            <?= ($event->date > date('Y-m-d')) ? '<span class="badge badge-soft-success text-uppercase">Up-coming</span>' : '<span class="badge badge-soft-danger text-uppercase">Past</span>' ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= ($event->status==='0') ? '<span class="badge badge-soft-success text-uppercase">Approved</span>' : '<span class="badge badge-soft-danger text-uppercase">Pandding</span>' ?>
+                                                            <?= $Shop->cr_dt?>
                                                         </td>
                                                         <td data-column-id="action" class="gridjs-td">
                                                             <span>
@@ -192,16 +150,20 @@
                                                                             class="ri-more-fill"></i></button>
                                                                     <ul class="dropdown-menu dropdown-menu-end">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="<?=base_url('EventController/editEvent/' . $event->id)?>">
-                                                                                <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                            <a class="dropdown-item"
+                                                                                href="<?= base_url('ShopController/editArtShop/' . $Shop->id) ?>">
+                                                                                <i
+                                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                                 Edit
                                                                             </a>
                                                                         </li>
                                                                         <li class="dropdown-divider">
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item remove-list" href="<?=base_url('EventController/deleteEvent/' . $event->id)?>">
-                                                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                            <a class="dropdown-item remove-list"
+                                                                                href="<?= base_url('ShopController/deleteArtShop/' . $Shop->id) ?>">
+                                                                                <i
+                                                                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                 Delete
                                                                             </a>
                                                                         </li>

@@ -104,7 +104,12 @@
 				</div>
 				<div class="card-body">
 					<label class="form-label">Sub Categories</label>
-					<select class="js-example-basic-multiple" name="subcategories[]" id="subcategoriesSelect" multiple="multiple"><?php $subcategoriesdata = json_decode($subcategoriesdata); foreach ($subcategoriesdata as $subcategory): ?><option value="<?= $subcategory?>"><?=$subcategory?></option><?php endforeach; ?></select>
+					<select class="js-example-basic-multiple" name="subcategories[]" id="subcategoriesSelect" multiple="multiple">
+						<?php $subcategoriesdata = json_decode($subcategoriesdata); 
+						foreach ($subcategoriesdata as $subcategory): ?>
+							<option value="<?= $subcategory?>"><?=$subcategory?></option>
+						<?php endforeach; ?>
+					</select>
 				</div>
 				<!-- end card body -->
 			</div>
@@ -182,7 +187,7 @@
 
 			if (validateForm()) {
 				$.ajax({
-					url: '<?= base_url('Artist/addnewart') ?>',
+					url: '<?= base_url('ArtistController/addnewart') ?>',
 					type: 'post',
 					data: formData,
 					dataType: 'json',

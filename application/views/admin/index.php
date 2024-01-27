@@ -151,6 +151,33 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 							</a>
 						</li>
 						<li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarApps">
+                                <i class="ri-apps-2-line"></i> <span data-key="t-apps">In House Arts</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarApps">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a href="<?=base_url()?>administrator/art-shop-list" class="nav-link" data-key="t-calendar">List of
+                                            Arts
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?=base_url()?>administrator/orders" class="nav-link" data-key="t-chat">
+                                            Orders </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="<?=base_url()?>administrator/category-list" class="nav-link" data-key="t-chat"> Categories </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="<?=base_url()?>administrator/subcategories-list" class="nav-link" data-key="t-chat">Sub Categories </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'List of Arts' || $title === 'List of Artist' || $title === 'Artist Detail') ? 'active' : ''; ?>" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
 								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Artist</span>
@@ -907,9 +934,33 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<script src="<?=base_url()?>artistassets/libs/list.js/list.min.js"></script>
 	<script src="<?=base_url()?>artistassets/libs/list.pagination.js/list.pagination.min.js"></script>
 	<script src="<?=base_url()?>artistassets/libs/sweetalert2/sweetalert2.min.js"></script>
+	<script src="<?=base_url()?>artistassets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="<?=base_url()?>artistassets/js/pages/select2.init.js"></script>
 	<script src="<?=base_url()?>artistassets/js/app.js"></script>
+	<script>
+    $(document).ready(function() {
+        $('#categorySelect').change(function() {
+            var category_id = $(this).val();
+            // Make AJAX request to fetch subcategories
+            $.ajax({
+                url: '<?php echo base_url('ArtistController/getSubcategoriesByCategoryID'); ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {category_id: category_id},
+                success: function(response) {
+                    // Clear existing options
+                    $('#subcategory').empty();
+
+                    // Add new subcategory options
+                    $.each(response, function(index, value) {
+                        $('#subcategory').append('<option value="' + value.id + '">' + value.subcategoriesname + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

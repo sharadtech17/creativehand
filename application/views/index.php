@@ -336,13 +336,12 @@
                             <div class="account-ajax-cart">
                                 <ul class="list-inline  " style="display: flex;justify-content: center; ">
                                     <!-- <ul class="nav navbar-nav navbar- right"> -->
-                                    <li><a href="<?=base_url()?>"> <i class="fa fa-user fa-lg" style="color: #c66b15;"></i>
+                                    <li><a href="<?=base_url()?>user-login"> <i class="fa fa-user fa-lg" style="color: #c66b15;"></i>
                                         </a>
                                     </li>
-
                                     </li>
                                     <li>
-                                        <a href="checkout.html"> <i class="fa fa-shopping-cart fa-lg"
+                                        <a href="<?=base_url()?>view-cart"> <i class="fa fa-shopping-cart fa-lg"
                                                 style="color: #c66b15;"></i>
                                         </a>
                                     </li>
@@ -354,13 +353,8 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
                 <!-- <div class="container-fluid " style="background-color: #c2a476; "> -->
-
                 <div class="container-fluid " style="background-color: #c66b15; ">
                     <div class="row  ">
                         <div class="col-md-12">
@@ -412,93 +406,13 @@
                                                     class="fa fa-address-card" style="color:white;"></span>Contact us</a>
                                         </li>
                                     </ul>
-
-                                    <!-- <div class="collapse navbar-collapse">
-                                        <ul class="nav navbar-nav pull-left  ">
-                                            <ul class="">
-                                            <li class="">
-                                                <a href="<?=base_url()?>" style="color: white;font-size: large;">
-
-                                                    <span class="fa fa-home" style="color:white;"></span> Home</a>
-
-                                            </li>
-
-                                            <li class=""><a href="Hand Made Art.html"
-                                                    style="color: white;font-size: large;">
-                                                    <span class="fa fa-image " style="color: white;"></span> Hand Made
-                                                    Arts</a>
-
-                                            </li>
-                                            <li class=""><a href="Painting Arts.html"
-                                                    style="color: white;font-size: large;">
-                                                    <span class="fa fa-paint-brush " style="color: white;"></span>
-                                                    Painting</a>
-
-                                            </li>
-
-                                            <li class=" "><a href="<?=base_url()?>artist" style="color: white;font-size: large;">
-                                                    <span class="fa fa-users" style="color: white;"></span> Artists</a>
-
-                                            </li>
-                                            <li class=""><a href="shop.html" style="color: white;font-size: large;">
-                                                    <span class="fa fa-shopping-cart " style="color: white;"></span>
-                                                    Shop</a>
-
-                                            </li>
-
-                                            <li class=""><a href="events.html" style="color: white;font-size: large;">
-                                                    <span class="fa fa-envira " style="color: white;"></span> Events</a>
-
-                                            </li>
-
-
-
-                                        </ul>
-                                    </div> -->
-
                                 </nav>
                                 <div class="hamburger">
                                     <div class="line1"></div>
                                     <div class="line2"></div>
                                     <div class="line3"></div>
                                 </div>
-
                             </div>
-
-                            <!-- <div class=" pull-right col-md-4 col-sm-4 col-xs-4 ">
-                                <nav class=" navbar " role="">
-                                    <div class="collapse navbar-collapse">
-                                        <ul class="nav navbar-nav pull-left  ">
-
-
-                                            <li class=""><a href="blog.html" style="color: white;font-size: large;">
-                                                    <span class="fa fa-paste " style="color: white;"></span> Blogs</a>
-
-                                            </li>
-                                            <li class=""><a href="about.html" style="color: white;font-size: large;">
-                                                    <span class="fa fa-male" style="color: white;"></span> About us</a>
-
-                                            </li>
-
-
-
-
-
-                                            <li class=" "><a href="contact.html"
-                                                    style="color: white;font-size: large;"><span
-                                                        class="fa fa-address-card "
-                                                        style="color: white;font-size: large;"></span>
-                                                    Contact Us</a>
-
-                                            </li>
-
-
-
-                                        </ul>
-                                    </div>
-
-                                </nav>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -526,21 +440,8 @@
                     <button class="btn btn-default" type="button" style="background-color: #c66b15;"><i
                             class="fa fa-search " style=" 
                         color: white;"></i></button>
-
-                    <!-- <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span> -->
-
                 </div>
-
             </section>
-
-
-            
-
-
-
-
         </header>
         <?php include_once($content);?>
         <footer>
@@ -636,9 +537,6 @@
                                 </ul>
                             </div>
                         </div>
-    
-    
-    
     
                     </div>
                     <hr>

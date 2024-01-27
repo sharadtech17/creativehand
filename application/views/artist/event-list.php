@@ -19,7 +19,7 @@
                             <div class="d-flex gap-2 flex-wrap">
                                 <button class="btn btn-primary" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
-                                <a href="<?=base_url()?>EventController/addViewEvent" class="btn btn-success"><i
+                                <a href="<?=base_url()?>EventController/addViewEventArtist" class="btn btn-success"><i
                                         class="ri-add-line align-bottom me-1"></i> Add Event</a>
                             </div>
                         </div>
@@ -89,12 +89,6 @@
                                                         style="width: 360px;">
                                                         <div class="gridjs-th-content">Event Name</div>
                                                     </th>
-
-                                                    <th data-column-id="product"
-                                                        class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
-                                                        style="width: 360px;">
-                                                        <div class="gridjs-th-content">Artist Name</div>
-                                                    </th>
                                                     <th data-column-id="rating"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 105px;">
@@ -122,7 +116,7 @@
                                                     <th data-column-id="published"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 220px;">
-                                                        <div class="gridjs-th-content">status
+                                                        <div class="gridjs-th-content">Status
                                                         </div>
                                                     </th>
                                                     <th data-column-id="action" class="gridjs-th text-muted"
@@ -161,13 +155,6 @@
                                                             </span>
                                                         </td>
                                                         <td data-column-id="rating" class="gridjs-td">
-                                                            <div class="flex-grow-1">
-                                                                <h5 class="fs-14 mb-1"><a
-                                                                        class="text-dark"><?= $event->artistname ?></a>
-                                                                </h5>
-                                                            </div>
-                                                        </td>
-                                                        <td data-column-id="rating" class="gridjs-td">
                                                             <span><small class=""><?= $event->time ?></small></span>
                                                         </td>
                                                         <td data-column-id="published" class="gridjs-td">
@@ -192,7 +179,7 @@
                                                                             class="ri-more-fill"></i></button>
                                                                     <ul class="dropdown-menu dropdown-menu-end">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="<?=base_url('EventController/editEvent/' . $event->id)?>">
+                                                                            <a class="dropdown-item" href="<?=base_url('EventController/editArtistEvent/' . $event->id)?>">
                                                                                 <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                                 Edit
                                                                             </a>
@@ -200,7 +187,7 @@
                                                                         <li class="dropdown-divider">
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item remove-list" href="<?=base_url('EventController/deleteEvent/' . $event->id)?>">
+                                                                            <a class="dropdown-item remove-list" href="<?=base_url('EventController/deleteArtistEvent/' . $event->id)?>">
                                                                                 <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                                 Delete
                                                                             </a>

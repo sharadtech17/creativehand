@@ -75,4 +75,83 @@ class AdminController extends CI_Controller {
 		$this->session->unset_userdata('creativehandsadmin');
 		redirect (base_url('administrator/login'));
 	}
+	public function ViewCategoryList()
+	{
+		$data['categorylist'] = $this->query->getCategoryList(); // Retrieve Category list from the model
+		$data['title'] = 'Category List';
+		$data['content'] = 'category-list.php';
+		$this->load->view('admin/index', $data);
+	}
+	public function StoreCategoryPost()
+	{
+		$Category_data = array(
+			'category'   => $this->input->post('name'),
+			'categoriesname'   => $this->input->post('name')
+		);
+		$this->query->store_Category($Category_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Category added.');
+		redirect('administrator/category-list');
+	}
+	public function updateCategory()
+	{
+		
+		$Category_data = array(
+			'category'   => $this->input->post('name'),
+			'categoriesname'   => $this->input->post('name')
+		);
+		$id= $this->input->post('category_id');
+		$this->query->update_Category($id,$Category_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Category updated.');
+		redirect('administrator/category-list');
+	}
+	public function deleteCategory($id) {
+		$existing_Category = $this->query->get_Category_by_id($id);
+		if (!$existing_Category) {
+			show_error('Category not found!', 404);
+		}
+		$this->query->delete_Category($id);
+		$this->session->set_flashdata('success', 'Category removed.');
+		redirect('administrator/category-list');
+	}
+
+	// sub category
+	public function ViewSubCategoryList()
+	{
+		$data['categorylist'] = $this->query->getCategoryList(); // Retrieve SubCategory list from the model
+		$data['Subcategorylist'] = $this->query->getSubCategoryList(); // Retrieve SubCategory list from the model
+		$data['title'] = 'SubCategory List';
+		$data['content'] = 'subcategory-list.php';
+		$this->load->view('admin/index', $data);
+	}
+	public function StoreSubCategoryPost()
+	{
+		$SubCategory_data = array(
+			'categories'   => $this->input->post('category'),
+			'subcategoriesname'   => $this->input->post('name')
+		);
+		$this->query->store_SubCategory($SubCategory_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Sub Category added.');
+		redirect('administrator/subcategories-list');
+	}
+	public function updateSubCategory()
+	{
+		
+		$SubCategory_data = array(
+			'categories'   => $this->input->post('category'),
+			'subcategoriesname'   => $this->input->post('name')
+		);
+		$id= $this->input->post('subcategory_id');
+		$this->query->update_SubCategory($id,$SubCategory_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Sub Category updated.');
+		redirect('administrator/subcategories-list');
+	}
+	public function deleteSubCategory($id) {
+		$existing_SubCategory = $this->query->get_SubCategory_by_id($id);
+		if (!$existing_SubCategory) {
+			show_error('SubCategory not found!', 404);
+		}
+		$this->query->delete_SubCategory($id);
+		$this->session->set_flashdata('success', 'Sub Category removed.');
+		redirect('administrator/subcategories-list');
+	}
 }

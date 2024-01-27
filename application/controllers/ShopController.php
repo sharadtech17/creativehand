@@ -4,254 +4,242 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ShopController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('session');
+		$this->load->library('upload');
+		$this->load->model('Shop'); // Load the Shop model if not loaded automatically
+		$this->load->model('Artist'); 
+		$this->load->model('User');
 	}
 	public function index()
 	{
+		$data['shoplist'] = $this->Shop->getShopList();
 		$data['title'] = "Shop";
 		$data['content'] = "shop.php";
 		$this->load->view('index',$data);
 	}
-	public function login()
+	public function viewShopDetail($id)
 	{
-		$data['content'] = 'artistlogin.php';
+		$data['shoplist'] = $this->Shop->get_Shop_by_id($id);
+		$data['title'] = "Shop Details";
+		$data['content'] = "shop_details.php";
 		$this->load->view('index',$data);
 	}
-	public function artistlogin()
+	public function ViewArtShopList()
+	{
+		$data['shoplist'] = $this->Shop->getShopList();
+		$data['title'] = "Shop List";
+		$data['content'] = 'art-shop-list.php';
+		$this->load->view('admin/index',$data);
+	}
+	public function addViewArtShop()
+	{
+		$data['categorylist'] = $this->query->getCategoryList();
+		$data['artistlist'] = $this->Artist->getfront_artists();
+		$data['title'] = 'Add Art Shop';
+		$data['content'] = 'add-art-Shop.php';
+		$this->load->view('admin/index', $data);
+	}
+	public function StoreArtShopPost()
+	{
+		$config['file_name'] = time();
+		$config['upload_path'] = './uploads/arts/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = 20048;
+		$config['encrypt_name'] = TRUE;
+		$this->upload->initialize($config);
+		$image_gallrys = array();
+		$image='';
+		if ($this->upload->do_upload('mainimage')) {
+			$mainImageData = $this->upload->data();
+			$image = 'uploads/arts/' .  $mainImageData['file_name'];
+		} else {
+			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
+			return;
+		}
+		foreach ($_FILES['image_gallry']['name'] as $key => $value) {
+			$_FILES['image']['name']     = $_FILES['image_gallry']['name'][$key];
+			$_FILES['image']['type']     = $_FILES['image_gallry']['type'][$key];
+			$_FILES['image']['tmp_name'] = $_FILES['image_gallry']['tmp_name'][$key];
+			$_FILES['image']['error']    = $_FILES['image_gallry']['error'][$key];
+			$_FILES['image']['size']     = $_FILES['image_gallry']['size'][$key];
+
+			if ($this->upload->do_upload('image')) {
+				$mainImageData = $this->upload->data();
+				$image_gallrys[] = 'uploads/arts/' .  $mainImageData['file_name'];
+			}
+		}
+		$artshop_data = array(
+			'artist_id' => $this->input->post('artist_id'),
+			'title' => $this->input->post('title'),
+			'description' => $this->input->post('description'),
+			'mainimage' => $image,
+			'category' => $this->input->post('category'),
+			'subcategories' => $this->input->post('subcategory'),
+			'tags' => $this->input->post('tags'),
+			'size' => $this->input->post('size'),
+			'price' => $this->input->post('price'),
+			'shortdescription' => $this->input->post('shortdesc'),
+			'galleryimage'   => json_encode($image_gallrys),
+		);
+		$this->Shop->store_artshop($artshop_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Art shop added.');
+		redirect('administrator/art-shop-list');
+	}
+	public function editArtShop($id)
+	{
+		$data['categorylist'] = $this->query->getCategoryList();
+		$data['artistlist'] = $this->Artist->getfront_artists();
+		$data['artshop'] = $this->Shop->get_Shop_by_id($id);
+		$data['subcategorylist'] = $this->query->fetchSubcategoriesByCategoryID($data['artshop']->category);
+		$data['title'] = 'Edit Art Shop';
+		$data['content'] = 'edit-art-shop.php';
+		$this->load->view('admin/index', $data);
+	}
+	public function updateArtShop()
+	{
+		$config['file_name'] = time();
+		$config['upload_path'] = './uploads/arts/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = 20048;
+		$config['encrypt_name'] = TRUE;
+		$this->upload->initialize($config);
+		$image_gallrys = array();
+		$image='';
+		if ($this->upload->do_upload('mainimage')) {
+			$mainImageData = $this->upload->data();
+			$image = 'uploads/arts/' .  $mainImageData['file_name'];
+		}
+		foreach ($_FILES['image_gallry']['name'] as $key => $value) {
+			$_FILES['image']['name']     = $_FILES['image_gallry']['name'][$key];
+			$_FILES['image']['type']     = $_FILES['image_gallry']['type'][$key];
+			$_FILES['image']['tmp_name'] = $_FILES['image_gallry']['tmp_name'][$key];
+			$_FILES['image']['error']    = $_FILES['image_gallry']['error'][$key];
+			$_FILES['image']['size']     = $_FILES['image_gallry']['size'][$key];
+
+			if ($this->upload->do_upload('image')) {
+				$mainImageData = $this->upload->data();
+				$image_gallrys[] = 'uploads/arts/' .  $mainImageData['file_name'];
+			}
+		}
+		$artshop_data = array(
+			'artist_id' => $this->input->post('artist_id'),
+			'title' => $this->input->post('title'),
+			'description' => $this->input->post('description'),
+			'category' => $this->input->post('category'),
+			'subcategories' => $this->input->post('subcategory'),
+			'tags' => $this->input->post('tags'),
+			'size' => $this->input->post('size'),
+			'price' => $this->input->post('price'),
+			'shortdescription' => $this->input->post('shortdesc'),
+		);
+		if (!empty($image)) {
+			$artshop_data['mainimage']=$image;
+		}
+		if (!empty($image_gallrys)) {
+			$artshop_data['galleryimage']=json_encode($image_gallrys);
+		}
+		$id= $this->input->post('artshop_id');
+		$this->Shop->update_Shop($id,$artshop_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Art Shop updated.');
+		redirect('administrator/art-shop-list');
+	}
+	public function deleteArtShop($id) {
+		$existing_ArtShop = $this->Shop->get_Shop_by_id($id);
+		if (!$existing_ArtShop) {
+			show_error('ArtShop not found!', 404);
+		}
+		$this->Shop->delete_Shop($id);
+		$this->session->set_flashdata('success', 'Art Shop removed.');
+		redirect('administrator/art-shop-list');
+	}
+	// cart
+	public function viewShopCart()
+	{
+		$data['title'] = "Cart";
+		$data['content'] = "view_cart.php";
+		$this->load->view('index',$data);
+	}
+	public function viewShopCheckout()
+	{
+		$data['title'] = "Checkout";
+		$data['content'] = "checkout.php";
+		$this->load->view('index',$data);
+	}
+	
+	// user login
+	public function viewUserlogin()
+	{
+		$data['content'] = 'userlogin.php';
+		$this->load->view('index',$data);
+	}
+	public function userlogin()
 	{
 		extract($_POST);
-		$artistdata = $this->query->authenticate_artist($email, $password);
-		if ($artistdata) {
+		$userdata = $this->query->authenticate_user($email, $password);
+		if ($userdata) {
 			$session_data = array(
-				'usr_id' => $artistdata['id'],
-				'usr_email' => $artistdata['email']
+				'usr_id' => $userdata['id'],
+				'usr_email' => $userdata['email']
 			);
-			$this->session->set_userdata('creativehandsartist', $session_data);
+			$this->session->set_userdata('creativehandsuser', $session_data);
 			$response = array('success' => true);
 		} else {
 			$response = array('success' => false);
 		}		
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
-	public function artistregister()
+	public function userregister()
 	{
-		$data['content'] = 'artistregister.php';
+		$data['content'] = 'userregister.php';
 		$this->load->view('index',$data);
 	}
-	public function newregister()
+	public function storeUser()
 	{
-		extract($_POST);
-		$artist_exists = $this->query->check_artist_exists($email);
+		// Extracting POST data
+		$name = $this->input->post('name');
+		$number = $this->input->post('number');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
 
-		if ($artist_exists) {
+		// Check if user already exists
+		$user_exists = $this->User->check_user_exists($email);
+
+		if ($user_exists) {
+			// User already exists, set response accordingly
 			$response = array('exists' => true);
 		} else {
-			$data = array('name' => trim($name), 'number' => trim($number), 'email' => trim($email), 'password' => base64_encode($password),'socialaccount' => '["","","","","",""]', 'categories' => '[""]', 'subcategories' => '[""]');
-			$artistid = $this->query->register_artist($data);
-			if ($artistid > 0) {
+			// User doesn't exist, proceed with registration
+			$data = array(
+				'name' => trim($name),
+				'number' => trim($number),
+				'email' => trim($email),
+				'password' => base64_encode($password) // You might want to use a more secure hashing algorithm instead of base64 encoding
+			);
+
+			// Register the user
+			$userid = $this->User->register_user($data);
+
+			if ($userid > 0) {
+				// Registration successful, create session data
 				$session_data = array(
-					'usr_id' => $artistid,
+					'usr_id' => $userid,
 					'usr_email' => $email
 				);
-				$this->session->set_userdata('creativehandsartist', $session_data);
+
+				// Set user session data
+				$this->session->set_userdata('creativehandsuser', $session_data);
+
+				// Set response indicating successful registration
+				$response = array('exists' => false);
+			} else {
+				// Registration failed, set response accordingly
+				$response = array('error' => 'Registration failed');
 			}
-			$response = array('exists' => false);
 		}
-		$this->output->set_content_type('application/json')->set_output(json_encode($response));
-	}
-	public function artistlogout()
-	{
-		$this->session->unset_userdata('creativehandsartist');
-		redirect (base_url());
-	}
-	public function viewprofile()
-	{
-		$data['title'] = "View Profile";
-		$data['content'] = "viewprofile.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function editprofile()
-	{
-		$artistid = $this->session->userdata['creativehandsartist']['usr_id'];
-		$data['categoriesdata'] = $this->query->categoriesdata($artistid);
-		$data['subcategoriesdata'] = $this->query->subcategoriesdata($artistid);		
-		$data['title'] = "Edit Profile";
-		$data['content'] = "editprofile.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function editpassword()
-	{
-		extract($_POST);
-		$oldpassword = base64_encode($oldpassword);
-		$newpassword = base64_encode($newpassword);
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$result = $this->query->editpassword($oldpassword, $newpassword, $artist_id);
-		echo json_encode($result);
-	}
-	public function updateprofile() {
-		extract($_POST);
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$config['upload_path'] = './profileimages/';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['file_name'] = $artist_id;
-		$this->load->library('upload', $config);
-
-		if ($this->upload->do_upload('artistprofileimage')) {
-			$upload_data = $this->upload->data();
-			$image_path = 'profileimages/' . $upload_data['file_name'];
-		} else {
-			$image_path = '';
-		}
-		$artistcategories = isset($artistcategories) ? $artistcategories : [];
-		$artistsubcategories = isset($artistsubcategories) ? $artistsubcategories : [];
-		$numbervisibly = !isset($artistnumbervisibly) ? '0' : '1';
-		$wpnumbervisibly = !isset($artistwpnumbervisibly) ? '0' : '1';
-		$update_data = array(
-			'name' => $artistname,
-			'category' => $category,
-			'companyname' => $artistcompanyname,
-			'representing' => $artistrepresenting,
-			'number' => $artistnumber,
-			'wpnumber' => $artistwpnumber,
-			'email' => $artistemail,
-			'website' => $artistwebsite,
-			'categories' => json_encode($artistcategories),
-			'subcategories' => json_encode($artistsubcategories),
-			'skills' => $artistskills,
-			'socialaccount' => json_encode($socialaccount),
-			'address' => $artistaddress,
-			'city' => $artistcity,
-			'state' => $artiststate,
-			'country' => $artistcountry,
-			'zipcode' => $artistzipcode,
-			'description'=> $artistdescription,
-			'numbervisibly' => $numbervisibly,
-			'wpnumbervisibly' => $wpnumbervisibly,			
-			
-		);
-		if($image_path != ''){
-			$update_data['profileimage'] = $image_path;
-		}
-		$result = $this->query->updateartistprofile($artist_id, $update_data);
-
-		if ($result) {
-			echo json_encode(['success' => true]);
-		} else {
-			echo json_encode(['success' => false]);
-		}
-	}
-	public function getCategories()
-	{
-		$category = $this->input->post('category');
-		$categories = $this->query->fetchcategories($category);
-		echo json_encode(['categories' => $categories]);
-	}
-	public function getSubcategories()
-	{
-		$categories = $this->input->post('categories');
-		$subcategories = $this->query->fetchsubcategories($categories);
-		echo json_encode(['subcategories' => $subcategories]);
-	}
-	public function viewallarts()
-	{
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$data['artdata'] = $this->query->myallart($artist_id);
-		$data['title'] = "View All Arts";
-		$data['content'] = "viewallarts.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function addart()
-	{
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$data['subcategoriesdata'] = $this->query->mysubcategoriesdata($artist_id);
-		$data['title'] = "Add Art";
-		$data['content'] = "addart.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function mysubscription()
-	{
-		$data['title'] = "My Subscription";
-		$data['content'] = "mysubscription.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function subscriptionhistory()
-	{
-		$data['title'] = "Subscription History";
-		$data['content'] = "subscriptionhistory.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function eventlist()
-	{
-		$data['title'] = "View All Events";
-		$data['content'] = "eventlist.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function addevent()
-	{
-		$data['title'] = "Add Event";
-		$data['content'] = "addevent.php";
-		$this->load->view('artist/index',$data);
-	}
-	public function eventspayments()
-	{
-		$data['title'] = "Events + Payments";
-		$data['content'] = "eventspayments.php";
-		$this->load->view('artist/index',$data);
+		// Set JSON response
+		$this->output
+			->set_content_type('application/json')
+			->set_output(json_encode($response));
 	}
 
-	public function addnewart() {
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$this->load->library('upload');
-		$data = array(
-			'artist_id' => $artist_id,
-			'title' => $this->input->post('title'),
-			'description' => $this->input->post('description'),
-			'mainimage' => '',
-			'subcategories' => json_encode($this->input->post('subcategories')),
-			'tags' => $this->input->post('tags'),
-			'size' => $this->input->post('size'),
-			'price' => $this->input->post('price'),
-			'shortdescription' => $this->input->post('shortdescription'),
-		);
-		if (empty($data['title']) || empty($data['description']) || empty($data['price']) || empty($data['subcategories'])) {
-			echo json_encode(array('success' => false, 'message' => 'Required fields are missing.'));
-			return;
-		}
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
-		$config['encrypt_name'] = TRUE;
-		$this->upload->initialize($config);
-		if ($this->upload->do_upload('mainimage')) {
-			$mainImageData = $this->upload->data();
-			$data['mainimage'] = 'uploads/' .  $mainImageData['file_name'];
-		} else {
-			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
-			return;
-		}
-		$inserted = $this->query->insert_art($data);
-		if ($inserted) {
-			echo json_encode(array('success' => true));
-		} else {
-			echo json_encode(array('success' => false, 'message' => 'Failed to insert data into the database.'));
-		}
-	}
-	public function deleteart() {
-		if (!$this->input->is_ajax_request()) {
-			show_404();
-		}
-		$art_id = $this->input->post('art_id');
-		$user_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$art = $this->query->get_art_by_id($art_id);
-		if (!$art || $art->artist_id != $user_id) {
-			echo json_encode(['success' => false, 'message' => 'Unauthorized access or art not found.']);
-			return;
-		}
-		$result = $this->query->delete_art($art_id);
-
-		if ($result) {
-			echo json_encode(['success' => true, 'message' => 'Art deleted successfully.']);
-		} else {
-			echo json_encode(['success' => false, 'message' => 'Failed to delete art.']);
-		}
-	}
 }
