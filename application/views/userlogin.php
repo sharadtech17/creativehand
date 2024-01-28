@@ -42,7 +42,7 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 						<div class="col-md-6 col-xs-12 col-sm-6 margin-top-30">
 							<div class="form-contact">
 								<div class="row">
-									<form accept-charset="UTF-8" action="<?=base_url()?>userlogin" class="contact-form" method="post" id="userlogin">
+									<form accept-charset="UTF-8" action="<?=base_url()?>user/login" class="contact-form" method="post" id="userlogin">
 										<div class="col-md-12 col-xs-12 col-sm-12">
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon13">Email</span>
@@ -50,7 +50,7 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 											</div>
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon14">Password</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="password">
+												<input type="password" class="form-control" aria-describedby="basic-addon3" name="password">
 											</div>
 											<div class="for-pass full-width">
 												<button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Login Account</button>
@@ -98,7 +98,7 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 					alertAndFocus('Please enter your password.', 'input[name="password"]');
 					return;
 				}
-
+				
 				$('#submitBtn').prop('disabled', true);
 				$.ajax({
 					url: this.action,
@@ -106,7 +106,7 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 					data: $(this).serialize(),
 					success: function (response) {
 						if (response.success) {
-	                        window.location.href = '<?=base_url()?>user-panel/view-profile';
+	                        window.location.href = '<?=base_url()?>';
 	                    } else {
 	                    	$('#submitBtn').prop('disabled', false);
 	                        alert('Invalid email or password.');

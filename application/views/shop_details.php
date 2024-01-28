@@ -90,7 +90,7 @@
                                     </a>
 								</li>
                             </ul>
-							<a href="#" class="product-cart-con btn
+							<a href="<?= base_url().'addToCart/'.$shoplist->price.'/'.$shoplist->shop_id?>" class="product-cart-con btn
                              btn-primary btn-lg text-capitalize margin-bottom-30">Add To Cart</a>
                         </div>
                     </div>

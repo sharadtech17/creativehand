@@ -24,6 +24,7 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<script src="<?=base_url()?>artistassets/js/layout.js"></script>
 	<!-- Bootstrap Css -->
 	<link href="<?=base_url()?>artistassets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?=base_url()?>artistassets/libs/gridjs/theme/mermaid.min.css" rel="stylesheet" type="text/css" />
 	<!-- Icons Css -->
 	<link href="<?=base_url()?>artistassets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<!-- App Css-->
@@ -939,6 +940,8 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="<?=base_url()?>artistassets/js/pages/select2.init.js"></script>
 	<script src="<?=base_url()?>artistassets/js/app.js"></script>
+	<script src="<?=base_url()?>artistassets/libs/gridjs/gridjs.umd.js"></script>
+	<script src="<?=base_url()?>artistassets/js/pages/gridjs.init.js"></script>
 	<script>
     $(document).ready(function() {
         $('#categorySelect').change(function() {

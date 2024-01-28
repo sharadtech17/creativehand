@@ -261,14 +261,9 @@
 
 <body>
     <div class="search-overlap "></div>
-
-
     <div class="paira-container pages-container">
-
-
+        <?php include('flash-message.php'); ?>
         <header class=" ">
-
-
             <section class="">
                 <div style="background-color:#023020; color:white;">
                     <div class="container">
@@ -286,8 +281,6 @@
                                         style="color: white;"></span>
                                     Register as a Artist </a>
                             </li>
-
-
                         </ul>
                     </div>
                 </div>

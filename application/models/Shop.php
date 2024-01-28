@@ -35,7 +35,7 @@ class Shop extends CI_Model {
         return $this->db->update('art_shops', $data);
     }
 	public function get_Shop_by_id($id) {
-		$this->db->select('art_shops.*,artist.*, artist.description as artist_desc, art_shops.description as art_desc, categories.category as categoryname');
+		$this->db->select('art_shops.*,artist.*,art_shops.id as shop_id, artist.description as artist_desc, art_shops.description as art_desc, categories.category as categoryname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = art_shops.category', 'left');

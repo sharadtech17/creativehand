@@ -92,7 +92,19 @@ $route['view-checkout'] = 'ShopController/viewShopCheckout';
 
 // user login
 $route['user-login'] = 'ShopController/viewUserlogin';
-$route['userlogin'] = 'ShopController/userlogin';
-$route['userlogout'] = 'ShopController/userlogout';
+$route['user/login'] = 'ShopController/user_login';
+$route['user/logout'] = 'ShopController/userLogout';
 $route['user-register'] = 'ShopController/userregister';
 $route['addregisteruser'] = 'ShopController/storeUser';
+$route['editUser'] = 'ShopController/updateUser';
+$route['user/account'] = 'ShopController/viewUserProfile';
+$route['user/address'] = 'ShopController/viewAddress';
+$route['edit/Address'] = 'ShopController/editAddress';
+
+//cart
+$route['addToCart/(:any)/(:any)'] = 'ShopController/StoreCart/$2/$1';
+$route['updateCart'] = 'ShopController/updateCartItem';
+$route['cartproduct/remove/(:any)'] = 'ShopController/deleteCart/$1';
+
+//order
+$route['user/orders'] = 'ShopController/viewOrderHistory';

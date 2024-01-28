@@ -185,5 +185,36 @@ class User extends CI_Model {
 			return null;
 		}
 	}
+	public function get_user_by_id($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('user');
+		return $query->row();
+	}
+	public function update_user($user_id,$data)
+	{
+		$this->db->where('id', $user_id);
+		$query = $this->db->get('user');
+		if ($query->num_rows() > 0) {
+			$this->db->where('id', $user_id);
+			$this->db->update('user',$data);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public function updateUserPassword($oldpassword, $newpassword, $user_id)
+	{
+		$this->db->where('id', $user_id);
+		$this->db->where('password', $oldpassword);
+		$query = $this->db->get('user');
+		if ($query->num_rows() > 0) {
+			$this->db->where('id', $user_id);
+			$this->db->update('user', array('password' => $newpassword));
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

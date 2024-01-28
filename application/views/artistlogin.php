@@ -50,7 +50,7 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 											</div>
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon14">Password</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="password">
+												<input type="password" class="form-control" aria-describedby="basic-addon3" name="password">
 											</div>
 											<div class="for-pass full-width">
 												<button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Login Account</button>

@@ -9,6 +9,7 @@ class ShopController extends CI_Controller {
 		$this->load->model('Shop'); // Load the Shop model if not loaded automatically
 		$this->load->model('Artist'); 
 		$this->load->model('User');
+		$this->load->model('Cart');
 	}
 	public function index()
 	{
@@ -155,6 +156,14 @@ class ShopController extends CI_Controller {
 	// cart
 	public function viewShopCart()
 	{
+		if (empty($this->session->userdata['creativehandsuser']['usr_id'])) {
+			// Redirect the user to the login page or display a message
+			$this->session->set_flashdata('error', 'Please log in to view items to your cart.');
+			redirect('user-login'); // Adjust the redirection URL as needed
+			return;
+		}
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['cartlist'] = $this->Cart->getCartByUserId($user_id);
 		$data['title'] = "Cart";
 		$data['content'] = "view_cart.php";
 		$this->load->view('index',$data);
@@ -172,11 +181,17 @@ class ShopController extends CI_Controller {
 		$data['content'] = 'userlogin.php';
 		$this->load->view('index',$data);
 	}
-	public function userlogin()
+	public function user_login()
 	{
-		extract($_POST);
-		$userdata = $this->query->authenticate_user($email, $password);
+		// Retrieve POST data using CodeIgniter input class
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+	
+		// Authenticate user
+		$userdata = $this->User->authenticate_user($email, $password);
+	
 		if ($userdata) {
+			// Set session data
 			$session_data = array(
 				'usr_id' => $userdata['id'],
 				'usr_email' => $userdata['email']
@@ -185,9 +200,11 @@ class ShopController extends CI_Controller {
 			$response = array('success' => true);
 		} else {
 			$response = array('success' => false);
-		}		
+		}
+		$this->session->set_flashdata('success', 'User Login.');
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
+	
 	public function userregister()
 	{
 		$data['content'] = 'userregister.php';
@@ -205,41 +222,192 @@ class ShopController extends CI_Controller {
 		$user_exists = $this->User->check_user_exists($email);
 
 		if ($user_exists) {
-			// User already exists, set response accordingly
-			$response = array('exists' => true);
+			$this->session->set_flashdata('success', 'Email Already Registered.');
+			redirect('home');
 		} else {
 			// User doesn't exist, proceed with registration
 			$data = array(
-				'name' => trim($name),
-				'number' => trim($number),
+				'first_name' => trim($name),
+				'phone' => trim($number),
 				'email' => trim($email),
 				'password' => base64_encode($password) // You might want to use a more secure hashing algorithm instead of base64 encoding
 			);
 
 			// Register the user
 			$userid = $this->User->register_user($data);
-
 			if ($userid > 0) {
 				// Registration successful, create session data
 				$session_data = array(
 					'usr_id' => $userid,
 					'usr_email' => $email
 				);
-
 				// Set user session data
 				$this->session->set_userdata('creativehandsuser', $session_data);
-
-				// Set response indicating successful registration
-				$response = array('exists' => false);
+				$this->session->set_flashdata('success', 'User Register.');
+				redirect('home');
 			} else {
-				// Registration failed, set response accordingly
-				$response = array('error' => 'Registration failed');
+				$this->session->set_flashdata('error', 'Registration failed.');
+				redirect('home');
 			}
 		}
-		// Set JSON response
-		$this->output
-			->set_content_type('application/json')
-			->set_output(json_encode($response));
+	}
+	public function viewUserProfile()
+	{
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['user'] = $this->User->get_user_by_id($user_id);
+		$data['content'] = 'user_account.php';
+		$this->load->view('index',$data);
+	}
+	public function updateUser()
+	{
+		// Retrieve POST data
+		$f_name = $this->input->post('f_name');
+		$l_name = $this->input->post('l_name');
+		$number = $this->input->post('number');
+		$email = $this->input->post('email');
+		$oldpassword = $this->input->post('password');
+		$newpassword = $this->input->post('newpassword');
+	
+		// Trim and encode passwords
+		$oldpassword = base64_encode(trim($oldpassword));
+		$newpassword = base64_encode(trim($newpassword));
+	
+		// Prepare user data array
+		$data = array(
+			'first_name' => trim($f_name),
+			'last_name' => trim($l_name),
+			'phone' => trim($number),
+			'email' => trim($email)
+		);
+	
+		// Get user ID from session
+		$user_id = $this->session->userdata['creativehandsuser']['usr_id'];
+	
+		// Check if new password is provided
+		if (!empty($newpassword)) {
+			// Update user password
+			$result = $this->User->updateUserPassword($oldpassword, $newpassword, $user_id);
+			if (!$result) {
+				// Handle password update failure
+				$this->session->set_flashdata('error', 'Failed to update password. Please try again.');
+				redirect('user/account');
+				return;
+			}
+			// Password updated successfully
+			$this->session->set_flashdata('success', 'Password updated successfully.');
+		}
+	
+		// Update user information
+		$result = $this->User->update_user($user_id, $data);
+		if (!$result) {
+			// Handle user update failure
+			$this->session->set_flashdata('error', 'Failed to update user information. Please try again.');
+			redirect('user/account');
+			return;
+		}
+	
+		// User information updated successfully
+		$this->session->set_flashdata('success', 'User information updated successfully.');
+		redirect('user/account');
+	}
+	
+	public function userLogout()
+	{
+		$this->session->unset_userdata('creativehandsuser');
+		$this->session->set_flashdata('success', 'User Logout.');
+		redirect('user-login');
+	}
+	public function viewAddress()
+	{
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['user'] = $this->User->get_user_by_id($user_id);
+		$data['content'] = 'user_address.php';
+		$this->load->view('index',$data);
+	}
+	public function editAddress()
+	{
+		$bill_address = $this->input->post('bill_address');
+		$ship_address = $this->input->post('ship_address');
+		$data = array(
+			'bill_address' => trim($bill_address),
+			'ship_address' => trim($ship_address)
+		);
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['user'] = $this->User->update_user($user_id,$data);
+		$this->session->set_flashdata('success', 'User Updated.');
+		redirect('user/address');
+	}
+	// order 
+	public function viewOrderHistory()
+	{
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['content'] = 'order_details.php';
+		$this->load->view('index',$data);
+	}
+	// cart
+	public function StoreCart($id,$price)
+	{
+		// Check if the user is logged in
+		if (empty($this->session->userdata['creativehandsuser']['usr_id'])) {
+			// Redirect the user to the login page or display a message
+			$this->session->set_flashdata('error', 'Please log in to add items to your cart.');
+			redirect('user-login'); // Adjust the redirection URL as needed
+			return;
+		}
+	
+		// Get the user ID from the session data
+		$user_id = $this->session->userdata['creativehandsuser']['usr_id'];
+		$existing_cart_item = $this->Cart->getCartItem($id, $user_id);
+		if ($existing_cart_item) {
+			// If the product is already in the cart, you can update the quantity or display a message
+			$this->session->set_flashdata('error', 'This item is already in your cart.');
+			redirect('view-cart'); // Adjust the redirection URL as needed
+			return;
+		}
+		// Prepare data to add to the cart
+		$data = array(
+			'product_id' => trim($id),
+			'qty' => '1',
+			'user_id' => $user_id,
+			'price' => $price,
+			'total_amount' => $price,
+		);
+		// Add the product to the cart
+		$result = $this->Cart->addCart($data);
+		if (!$result) {
+			// Handle cart addition failure
+			$this->session->set_flashdata('error', 'Failed to add item to the cart. Please try again.');
+			redirect('view-cart'); // Adjust the redirection URL as needed
+			return;
+		}
+		// Cart addition successful
+		$this->session->set_flashdata('success', 'Item added to the cart.');
+		redirect('view-cart'); // Adjust the redirection URL as needed
+	}	
+	public function updateCartItem() {
+        // Get data from POST request
+        $cart_id = $this->input->post('cart_id');
+        $qty = $this->input->post('quantity');
+        $price = $this->input->post('price');
+		$totalamount=$price*$qty;
+		$data = array(
+			'qty' => $qty,
+			'price' => $price,
+			'total_amount' => $totalamount,
+		);
+        $this->Cart->editCartItem($cart_id, $data);
+		$this->session->set_flashdata('success', 'Cart Updated.');
+        redirect('view-cart');
+    }
+	public function deleteCart($cart_id)
+	{
+		$result = $this->Cart->deleteCartItem($cart_id);
+		if ($result) {
+			$this->session->set_flashdata('success', 'Item removed from cart.');
+		} else {
+			$this->session->set_flashdata('error', 'Failed to remove item from cart.');
+		}
+		redirect('view-cart'); // Redirect to the cart page or any other appropriate page
 	}
 
 }
