@@ -17,45 +17,27 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-xs-12">
-
-						<div class="col-sm-12 col-md-12 ">
-							<div>
-								<h6 class="p-1 border-bottom">Filter By</h6>
-
-								<div id="" class=" sidebar-expanded d-none ">
-									<ul class="list-group">
-										<li class="list-group-item ">
-											<div class="single-widget learts-mb-40">
-												<div class="widget-search">
-													
-														<input type="text" id="artistSearch" class="form-control" placeholder="Search ....">
-												
+						<div class="col-sm-12 col-md-12">
+							<h6 class="p-1 border-bottom">Filter By</h6>
+							<div id="" class=" sidebar-expanded d-none ">
+								<ul class="list-group">
+									<li class="list-group-item ">
+										<div class="single-widget learts-mb-40">
+											<div class="widget-search">
+												<form method="GET" action="<?php echo base_url('HomeController/artist'); ?>">
+												<div class="row">
+													<div class="col-md-11">
+														<input type="text" name="query" class="form-control" placeholder="Search">
+													</div>
+													<div class="col-md-1">
+														<button type="submit" class="btn"><i class="fa fa-search"></i></button>
+													</div>
 												</div>
+												</form>
 											</div>
-										</li>
-									</ul>
-
-								</div>
-								<!-- <div>
-										<p class="mb-2"><input type="checkbox"> Image Ty</p>
-										<ul class="list-group">
-												<li class="list-group-item list-group-item-action mb-2 rounded"><a
-																href="#">
-
-																<span class="fa fa-circle pr-1" style="color: blue;"></span> Red
-														</a></li>
-												<li class="list-group-item list-group-item-action mb-2 rounded"><a
-																href="#">
-																<span class="fa fa-circle pr-1" style="color: #c66b15;"></span>
-																Teal
-														</a></li>
-												<li class="list-group-item list-group-item-action mb-2 rounded"><a
-																href="#">
-																<span class="fa fa-circle pr-1 "
-																		style="color:chartreuse;"></span>
-																Blue </a></li>
-										</ul>
-								</div> -->
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 						<div id="noMatchMessage" style="display: none;"><p class="text-center" style="padding: 50px 0px;">No match found</p></div>
@@ -68,7 +50,7 @@
 									<h6> <i class="fa fa-image"></i># arts</h6>
 								</div>
 								<div style="display: flex; justify-content:space-between ;">
-									<h6><i class="fa fa-phone"></i> <?= $artist->numbervisibly == 1 ? $artist->number : '**********'; ?></h6>
+									<h6><i class="fa fa-phone"></i> <?= $artist->number !== '' ? $artist->number : '**********' ?></h6>
 									<h6>Artist</h6>
 									<a href="<?=base_url()?>artist-details/<?=$artist->id?>">
 										<button class="text-right btn btn-primary  text-capitalize 

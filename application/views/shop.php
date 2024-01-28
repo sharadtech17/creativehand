@@ -20,166 +20,27 @@
 			<div class="container ">
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-xs-12">
-
-						<div class="col-sm-3 col-md-3 ">
-							<div>
-								<h6 class="p-1 border-bottom">Filter By</h6>
-
-								<div id="" class=" sidebar-expanded d-none ">
-									<ul class="list-group">
-										<li class="list-group-item ">
-											<div class="single-widget learts-mb-40">
-												<div class="widget-search">
-													<form action="#">
-														<input type="text" placeholder="Search ....">
-														<button><i class="fa fa-search"></i></button>
-													</form>
+						<div class="col-sm-12 col-md-12">
+							<h6 class="p-1 border-bottom">Filter By</h6>
+							<div id="" class=" sidebar-expanded d-none ">
+								<ul class="list-group">
+									<li class="list-group-item ">
+										<div class="single-widget learts-mb-40">
+											<div class="widget-search">
+												<form method="GET" action="<?php echo base_url('ShopController'); ?>">
+												<div class="row">
+													<div class="col-md-11">
+														<input type="text" name="query" class="form-control" placeholder="Search">
+													</div>
+													<div class="col-md-1">
+														<button type="submit" class="btn"><i class="fa fa-search"></i></button>
+													</div>
 												</div>
+												</form>
 											</div>
-										</li>
-									</ul>
-
-								</div>
-								<div id="" class=" sidebar-expanded d-none ">
-									<ul class="list-group">
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-
-											<h3><i class="fa fa-paint-brush"></i> Category</h3>
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Portrait Painting
-
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox">
-											Landscape Painting
-
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox">
-											Still Life
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox">
-											Abstract Painting
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox">
-											History Painting
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox"> Religious Painting
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<!-- <small>MAIN MENU</small> -->
-											<input type="checkbox"> This is my first checkbox
-
-										</li>
-
-									</ul>
-
-								</div>
-
-								<div id="" class=" sidebar-expanded d-none ">
-									<ul class="list-group">
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-
-											<h3><i class="fa fa-user"></i> Artists</h3>
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-
-											Tempera
-
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											<!-- <small>MAIN MENU</small> -->
-											Oil paints
-
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Acrylic Pai
-											nting
-
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Watercolor Painting
-
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Charcoal DraWings
-
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Charcoal DraWings
-
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Pastel Paintings
-										</li>
-
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Chalk
-										</li>
-										<li class="list-group-item sidebar-separator-title
-										text-muted d-flex align-items-center menu-collapsed"><input type="checkbox">
-											Graphite Pencil
-										</li>
-										<li class="list-group-item sidebar-separator-title
-									text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Colored Pencil
-										</li>
-										<li class="list-group-item sidebar-separator-title
-									text-muted d-flex align-items-center menu-collapsed"><input type="checkbox">
-											Ink and Pen
-										</li>
-										<li class="list-group-item sidebar-separator-title
-									text-muted d-flex align-items-center menu-collapsed">
-											<input type="checkbox">
-											Three-Dimensional Art Mediums
-										</li>
-									</ul>
-								</div>
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 						<div class="col-sm-9 col-md-9 col-xs-12">

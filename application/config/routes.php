@@ -85,6 +85,8 @@ $route['administrator/art-shop-list'] = 'ShopController/ViewArtShopList';
 $route['addArtShopPost'] = 'ShopController/StoreArtShopPost';
 $route['editArtShopPost'] = 'ShopController/updateArtShop';
 $route['view-shop-detail/(:any)'] = 'ShopController/viewShopDetail/$1';
+$route['searchArtShop'] = 'ShopController/searchArtShopData';
+
 
 // cart
 $route['view-cart'] = 'ShopController/viewShopCart';
@@ -108,3 +110,4 @@ $route['cartproduct/remove/(:any)'] = 'ShopController/deleteCart/$1';
 
 //order
 $route['user/orders'] = 'ShopController/viewOrderHistory';
+$route['order/place'] = 'ShopController/orderPlace';

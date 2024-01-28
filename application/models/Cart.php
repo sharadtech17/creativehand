@@ -36,6 +36,9 @@ class Cart extends CI_Model {
 		$this->db->delete('cart');
 		return ($this->db->affected_rows() > 0);
 	}
-
+	public function clear_cart($user_id) {
+        // Delete cart items for the specified user
+        $this->db->delete('cart', array('user_id' => $user_id));
+    }
 }
 ?>

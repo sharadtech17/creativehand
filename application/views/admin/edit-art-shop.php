@@ -143,6 +143,30 @@
                             </div>
                             <!-- end card body -->
                         </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Feature Product</h5>
+                            </div>
+                            <div class="card-body">
+                                <select class="form-select" id="feature_status" name="feature_status" data-choices data-choices-search-false>
+                                    <option value="0"  <?= $artshop->feature_status==='0' ? 'selected' : '' ?>>No</option>
+                                    <option value="1" <?= $artshop->feature_status==='1' ? 'selected' : '' ?>>Yes</option>
+                                </select>
+                            </div>
+                            <!-- end card body -->
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Best Seller</h5>
+                            </div>
+                            <div class="card-body">
+                                <select class="form-select" id="best_seller_status" name="best_seller_status" data-choices data-choices-search-false>
+                                    <option value="0"  <?= $artshop->best_seller_status==='0' ? 'selected' : '' ?>>No</option>
+                                    <option value="1" <?= $artshop->best_seller_status==='1' ? 'selected' : '' ?>>Yes</option>
+                                </select>
+                            </div>
+                            <!-- end card body -->
+                        </div>
                         <!-- end card -->
                         <div class="card">
                             <div class="card-header">

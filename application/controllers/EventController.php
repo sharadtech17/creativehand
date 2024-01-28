@@ -11,7 +11,12 @@ class EventController extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['eventlist'] = $this->Event->getActiveEventList();
+		$query = $this->input->get('query');
+		if (!empty($query)) {
+			$data['eventlist'] = $this->Event->searchEvent($query);
+        } else {
+            $data['eventlist'] = $this->Event->getActiveEventList();
+        }
 		$data['title'] = "Event";
 		$data['content'] = "events.php";
 		$this->load->view('index',$data);

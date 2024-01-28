@@ -18,7 +18,12 @@ class HomeController extends CI_Controller {
 	}
 	public function artist()
 	{
-		$data['artistlist'] = $this->query->getfront_artists();
+		$query = $this->input->get('query');
+		if (!empty($query)) {
+			$data['artistlist'] = $this->query->searchartists($query);
+        } else {
+            $data['artistlist'] = $this->query->getfront_artists();
+        }
 		$data['content'] = 'artist.php';
 		$this->load->view('index',$data);
 	}

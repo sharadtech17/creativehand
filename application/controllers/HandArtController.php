@@ -7,7 +7,12 @@ class HandArtController extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['handartlist'] = $this->query->getArtByHandArtArtist();
+		$query = $this->input->get('query');
+		if (!empty($query)) {
+			$data['handartlist'] = $this->query->searchArtByHandArtArtist($query);
+        } else {
+            $data['handartlist'] = $this->query->getArtByHandArtArtist();
+        }
 		$data['content'] = 'hand_made_art.php';
 		$this->load->view('index',$data);
 	}
@@ -19,7 +24,12 @@ class HandArtController extends CI_Controller {
 	}
 	public function viewPainting()
 	{
-		$data['paintinglist'] = $this->query->getPaintingByArtist();
+		$query = $this->input->get('query');
+		if (!empty($query)) {
+			$data['paintinglist'] = $this->query->searchPaintingByArtist($query);
+        } else {
+            $data['paintinglist'] = $this->query->getPaintingByArtist();
+        }
 		$data['content'] = 'painting.php';
 		$this->load->view('index',$data);
 	}

@@ -13,7 +13,12 @@ class ShopController extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['shoplist'] = $this->Shop->getShopList();
+		$query = $this->input->get('query');
+		if (!empty($query)) {
+			$data['shoplist'] = $this->Shop->searchArtShop($query);
+        } else {
+            $data['shoplist'] = $this->Shop->getShopList();
+        }
 		$data['title'] = "Shop";
 		$data['content'] = "shop.php";
 		$this->load->view('index',$data);
@@ -53,9 +58,6 @@ class ShopController extends CI_Controller {
 		if ($this->upload->do_upload('mainimage')) {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/arts/' .  $mainImageData['file_name'];
-		} else {
-			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
-			return;
 		}
 		foreach ($_FILES['image_gallry']['name'] as $key => $value) {
 			$_FILES['image']['name']     = $_FILES['image_gallry']['name'][$key];
@@ -81,6 +83,8 @@ class ShopController extends CI_Controller {
 			'price' => $this->input->post('price'),
 			'shortdescription' => $this->input->post('shortdesc'),
 			'galleryimage'   => json_encode($image_gallrys),
+			'feature_status'   => $this->input->post('feature_status'),
+			'best_seller_status' => $this->input->post('best_seller_status'),
 		);
 		$this->Shop->store_artshop($artshop_data); // Call the correct method on the loaded model
 		$this->session->set_flashdata('success', 'Art shop added.');
@@ -132,6 +136,8 @@ class ShopController extends CI_Controller {
 			'size' => $this->input->post('size'),
 			'price' => $this->input->post('price'),
 			'shortdescription' => $this->input->post('shortdesc'),
+			'feature_status'   => $this->input->post('feature_status'),
+			'best_seller_status' => $this->input->post('best_seller_status'),
 		);
 		if (!empty($image)) {
 			$artshop_data['mainimage']=$image;
@@ -170,6 +176,14 @@ class ShopController extends CI_Controller {
 	}
 	public function viewShopCheckout()
 	{
+		if (empty($this->session->userdata['creativehandsuser']['usr_id'])) {
+			// Redirect the user to the login page or display a message
+			$this->session->set_flashdata('error', 'Please log in to view items to your cart.');
+			redirect('user-login'); // Adjust the redirection URL as needed
+			return;
+		}
+		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['cartlist'] = $this->Cart->getCartByUserId($user_id);
 		$data['title'] = "Checkout";
 		$data['content'] = "checkout.php";
 		$this->load->view('index',$data);
@@ -409,5 +423,48 @@ class ShopController extends CI_Controller {
 		}
 		redirect('view-cart'); // Redirect to the cart page or any other appropriate page
 	}
-
+	// order place
+	public function orderPlace() 
+	{
+		$orderno = rand(10000000, 99999999);
+		$user_id = $this->session->userdata['creativehandsuser']['usr_id'];
+        $order_data = array(
+            'order_no' => $orderno,
+            'bill_name' => $this->input->post('f_name').$this->input->post('l_name'),
+            'email' => $this->input->post('email'),
+            'phone' => $this->input->post('phone'),
+            'date' => $this->input->post('date'),
+            'user_id' => $user_id,
+            'total_amount' => $this->input->post('total_amount'),
+            'bill_address' => $this->input->post('bill_address'),
+            'company' => $this->input->post('company'),
+            'city' => $this->input->post('city'),
+            'state' => $this->input->post('state'),
+            'country' => $this->input->post('country'),
+            'pincode' => $this->input->post('pincode'),
+            'note' => $this->input->post('note'),
+        );
+        $order_id = $this->Shop->place_order($order_data);
+        
+        if ($order_id) {
+            $cart_items = $this->Cart->getCartByUserId($user_id);
+            foreach ($cart_items as $item) {
+                $order_item_data = array(
+                    'order_id' => $order_id,
+                    'product_id' => $item->product_id,
+                    'qty' => $item->qty,
+                    'price' => $item->price,
+                    'subtotal' => $item->total_amount,
+                    
+                );
+                $this->Shop->add_order_item($order_item_data);
+            }
+            $this->Cart->clear_cart($user_id);
+			$this->session->set_flashdata('success', 'Order Place.');
+            redirect('user/orders');
+        } else {
+			$this->session->set_flashdata('success', 'Order Place.');
+            redirect('user/orders');
+        }
+    }
 }

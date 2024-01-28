@@ -292,39 +292,31 @@
                                     style="background-color: white; border-radius: 15px 50px; "></a>
                         </div>
                         <div class=" col-md-7 col-sm-7 col-xs-9" style="padding-top: 40px;">
-                            <div style="display: flex;" class="search-wrp">
-
-                                <input type="text" class=" form-control " placeholder="Search by Keywords..."
-                                    style="  padding-top: 21px; padding-bottom: 21px;border-color: #c66b15; border-radius: 0;">
-                                <style>
-                                    input::placeholder {
-                                        font-weight: bold;
-                                        /* opacity: 0.5; */
-                                        color: black;
-                                    }
-                                </style>
-                                <div class="">
-                                    <select class="btn btn-default " type="button"
-                                        style="padding-top:10px; padding-bottom:10px;">
-                                        <option>Section</option>
-                                        <option>Artist</option>
-                                        <option>Painting</option>
-                                        <option>Hand Made Arts</option>
-                                    </select>
+                            <form method="GET" action="" id="searchForm">
+                                <div style="display: flex;" class="search-wrp">
+                                    <input type="text" name="query" class=" form-control " placeholder="Search by Keywords..."
+                                        style="  padding-top: 21px; padding-bottom: 21px;border-color: #c66b15; border-radius: 0;">
+                                    <style>
+                                        input::placeholder {
+                                            font-weight: bold;
+                                            /* opacity: 0.5; */
+                                            color: black;
+                                        }
+                                    </style>
+                                    <div class="">
+                                        <select class="btn btn-default" id="searchSection"  style="padding-top:10px; padding-bottom:10px;">
+                                            <option selected disabled>Select section</option>
+                                            <option value="<?= base_url('HomeController/artist') ?>">Artist</option>
+                                            <option value="<?= base_url('HandArtController/viewPainting') ?>">Painting</option>
+                                            <option value="<?= base_url('HandArtController/index') ?>">Hand Made Arts</option>
+                                            <option value="<?= base_url('EventController/index') ?>">Events</option>
+                                            <option value="<?= base_url('ShopController/index') ?>">Shop</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-default" type="submit" style="background-color: #c66b15;"><i class="fa fa-search " style="color: white;"></i></button>
                                 </div>
-
-                                <button class="btn btn-default" type="button" style="background-color: #c66b15;"><i
-                                        class="fa fa-search " style=" 
-                                    color: white;"></i></button>
-
-                                <!-- <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                                </span> -->
-
-                            </div>
-
+                            </form>
                         </div>
-
                         <div class=" pull-right col-md-2 col-sm-2 col-xs-3  " style="padding-top: 25px;">
                             <div class="account-ajax-cart">
                                 <ul class="list-inline  " style="display: flex;justify-content: center; ">
@@ -411,7 +403,6 @@
                 </div>
 
                 <div class="moblie-search-wrp">
-
                     <input type="text" class=" form-control " placeholder="Search by Keywords..."
                         style="  padding-top: 21px; padding-bottom: 21px;border-color: #c66b15; border-radius: 0;">
                     <style>
@@ -606,10 +597,14 @@
     <!--=================== Paira Framework Main Javascript ===================-->
     <!-- <script src="<?=base_url()?>assets/js/paira.js" type="text/javascript"></script> -->
 
-
+    <script>
+    document.getElementById('searchSection').addEventListener('change', function() {
+        var selectedValue = this.value;
+        var formAction = selectedValue;
+        document.getElementById('searchForm').action = formAction;
+    });
+</script>
 
 </body>
-
 <!-- Mirrored from demo.enpek.com/html-templates/dye/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 12:56:27 GMT -->
-
 </html>

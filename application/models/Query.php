@@ -170,6 +170,16 @@ class Query extends CI_Model {
 		$query = $this->db->get('artist');
 		return $query->result();
 	}
+	public function searchartists($query)
+	{
+		$this->db->where('verificationstatus', '1');
+		$this->db->where('activeflag', '0');
+		$this->db->like('artist.name', $query);
+        $this->db->or_like('artist.number', $query);
+		$this->db->order_by('id', "desc");
+		$query = $this->db->get('artist');
+		return $query->result();
+	}
 	public function getfront_artists()
 	{
 		$this->db->where('verificationstatus', '1');
@@ -235,6 +245,21 @@ class Query extends CI_Model {
 		$query = $this->db->get('art');
 		return $query->result();
 	}
+	public function searchArtByHandArtArtist($query)
+	{
+		$this->db->select('art.*, artist.name as artistname');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Hand Made Arts');
+		$this->db->like('art.title', $query);
+		$this->db->or_like('art.tags', $query);
+        $this->db->or_like('artist.name', $query);
+        $this->db->or_like('artist.category', $query);
+		$this->db->order_by('art.id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function getArtByHandArtArtist()
 	{
 		$this->db->select('art.*, artist.name as artistname');
@@ -257,7 +282,21 @@ class Query extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
+	public function searchPaintingByArtist($query)
+	{
+		$this->db->select('art.*, artist.name as artistname');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Painting');
+		$this->db->like('art.title', $query);
+		$this->db->or_like('art.tags', $query);
+        $this->db->or_like('artist.name', $query);
+        $this->db->or_like('artist.category', $query);
+		$this->db->order_by('art.id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function getHandArtArtistByArtId($id)
 	{
 		$this->db->select('art.*, artist.*, artist.description as artist_desc, art.description as art_desc');

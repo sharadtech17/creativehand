@@ -3,7 +3,7 @@
 	<div class="col-lg-12">
 		<div class="card">			
 			<div class="card-header d-flex align-items-center">
-				<h5 class="card-title mb-0 flex-grow-1">Add Rows</h5>
+				<h5 class="card-title mb-0 flex-grow-1">Arta</h5>
 				<div>
 					<a href="<?=base_url()?>artist-panel/add-art" class="btn btn-primary">Add New Art</a>
 				</div>

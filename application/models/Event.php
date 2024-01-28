@@ -25,6 +25,19 @@ class Event extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function searchEvent($query)
+	{
+		$this->db->select('events.*, artist.name as artistname');
+		$this->db->from('events');
+		$this->db->join('artist', 'artist.id = events.artist_id', 'left');
+		$this->db->where('events.status', 0);
+		$this->db->like('events.name', $query);
+        $this->db->or_like('artist.name', $query);
+        $this->db->or_like('events.date', $query);
+		$this->db->order_by('events.id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function store_Event($data) {
         $this->db->insert('events', $data);
         return $this->db->insert_id(); // Return the ID of the inserted row
