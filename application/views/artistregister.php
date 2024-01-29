@@ -3,7 +3,9 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 	redirect ('artist-panel/dashboard');
 	die();
 }
-?><section class="breadcrumb-container paira-margin-bottom-3">
+?>
+</style>
+<section class="breadcrumb-container paira-margin-bottom-3">
 				<div class=" breadcrumb" style="
 			 background: linear-gradient(#070606b3, rgba(30, 23, 23, 0)) 
 			 ,url(<?=base_url()?>assets/images/banner/home-banner-big.jpg); ">
@@ -38,12 +40,11 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 												<span class="input-group-addon" id="basic-addon15">Name</span>
 												<input type="text" class="form-control" aria-describedby="basic-addon3" name="name">
 											</div>
-
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon13"> Number
-
 												</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="number">
+												
+												<input type="text" class="form-control" id="mobile_code" style="padding-left: 210px;" aria-describedby="basic-addon3" name="number">
 											</div>
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon13">Email</span>
@@ -178,4 +179,5 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 			return emailRegex.test(email);
 		}
 	});
+</script>
 </script>

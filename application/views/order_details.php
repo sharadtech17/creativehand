@@ -90,84 +90,32 @@ if (!isset($this->session->userdata['creativehandsuser'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <p class="" style="font-weight: 500;margin-top:30px;">#1234</p>
-
-                                        </div>
-                                    </th>
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">November 21, 2023
-                                        </p>
-                                    </td>
-
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">Processing</p>
-                                    </td>
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> ₹135.00 </p>
-                                    </td>
-
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> <i
-                                                class="fa fa-edit"></i>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <p class="" style="font-weight: 500;margin-top:30px;">#1234</p>
-
-                                        </div>
-                                    </th>
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">November 21, 2023
-                                        </p>
-                                    </td>
-
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">Processing</p>
-                                    </td>
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> ₹135.00 </p>
-                                    </td>
-
-                                    <td class="align-middle">
-
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> <i
-                                                class="fa fa-edit"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <p class="" style="font-weight: 500;margin-top:30px;">#1234</p>
-
-                                        </div>
-                                    </th>
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">November 21, 2023
-                                        </p>
-                                    </td>
-
-                                    <td class="align-items-center">
-                                        <p class="" style="font-weight: 500;margin-top:30px;">Processing</p>
-                                    </td>
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> ₹135.00 </p>
-                                    </td>
-
-                                    <td class="align-middle">
-
-                                        <p class="mb-0" style="font-weight: 500;margin-top:30px;"> <i
-                                                class="fa fa-edit"></i>
-                                    </td>
-                                </tr>
-
+                            <?php
+                                $i = 1;
+                                ?>
+                                <?php foreach ($orderlist as $order): ?>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="d-flex align-items-center">
+                                                <p class="" style="font-weight: 500;margin-top:30px;">#<?= $order->order_no?></p>
+                                            </div>
+                                        </th>
+                                        <td class="align-items-center">
+                                            <p class="" style="font-weight: 500;margin-top:30px;"><?= date('M d,yy',strtotime($order->date)) ?>
+                                            </p>
+                                        </td>
+                                        <td class="align-items-center">
+                                            <p class="" style="font-weight: 500;margin-top:30px;">Processing</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <p class="mb-0" style="font-weight: 500;margin-top:30px;"> ₹<?= $order->total_amount?> </p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <p class="mb-0" style="font-weight: 500;margin-top:30px;"><i class="fa fa-eye"></i></p>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
-
                         </table>
                     </div>
                 </div>

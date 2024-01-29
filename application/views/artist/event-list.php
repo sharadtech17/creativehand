@@ -78,7 +78,7 @@
                                 <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
                                     <div class="gridjs-wrapper" style="height: auto;">
                                         <table role="grid" class="gridjs-table" style="height: auto;">
-                                            <thead class="gridjs-thead text-center">
+                                            <thead class="gridjs-thead">
                                                 <tr class="gridjs-tr">
                                                     <th data-column-id="#" class="gridjs-th text-muted"
                                                         style="width: 40px;">
@@ -125,7 +125,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="gridjs-tbody text-center">
+                                            <tbody class="gridjs-tbody">
                                                 <?php
                                                 $i = 1;
                                                 ?>

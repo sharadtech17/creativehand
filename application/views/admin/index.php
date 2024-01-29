@@ -942,6 +942,8 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<script src="<?=base_url()?>artistassets/js/app.js"></script>
 	<script src="<?=base_url()?>artistassets/libs/gridjs/gridjs.umd.js"></script>
 	<script src="<?=base_url()?>artistassets/js/pages/gridjs.init.js"></script>
+	<script src="<?=base_url()?>adminassets/js/table.min.js"></script>
+	<script src="<?=base_url()?>adminassets/js/pages/jquery-datatable.js"></script>
 	<script>
     $(document).ready(function() {
         $('#categorySelect').change(function() {
@@ -964,6 +966,14 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
             });
         });
     });
+	$(document).ready(function() {
+		$('input[type="search"]').removeClass('form-control-sm');
+		$('input[type="search"]').attr('placeholder', 'Search');
+		$('#tableExport_filter label').contents().filter(function() {
+			return this.nodeType === 3 && this.nodeValue.trim() === 'Search:';
+		}).remove();
+	});
+
 </script>
 </body>
 </html>

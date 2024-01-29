@@ -111,3 +111,6 @@ $route['cartproduct/remove/(:any)'] = 'ShopController/deleteCart/$1';
 //order
 $route['user/orders'] = 'ShopController/viewOrderHistory';
 $route['order/place'] = 'ShopController/orderPlace';
+
+// admin order
+$route['administrator/orders'] = 'ShopController/viewOrderList';

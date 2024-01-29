@@ -36,8 +36,8 @@
                             <div id="table-product-list-published" class="table-card gridjs-border-none">
                                 <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
                                     <div class="gridjs-wrapper" style="height: auto;">
-                                        <table role="grid" class="gridjs-table" style="height: auto;">
-                                            <thead class="gridjs-thead text-center">
+                                        <table role="grid" id="tableExport" class="gridjs-table" style="height: auto;">
+                                            <thead class="gridjs-thead">
                                                 <tr class="gridjs-tr">
                                                     <th data-column-id="#" class="gridjs-th text-muted"
                                                         style="width: 40px;">
@@ -84,7 +84,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="gridjs-tbody text-center">
+                                            <tbody class="gridjs-tbody">
                                                 <?php
                                                 $i = 1;
                                                 ?>
@@ -176,22 +176,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="gridjs-footer">
-                                        <div class="gridjs-pagination">
-                                            <div role="status" aria-live="polite" class="gridjs-summary"
-                                                title="Page 1 of 1">Showing
-                                                <b>1</b> to <b>5</b> of <b>5</b> results
-                                            </div>
-                                            <div class="gridjs-pages"><button tabindex="0" role="button" disabled=""
-                                                    title="Previous" aria-label="Previous"
-                                                    class="">Previous</button><button tabindex="0" role="button"
-                                                    class="gridjs-currentPage" title="Page 1" aria-label="Page 1"
-                                                    fdprocessedid="oe5hwr">1</button><button tabindex="0" role="button"
-                                                    disabled="" title="Next" aria-label="Next" class="">Next</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="gridjs-temp" class="gridjs-temp"></div>
                                 </div>
                             </div>
                         </div>

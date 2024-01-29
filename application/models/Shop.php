@@ -76,9 +76,25 @@ class Shop extends CI_Model {
         // Return the ID of the inserted order (or false if insertion fails)
         return ($this->db->affected_rows() > 0) ? $this->db->insert_id() : false;
     }
+	public function getAllOrders() {
+		$this->db->select('orders.*,user.first_name as customer_name');
+		$this->db->from('orders');
+		$this->db->join('user', 'user.id = orders.user_id', 'left');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getOrderByUserId($user_id) {
+		$this->db->select('orders.*,user.first_name as customer_name');
+		$this->db->from('orders');
+		$this->db->join('user', 'user.id = orders.user_id', 'left');
+		$this->db->where('orders.user_id', $user_id);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function add_order_item($order_item_data) {
         // Insert order item data into the 'order_items' table
         $this->db->insert('order_item', $order_item_data);
     }
+
 }
 ?>

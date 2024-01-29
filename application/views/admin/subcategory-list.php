@@ -19,31 +19,11 @@
             <div class="card">
             <?php include('flash-message.php');?>
                 <div class="card-header border-0">
-                    <div class="row g-4">
-                        <div class="col-sm-auto">
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSubCategory"><i class="ri-add-fill me-1 align-bottom"></i>Add SubCategory</button>
-                        </div>
-                        <div class="col-sm">
-                            <div class="d-flex justify-content-sm-end">
-                                <div class="search-box ms-2">
-                                    <input type="text" class="form-control" placeholder="Search SubCategory..." id="searchSubCategory" onkeyup="searchfun()">
-                                    <i class="ri-search-line search-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <div id="selection-element">
-                                <div class="my-n1 d-flex align-items-center text-muted">
-                                    Select <div id="select-content" class="text-body fw-semibold px-1">
-                                    </div> Result <button type="button"
-                                        class="btn btn-link link-danger p-0 ms-3" data-bs-toggle="modal"
-                                        data-bs-target="#removeItemModal">Remove</button>
-                                </div>
+                    <div class="d-flex align-items-center">
+                        <h5 class="card-title mb-0 flex-grow-1">SubCategory</h5>
+                        <div class="flex-shrink-0">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSubCategory"><i class="ri-add-fill me-1 align-bottom"></i>Add SubCategory</button>
                             </div>
                         </div>
                     </div>
@@ -62,9 +42,9 @@
                             <div id="table-product-list-published"
                                 class="table-card gridjs-border-none">
                                 <div role="complementary" class="gridjs gridjs-container">
-                                    <div class="gridjs-wrapper text-center" style="height: auto;">
-                                        <table role="grid" class="gridjs-table" style="height: auto;">
-                                            <thead class="gridjs-thead text-center">
+                                    <div class="gridjs-wrapper" style="height: auto;">
+                                        <table id="tableExport" role="grid" class="gridjs-table" style="height: auto;">
+                                            <thead class="gridjs-thead">
                                                 <tr class="gridjs-tr ">
                                                     <th data-column-id="#" class="gridjs-th text-muted">
                                                         <div class="gridjs-th-content">Sr</div>
@@ -84,7 +64,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="gridjs-tbody text-center">
+                                            <tbody class="gridjs-tbody">
                                                 <?php 
                                                     $i=1;
                                                 ?>

@@ -41,7 +41,7 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon13"> Number
 										</span>
-										<input type="number" class="form-control" aria-describedby="basic-addon3" name="number">
+										<input type="number" id="mobile_code" class="form-control" aria-describedby="basic-addon3" name="number">
 									</div>
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon13">Email</span>

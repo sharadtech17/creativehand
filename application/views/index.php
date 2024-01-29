@@ -39,8 +39,14 @@
     <!--=================== Google Fonts ===================-->
     <!-- <link rel="icon" href="<?=base_url()?>assets/images/favicon.ico"> -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
-
-    <style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" rel="stylesheet">
+<style>
+    .iti__country-list{
+            z-index: 3;
+    }
+    .contact-form .form-control {
+        width: 376px;
+    }
         .paira-single-product-image iframe {
             width: 100%;
         }
@@ -604,7 +610,19 @@
         document.getElementById('searchForm').action = formAction;
     });
 </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
+
+<!-- Initialize the intlTelInput -->
+<script>
+  // -----Country Code Selection
+$("#mobile_code").intlTelInput({
+	initialCountry: "in",
+	separateDialCode: true,
+	utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+});
+</script>
 </body>
 <!-- Mirrored from demo.enpek.com/html-templates/dye/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 12:56:27 GMT -->
 </html>

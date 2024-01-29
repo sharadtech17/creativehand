@@ -355,6 +355,7 @@ class ShopController extends CI_Controller {
 	public function viewOrderHistory()
 	{
 		$user_id=$this->session->userdata['creativehandsuser']['usr_id'];
+		$data['orderlist'] = $this->Shop->getOrderByUserId($user_id);
 		$data['content'] = 'order_details.php';
 		$this->load->view('index',$data);
 	}
@@ -467,4 +468,13 @@ class ShopController extends CI_Controller {
             redirect('user/orders');
         }
     }
+
+	// admin view order
+	public function viewOrderList()
+	{
+		$data['orderlist'] = $this->Shop->getAllOrders();
+		$data['title'] = "Order List";
+		$data['content'] = 'order-list.php';
+		$this->load->view('admin/index',$data);
+	}
 }
