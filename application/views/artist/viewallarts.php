@@ -3,7 +3,7 @@
 	<div class="col-lg-12">
 		<div class="card">			
 			<div class="card-header d-flex align-items-center">
-				<h5 class="card-title mb-0 flex-grow-1">Arta</h5>
+				<h5 class="card-title mb-0 flex-grow-1">Arts</h5>
 				<div>
 					<a href="<?=base_url()?>artist-panel/add-art" class="btn btn-primary">Add New Art</a>
 				</div>
@@ -35,8 +35,13 @@
 												<i class="ri-more-fill align-middle"></i>
 											</button>
 											<ul class="dropdown-menu dropdown-menu-end">
-												<li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-												<!-- <li><a class="dropdown-item edit-item-btn"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li> -->
+												<li>
+													<a class="dropdown-item"
+														href="<?= base_url('ArtistController/editart/' . $art->id) ?>">
+														<i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+														Edit
+													</a>
+												</li>
 												<li>
 													<button class="dropdown-item remove-item-btn" onclick="confirmDelete(<?=$art->id?>)">
 														<i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
@@ -64,7 +69,7 @@
 	function deleteArt(artId) {
 		$.ajax({
 			type: 'POST',
-			url: '<?= base_url('Artist/deleteart') ?>',
+			url: '<?= base_url('ArtistController/deleteart') ?>',
 			data: { art_id: artId },
 			dataType: 'json',
 			success: function (response) {

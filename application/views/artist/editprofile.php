@@ -109,14 +109,38 @@ $jsonData = json_decode($artistdata->socialaccount);
 							<div class="tab-pane active" id="personalDetails" role="tabpanel">
 
 								<div class="row">
-									<div class="col-lg-12">
+									<div class="col-lg-4">
 										<div class="mb-3">
 											<label class="form-label">
 											Select Arts Category</label>
-											<select class="form-select" name="category" id="categorySelect" data-choices data-choices-search-false>
-												<option value="">Select Category</option>
+											<select class="form-select" name="category_type" id="categoryTypeSelect" data-choices data-choices-search-false >
+												<option value="">Select Category Type</option>
 												<option value="Hand Made Arts" <?=$artistdata->category === 'Hand Made Arts' ? 'selected' : '';?>>Hand Made Arts</option>
-												<option value="Painting" <?=$artistdata->category === 'Painting' ? 'selected' : '';?>>Painting</option>
+												<option value="Painting Arts" <?=$artistdata->category === 'Painting' ? 'selected' : '';?>>Painting</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="mb-3">
+											<label class="form-label">
+											Select Category</label>
+											<select class="form-select" name="artistcategories" id="categoriesSelect" data-choices data-choices-search-false>
+												<option value="" selected disabled>Select Category</option>
+												<?php foreach($categoriesdata as $categories): ?>
+													<option value="<?= $categories->id ?>" <?= $categories->id==$artistdata->categories ? 'selected' : '' ?>><?= $categories->categoriesname ?> </option>
+												<?php endforeach ?>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="mb-3">
+											<label class="form-label">
+											Select Sub Category</label>
+											<select class="form-select" name="artistsubcategories" id="subcategoriesSelect" data-choices data-choices-search-false>
+												<option value="" selected disabled>Select Sub Category</option>
+												<?php foreach($subcategoriesdata as $subcategories): ?>
+													<option value="<?= $subcategories->id ?>" <?= $subcategories->id==$artistdata->subcategories ? 'selected' : '' ?>><?= $subcategories->subcategoriesname ?> </option>
+												<?php endforeach ?>
 											</select>
 										</div>
 									</div>
@@ -136,7 +160,13 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="col-lg-12">
 										<div class="mb-3">
 											<label for="representing" class="form-label">Representing</label>
-											<input type="text" class="form-control" id="representing" placeholder="Representing" value="<?=$artistdata->representing?>" name="artistrepresenting">
+											<select class="form-select" id="choices-category-input" name="artistrepresenting">
+												<option value="Self Represented" <?= $artistdata->representing=='Self Represented' ? 'selected' : '' ?>>Self Represented</option>
+												<option value="Locally Represented" <?= $artistdata->representing=='Locally Represented' ? 'selected' : '' ?>>Locally Represented</option>
+												<option value="Gallery Represented" <?= $artistdata->representing=='Gallery Represented' ? 'selected' : '' ?>>Gallery Represented</option>
+												<option value="Nationally Represent" <?= $artistdata->representing=='Nationally Represent' ? 'selected' : '' ?>>Nationally Represent</option>
+												<option value="Internationally Represented" <?= $artistdata->representing=='Internationally Represented' ? 'selected' : '' ?>>Internationally Represented</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-lg-8">
@@ -190,36 +220,6 @@ $jsonData = json_decode($artistdata->socialaccount);
 											<label
 											class="form-label">Website</label>
 											<input type="text" class="form-control" name="artistwebsite" id="websiteInput1" placeholder="www.example.com" value="<?=$artistdata->website?>" />
-										</div>
-									</div>
-									<div class="col-lg-12">
-										<div class="mb-3">
-											<label class="form-label">Categories</label>
-											<select class="js-example-basic-multiple" name="artistcategories[]" id="categoriesSelect" multiple="multiple" onchange="getsubcategories()">
-												<?php foreach ($categoriesdata as $category): ?>
-													<?php
-													$isSelected = in_array($category->categoriesname, json_decode($artistdata->categories));
-													?>
-													<option value="<?= $category->categoriesname ?>" <?= $isSelected ? 'selected' : '' ?>>
-														<?= $category->categoriesname ?>
-													</option>
-												<?php endforeach; ?>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-12">
-										<div class="mb-3">
-											<label class="form-label">Sub Categories</label>
-											<select class="js-example-basic-multiple" name="artistsubcategories[]" id="subcategoriesSelect" multiple="multiple">
-												<?php foreach ($subcategoriesdata as $subcategory): ?>
-													<?php
-													$isSelected = in_array($subcategory->subcategoriesname, json_decode($artistdata->subcategories));
-													?>
-													<option value="<?= $subcategory->subcategoriesname ?>" <?= $isSelected ? 'selected' : '' ?>>
-														<?= $subcategory->subcategoriesname ?>
-													</option>
-												<?php endforeach; ?>
-											</select>
 										</div>
 									</div>
 									<div class="col-lg-12">
@@ -315,32 +315,9 @@ $jsonData = json_decode($artistdata->socialaccount);
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>	
-	function getsubcategories() {
-		var selectedSubcategory = $('#categoriesSelect').val();
-		$.ajax({
-			url: '<?= base_url('ArtistController/getSubcategories') ?>',
-			type: 'post',
-			dataType: 'json',
-			data: { categories: selectedSubcategory },
-			success: function (response) {								
-				var subcategoriesSelect = $('#subcategoriesSelect');
-				subcategoriesSelect.empty();
-				$.each(response.subcategories, function (key, value) {
-					subcategoriesSelect.append($('<option>', {
-						value: value.subcategoriesname,
-						text: value.subcategoriesname,
-					}));
-				});
-				subcategoriesSelect.trigger('change');
-			},
-			error: function () {
-				console.log('Error fetching categories.');
-			}
-		});
-	}
+<script>
 	$(document).ready(function () {
-		$('#categorySelect').change(function () {
+		$('#categoryTypeSelect').change(function () {
 			var selectedCategory = $(this).val();
 			$.ajax({
 				url: '<?= base_url('ArtistController/getCategories') ?>',
@@ -352,12 +329,35 @@ $jsonData = json_decode($artistdata->socialaccount);
 					categoriesSelect.empty();
 					$.each(response.categories, function (key, value) {
 						categoriesSelect.append($('<option>', {
-							value: value.categoriesname,
+							value: value.id,
 							text: value.categoriesname,
 						}));
 					});
 					categoriesSelect.trigger('change');
 					$('#subcategoriesSelect').empty();
+				},
+				error: function () {
+					console.log('Error fetching categories.');
+				}
+			});
+		});
+			$('#categoriesSelect').change(function () {
+				var selectedCategory = $(this).val();
+			$.ajax({
+				url: '<?= base_url('ArtistController/getSubcategories') ?>',
+				type: 'post',
+				dataType: 'json',
+				data: { categories: selectedCategory },
+				success: function (response) {								
+					var subcategoriesSelect = $('#subcategoriesSelect');
+					subcategoriesSelect.empty();
+					$.each(response.subcategories, function (key, value) {
+						subcategoriesSelect.append($('<option>', {
+							value: value.id,
+							text: value.subcategoriesname,
+						}));
+					});
+					subcategoriesSelect.trigger('change');
 				},
 				error: function () {
 					console.log('Error fetching categories.');

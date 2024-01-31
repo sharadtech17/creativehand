@@ -95,7 +95,7 @@ class ShopController extends CI_Controller {
 		$data['categorylist'] = $this->query->getCategoryList();
 		$data['artistlist'] = $this->Artist->getfront_artists();
 		$data['artshop'] = $this->Shop->get_Shop_by_id($id);
-		$data['subcategorylist'] = $this->query->fetchSubcategoriesByCategoryID($data['artshop']->category);
+		$data['subcategorylist'] = $this->query->fetchSubcategoriesByCategoryID($data['artshop']->shop_category);
 		$data['title'] = 'Edit Art Shop';
 		$data['content'] = 'edit-art-shop.php';
 		$this->load->view('admin/index', $data);
@@ -477,4 +477,20 @@ class ShopController extends CI_Controller {
 		$data['content'] = 'order-list.php';
 		$this->load->view('admin/index',$data);
 	}
+	public function viewOrderDetails($id)
+	{
+		$data['orders'] = $this->Shop->getOrdersById($id);
+		$data['orderitem'] = $this->Shop->getOrdersItemById($id);
+		$data['title'] = "Order Details";
+		$data['content'] = 'view-order-details.php';
+		$this->load->view('admin/index',$data);
+	}
+	public function updateOrderStatus()
+	{
+		$orderId = $this->input->post('order_id');
+        $newStatus = $this->input->post('order_status');
+		$this->Shop->updateOrderStatus($orderId, $newStatus);
+        redirect('administrator/orders');
+	}
+	
 }

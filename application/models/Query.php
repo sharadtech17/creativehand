@@ -31,6 +31,7 @@ class Query extends CI_Model {
 	public function fetchcategories($category)
 	{
 		$this->db->where('activeflag', '0');
+		$this->db->where('category_type', $category);
 		$query = $this->db->get('categories');
 		return $query->result();
 	}
@@ -90,11 +91,7 @@ class Query extends CI_Model {
 	public function fetchsubcategories($categories)
 	{
 		$this->db->where('activeflag', '0');
-		if (is_array($categories) && !empty($categories)) {
-			$this->db->where_in('categories', $categories);
-		} else {
-			return [];
-		}
+		$this->db->where('categories', $categories);
 		$query = $this->db->get('subcategories');
 		return $query->result();
 	}
@@ -104,6 +101,18 @@ class Query extends CI_Model {
 		$this->db->where('category', $category);
 		$this->db->where('activeflag', '0');
 		$query = $this->db->get('categories');
+		return $query->result();
+	}
+	public function getcategoriesdata()
+	{
+		$this->db->where('activeflag', '0');
+		$query = $this->db->get('categories');
+		return $query->result();
+	}
+	public function getsubcategoriesdata()
+	{
+		$this->db->where('activeflag', '0');
+		$query = $this->db->get('subcategories');
 		return $query->result();
 	}
 	public function subcategoriesdata($artistid)
@@ -197,6 +206,11 @@ class Query extends CI_Model {
 		$this->db->insert('art', $data);
 		return $this->db->affected_rows() > 0;
 	}
+	public function update_art($id,$data) {
+		$this->db->where('id', $id);
+		return $this->db->update('art', $data);
+	}
+
 	public function myallart($artistid)
 	{
 		$this->db->where('artist_id', $artistid);
@@ -204,6 +218,13 @@ class Query extends CI_Model {
 		$this->db->order_by('id', "desc");
 		$query = $this->db->get('art');
 		return $query->result();
+	}
+	public function getartById($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->where('activeflag', '0');
+		$query = $this->db->get('art');
+		return $query->row();
 	}
 	public function allarts()
 	{
@@ -247,9 +268,10 @@ class Query extends CI_Model {
 	}
 	public function searchArtByHandArtArtist($query)
 	{
-		$this->db->select('art.*, artist.name as artistname');
+		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
 		$this->db->where('artist.category', 'Hand Made Arts');
 		$this->db->like('art.title', $query);
@@ -262,9 +284,10 @@ class Query extends CI_Model {
 	}
 	public function getArtByHandArtArtist()
 	{
-		$this->db->select('art.*, artist.name as artistname');
+		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
 		$this->db->where('artist.category', 'Hand Made Arts');
 		$this->db->order_by('art.id', 'desc');
@@ -273,9 +296,10 @@ class Query extends CI_Model {
 	}
 	public function getPaintingByArtist()
 	{
-		$this->db->select('art.*, artist.name as artistname');
+		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
 		$this->db->where('artist.category', 'Painting');
 		$this->db->order_by('art.id', 'desc');
@@ -284,9 +308,10 @@ class Query extends CI_Model {
 	}
 	public function searchPaintingByArtist($query)
 	{
-		$this->db->select('art.*, artist.name as artistname');
+		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
 		$this->db->where('artist.category', 'Painting');
 		$this->db->like('art.title', $query);
@@ -299,9 +324,10 @@ class Query extends CI_Model {
 	}
 	public function getHandArtArtistByArtId($id)
 	{
-		$this->db->select('art.*, artist.*, artist.description as artist_desc, art.description as art_desc');
+		$this->db->select('art.*, artist.*, artist.description as artist_desc, art.description as art_desc,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.id', $id);
 		$query = $this->db->get();
 		

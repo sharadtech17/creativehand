@@ -51,17 +51,16 @@
 								</ul>
 							</div>
 						</div>
-                        <div class="col-sm-9 col-md-9 col-xs-12">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
                         <?php if (!empty($handartlist)) : ?>
-							<?php foreach ($handartlist as $art) : 
-                                $categories=json_decode($art->subcategories);
+							<?php foreach ($handartlist as $art) :
                                 ?>
                                 <div class="col-sm-4 col-md-4 col-xs-12" style="margin-bottom:30px ;">
                                     <div class="product text-center">
                                         <div class=" position-r">
                                             <a href="<?=base_url().'hand-made-art-details/'.$art->id?>">
                                                 <div class="background-overlay"></div>
-                                                <img src="<?=base_url().$art->mainimage?>" alt="" class="">
+                                                <img src="<?=base_url().$art->mainimage?>" alt="" class="" style="height:350px;object-fit: cover;">
                                                 <div class="row">
                                                     <h6 class="col-md-9 text-left" style="font-size: large;">
                                                         <?=$art->title?>
@@ -72,8 +71,7 @@
                                                     </h6>
                                                     <h5 class="col-md-7"> <i class="fa fa-user"></i>
                                                     <?=$art->artistname?></h5>
-                                                    <h6 class="col-md-5"><?=$categories[0]?></h6>
-                                                    <!-- <h6>Artist</h6> -->
+                                                    <h6 class="col-md-5"><?=$art->categoriesname?></h6>
                                                     </h5>
                                                 </div>
                                             </a>

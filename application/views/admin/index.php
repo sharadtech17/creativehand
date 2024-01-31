@@ -7,7 +7,6 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	die();
 }
 ?>
-<!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
 	<meta charset="utf-8" />
@@ -16,15 +15,19 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
 	<meta content="Themesbrand" name="author" />
 	<!-- App favicon -->
+	<link href="<?=base_url()?>artistassets/libs/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="<?=base_url()?>artistassets/images/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<!-- Sweet Alert css-->
 	<link href="<?=base_url()?>artistassets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-	<!-- Layout config Js -->
+	<!--datatable css-->
+    <link rel="stylesheet" href="<?=base_url()?>cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+    <!--datatable responsive css-->
+    <link rel="stylesheet" href="<?=base_url()?>cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
+    <link rel="stylesheet" href="<?=base_url()?>cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"><!-- Layout config Js -->
 	<script src="<?=base_url()?>artistassets/js/layout.js"></script>
 	<!-- Bootstrap Css -->
 	<link href="<?=base_url()?>artistassets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?=base_url()?>artistassets/libs/gridjs/theme/mermaid.min.css" rel="stylesheet" type="text/css" />
 	<!-- Icons Css -->
 	<link href="<?=base_url()?>artistassets/css/icons.min.css" rel="stylesheet" type="text/css" />
 	<!-- App Css-->
@@ -181,7 +184,7 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'List of Arts' || $title === 'List of Artist' || $title === 'Artist Detail') ? 'active' : ''; ?>" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
-								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Artist</span>
+								<i class="ri-user-3-line"></i> <span data-key="t-layouts">Artist</span>
 							</a>
 							<div class="collapse menu-dropdown <?= ($title === 'List of Arts' || $title === 'List of Artist' || $title === 'Artist Detail') ? 'show' : ''; ?>" id="sidebarLayouts">
 								<ul class="nav nav-sm flex-column">
@@ -198,7 +201,7 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'Event List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/event-list" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
-								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Events</span>
+								<i class="ri-calendar-event-fill"></i> <span data-key="t-layouts">Events</span>
 							</a>
 						</li>
 						<li class="nav-item">
@@ -210,7 +213,19 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'bannerlist') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/banner-list" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
-								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Banner</span>
+								<i class="ri-image-line"></i> <span data-key="t-layouts">Banner</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Promotive List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/promotive-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-profile-fill"></i> <span data-key="t-layouts">Promotive</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'News List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/news-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-article-fill"></i> <span data-key="t-layouts">News</span>
 							</a>
 						</li>
 					</ul>
@@ -932,16 +947,25 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 	<script src="<?=base_url()?>artistassets/libs/node-waves/waves.min.js"></script>
 	<script src="<?=base_url()?>artistassets/libs/feather-icons/feather.min.js"></script>
 	<script src="<?=base_url()?>artistassets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-	<script src="<?=base_url()?>artistassets/libs/list.js/list.min.js"></script>
-	<script src="<?=base_url()?>artistassets/libs/list.pagination.js/list.pagination.min.js"></script>
-	<script src="<?=base_url()?>artistassets/libs/sweetalert2/sweetalert2.min.js"></script>
-	<script src="<?=base_url()?>artistassets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="<?=base_url()?>artistassets/js/pages/select2.init.js"></script>
+	<script src="<?=base_url()?>artistassets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+	<script src="<?=base_url()?>artistassets/libs/dropzone/dropzone-min.js"></script>
+    <script src="<?=base_url()?>artistassets/js/pages/ecommerce-product-create.init.js"></script>
+
+    <script src="<?=base_url()?>cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="<?=base_url()?>cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="<?=base_url()?>cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="<?=base_url()?>cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script src="<?=base_url()?>cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="<?=base_url()?>cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="<?=base_url()?>cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="<?=base_url()?>cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="<?=base_url()?>artistassets/js/pages/datatables.init.js"></script>
 	<script src="<?=base_url()?>artistassets/js/app.js"></script>
-	<script src="<?=base_url()?>artistassets/libs/gridjs/gridjs.umd.js"></script>
-	<script src="<?=base_url()?>artistassets/js/pages/gridjs.init.js"></script>
+
 	<script src="<?=base_url()?>adminassets/js/table.min.js"></script>
 	<script src="<?=base_url()?>adminassets/js/pages/jquery-datatable.js"></script>
 	<script>

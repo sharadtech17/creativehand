@@ -100,15 +100,25 @@
 		<div class="col-lg-4">
 			<div class="card">
 				<div class="card-header">
-					<h5 class="card-title mb-0">Art Categories</h5>
+					<h5 class="card-title mb-0">Arts Categories</h5>
 				</div>
 				<div class="card-body">
-					<label class="form-label">Sub Categories</label>
-					<select class="js-example-basic-multiple" name="subcategories[]" id="subcategoriesSelect" multiple="multiple">
-						<?php $subcategoriesdata = json_decode($subcategoriesdata); 
-						foreach ($subcategoriesdata as $subcategory): ?>
-							<option value="<?= $subcategory?>"><?=$subcategory?></option>
-						<?php endforeach; ?>
+					<label class="form-label" for="stocks-input">Select Arts category</label>
+					<select class="form-select" id="categorySelect" name="categories" required>
+						<option value="" selected disabled>Select Arts category</option>
+						<?php foreach($categoriesdata as $category): ?>
+							<option value="<?=$category->id?>"><?=$category->categoriesname?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+				<!-- end card body -->
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-title mb-0">Sub Catagary</h5>
+				</div>
+				<div class="card-body">
+					<select class="form-select" id="subcategoriesSelect" name="subcategories" required data-choices data-choices-search-false>
 					</select>
 				</div>
 				<!-- end card body -->
@@ -177,6 +187,27 @@
 </form>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+	 $(document).ready(function() {
+        $('#categorySelect').change(function() {
+            var category_id = $(this).val();
+            // Make AJAX request to fetch subcategories
+            $.ajax({
+                url: '<?php echo base_url('ArtistController/getSubcategoriesByCategoryID'); ?>',
+                type: 'post',
+                dataType: 'json',
+                data: {category_id: category_id},
+                success: function(response) {
+                    // Clear existing options
+                    $('#subcategoriesSelect').empty();
+
+                    // Add new subcategory options
+                    $.each(response, function(index, value) {
+                        $('#subcategoriesSelect').append('<option value="' + value.id + '">' + value.subcategoriesname + '</option>');
+                    });
+                }
+            });
+        });
+    });
 	$(document).ready(function () {
 		$('#addartform').submit(function (e) {
 			e.preventDefault();

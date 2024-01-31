@@ -29,58 +29,77 @@
                             </div>
                         </div>
                         <!-- end card -->
-
                         <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Arts Gallery</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-4">
-                                    <h5 class="fs-14 mb-1">Arts Image</h5>
-                                    <p class="text-muted">Add Arts main Image.</p>
-                                    <div class="text-center">
-                                        <div class="position-relative d-inline-block">
-                                            <div class="position-absolute top-100 start-100 translate-middle">
-                                                <label for="product-image-input" class="mb-0" data-bs-toggle="tooltip"
-                                                    data-bs-placement="right" title="Select Image">
-                                                    <div class="avatar-xs">
-                                                        <div
-                                                            class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                            <i class="ri-image-fill"></i>
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Art Image & Gallery</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <h5 class="fs-14 mb-1">Art Image</h5>
+                                        <div class="text-center">
+                                            <div class="position-relative d-inline-block">
+                                                <div class="position-absolute top-100 start-100 translate-middle">
+                                                    <label for="product-image-input" class="mb-0" data-bs-toggle="tooltip" data-bs-placement="right" title="Select Image">
+                                                        <div class="avatar-xs">
+                                                            <div class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                                                <i class="ri-image-fill"></i>
+                                                            </div>
                                                         </div>
+                                                    </label>
+                                                    <input class="form-control d-none" value="" name="mainimage" id="product-image-input" type="file" accept="image/png, image/gif, image/jpeg">
+                                                </div>
+                                                <div class="avatar-lg">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="#" id="product-img" class="avatar-md h-auto" />
                                                     </div>
-                                                </label>
-                                                <input class="form-control d-none" value="" name="mainimage" id="product-image-input"
-                                                    type="file" accept="image/png, image/gif, image/jpeg">
-                                            </div>
-                                            <div class="avatar-lg">
-                                                <div class="avatar-title bg-light rounded">
-                                                    <img src="#" id="product-img" class="avatar-md h-auto" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <h5 class="fs-14 mb-1">Arts Gallery</h5>
-                                    <p class="text-muted">Add Arts Gallery Images.</p>
+                                    <div>
+                                        <h5 class="fs-14 mb-1">Add Art Gallery Images</h5>
 
-                                    <div class="dropzone">
-                                        <div class="fallback">
-                                            <input name="file" type="file" name="image_gallry[]" multiple="multiple">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                        <div class="dropzone">
+                                            <div class="fallback">
+                                                <input type="file" name="image_gallery[]" multiple="multiple">
                                             </div>
-
-                                            <h5>Drop files here or click to upload.</h5>
+                                            <div class="dz-message needsclick">
+                                                <div class="mb-3">
+                                                    <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                                </div>
+                                                <h5>Drop files here or click to upload.</h5>
+                                            </div>
                                         </div>
+
+                                        <ul class="list-unstyled mb-0" id="dropzone-preview">
+                                            <li class="mt-2" id="dropzone-preview-list">
+                                                <!-- This is used as the file preview template -->
+                                                <div class="border rounded">
+                                                    <div class="d-flex p-2">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar-sm bg-light rounded">
+                                                                <img data-dz-thumbnail class="img-fluid rounded d-block" src="#"
+                                                                alt="Product-Image" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div class="pt-1">
+                                                                <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
+                                                                <p class="fs-13 text-muted mb-0" data-dz-size></p>
+                                                                <strong class="error text-danger" data-dz-errormessage></strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-shrink-0 ms-3">
+                                                            <button data-dz-remove class="btn btn-sm btn-danger">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!-- end dropzon-preview -->
                                     </div>
-                                    <!-- end dropzon-preview -->
                                 </div>
                             </div>
-                        </div>
                         <div class="text-end mb-3">
                             <button type="submit" class="btn btn-success w-sm">Submit</button>
                         </div>
@@ -88,7 +107,6 @@
                     <!-- end col -->
 
                     <div class="col-lg-4">
-
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Arts Categories</h5>

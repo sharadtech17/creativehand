@@ -183,211 +183,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 					</div>
 				</div>
 			</section>
-			<!--=================== Related Product Section ===================-->
-			<!-- <section class="related-product latest-picture heading-title  paira-margin-bottom-3">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 heading-title">
-							<h2 class="text-capitalize margin-clear text-center"><span>Related products</span></h2>
-						</div>
-					</div>
-				</div>
-				<div class="margin-bottom-30">
-					<div class="container">
-						
-						<div class="row">
-							<ul class="social-li list-inline">
-								<li class="list-group-item list-group-item-primary ">
-									<a href="#Action" class="text-capitalize" data-toggle="tab">Action
-								</li>
-								<li class="list-group-item list-group-item-primary ">
-									<a href="#description" class="text-capitalize" data-toggle="tab">Pointillism
-								</li>
-								<li class="list-group-item list-group-item-primary ">
-									<a href="#description" class="text-capitalize" data-toggle="tab">color field
-								</li>
-								<li class="list-group-item list-group-item-primary ">
-									<a href="#description" class="text-capitalize" data-toggle="tab">cubism
-								</li>
-								<li class="list-group-item list-group-item-primary ">
-									<a href="#description" class="text-capitalize" data-toggle="tab">Actiimpressionismon
-								</li>
-							</ul>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30"  id="Action">
-								<div class="product text-center" id="description">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class="" id="#Action"></div>
-											<img src="<?=base_url()?>assets/images/product/product-5.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-hover">
-										<h4 class="margin-clear">
-											<a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30">
-								<div class="product text-center">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class="" id="#Action"></div>
-											<img src="<?=base_url()?>assets/images/product/product-5.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-hover">
-										<h4 class="margin-clear">
-											<a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30">
-								<div class="product text-center">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class=""></div>
-											<img src="<?=base_url()?>assets/images/product/product-6.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-sale"><span>Sale</span></div>
-									<div class="product-stock-out"><span>Sold</span></div>
-									<div class="product-hover">
-										<h4 class="margin-clear"><a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30">
-								<div class="product text-center">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class=""></div>
-											<img src="<?=base_url()?>assets/images/product/product-7.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-hover">
-										<h4 class="margin-clear"><a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30">
-								<div class="product text-center">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class=""></div>
-											<img src="<?=base_url()?>assets/images/product/product-7.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-hover">
-										<h4 class="margin-clear"><a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-2 col-md-2 col-xs-12 margin-top-30">
-								<div class="product text-center">
-									<div class="product-image position-r">
-										<a href="#">
-											<div class=""></div>
-											<img src="<?=base_url()?>assets/images/product/product-7.jpg" alt=""
-												class="img-responsive">
-										</a>
-									</div>
-									<div class="product-hover">
-										<h4 class="margin-clear"><a href="collection.html">Looking big eyes look</a>
-										</h4>
-										<div class="text-center prices">
-											<h3 class="pull-left margin-right-5 del"><del><span
-														class="money">$170.00</span></del></h3>
-											<h3 class="pull-left margin-left-5"><span class="money">$120.00</span></h3>
-										</div>
-										<div class="paira-wish-compare-con wish-compare-view-cart">
-											<a href="#" class="product-cart-con btn btn-success"><i
-													class="fa fa-shopping-cart"></i></a>
-											<a href="#paira-quick-view"
-												class="paira-quick-view quick-view  btn btn-default"><i
-													class="fa fa-search-plus"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="product-container"></div>
-				</div>
-			</section> -->
-
-
 			<section>
-
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 heading-title">
@@ -418,12 +214,8 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 							            <button class="btn btn-default filter-button" data-filter="<?= str_replace(' ', '_', $subcategory) ?>"><?= $subcategory ?></button>
 							        <?php endforeach; ?>
 							    </div>
-
 							<?php } ?>
-
 						<br />
-
-
 						<?php if (!empty($artdata)) : ?>
 						    <?php foreach ($artdata as $art) : ?>
 						        <?php
@@ -438,18 +230,14 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 						        $classValue = implode(' ', $cleanedSubcategories);
 						        ?>
 						        <div class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter <?= $classValue; ?>">
-						            <a href="<?=base_url('art-details/'.$art->id)?>">
-						                <img src="<?=base_url($art->mainimage)?>" class="img-responsive">
+						            <a href="#">
+						                <img src="<?=base_url($art->mainimage)?>" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
 						                <h4 class="text-center"><?=$art->title?></h4>
 						                <h6 class="text-center"><?=$art->shortdescription?></h6>
 						            </a>
 						        </div>
 						    <?php endforeach; ?>
 						<?php endif; ?>
-
-						
-
-
 					</div>
 					<style>
 						.gallery-title {

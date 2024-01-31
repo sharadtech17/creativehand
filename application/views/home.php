@@ -4,7 +4,7 @@
             <div class="carousel-inner">
                 <?php foreach ($bannerlist as $banner): ?>
                     <div class="item <?= $banner->active_status === '1' ? 'active' : '' ?>">
-                        <img src="<?= base_url() . $banner->image ?>" alt="Chicago">
+                        <img src="<?= base_url() . $banner->image ?>" alt="Chicago" style="object-fit: cover;">
                         <div class="">
                             <div class="carousel-caption carousel-caption1">
                                 <h1 class="text-left margin-bottom-20 " data-paira-animation="fadeInLeft"
@@ -28,9 +28,14 @@
             <span class="carousel-indicators-total"></span>
         </div>
     </div>
-    <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12"
-        style="background-color: #023020;color: white;font-size: x-large;">
-        <p><i class="fa fa-check-circle"></i> WELCOME TO CREATIVE HANDS OF INDIA <i class="fa fa-check-circle"></i></p>
+    <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12" style="background-color: #023020;color: white;font-size: x-large;">
+        <?php if (!empty($newslist)): ?>
+            <?php foreach ($newslist as $news): ?>
+                <p><i class="fa fa-check-circle"></i> <?= $news->title ?> <i class="fa fa-check-circle"></i></p>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p><i class="fa fa-check-circle"></i> WELCOME TO CREATIVE HANDS OF INDIA <i class="fa fa-check-circle"></i></p>
+        <?php endif; ?>
     </marquee>
 
     <section class="banner-small paira-margin-bottom-2 " style="margin-top:60px;">
@@ -159,10 +164,6 @@
             </div>
         </div>
     </section>
-
-
-
-
     <section class="latest-picture paira-margin-bottom-2">
         <div class="gallery-background">
             <div class="container">
@@ -172,8 +173,6 @@
                         <a href="Painting Arts.html" class="text-uppercase pull-right margin-top-10">View
                             All</a>
                     </div>
-
-
                     <div class="col-sm-3 col-md-3 col-xs-12 margin-top-30">
                         <div class="product text-center">
                             <div class="product-image ">
@@ -663,8 +662,6 @@
             <div class="product-container"></div>
         </div>
     </section>
-
-
     <section class="latest-collection paira-margin-bottom-2">
         <div class="container">
             <div class="row">
@@ -838,7 +835,7 @@
                             <div class="blog-image position-r">
                                 <a href="#">
                                     <div class="background-overlay"></div>
-                                    <img src="<?= base_url() . $blog->image ?>" alt="" class="img-responsive">
+                                    <img src="<?= base_url() . $blog->image ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
                                 </a>
                             </div>
                             <div class="blog-hover">
@@ -870,122 +867,19 @@
                         <h2 class="text-capitalize margin-clear pull-left"><span>We are Promotive </span>
                         </h2>
                     </div>
-
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <!-- <h6>Rs 1200</h6> -->
-                                <!-- <h3 class="">Hand Made Art 1</h3> -->
-
-                                <!-- <h4 style="font-weight: bold;">₹ 100</h4> -->
-                                <h3 class="">Panting</h3>
-
-
-
+                    <?php foreach ($promotivelist as $promotive): ?>
+                        <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
+                            <div class="product text-center">
+                                <div class="product-image ">
+                                    <a href="<?= $promotive->link ?>" target="_blank">
+                                        <div class=""></div>
+                                        <img src="<?= base_url() . $promotive->image ?>" alt="" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
+                                    </a>
+                                    <h3 class=""><?= $promotive->name ?></h3>
+                                </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <h3 class="">Panting</h3>
-
-                                <!-- <h6>Rs 1200</h6> -->
-
-                                <!-- <h3 class="">Hand Made Art 2</h3> -->
-
-                                <!-- <h4 style="font-weight: bold;">₹ 100</h4> -->
-
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <h3 class="">Panting</h3>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <!-- <h6>Rs 1200</h6> -->
-                                <!-- <h3 class="">Hand Made Art 1</h3> -->
-
-                                <!-- <h4 style="font-weight: bold;">₹ 100</h4> -->
-                                <h3 class="">Panting</h3>
-
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <h3 class="">Panting</h3>
-
-                                <!-- <h6>Rs 1200</h6> -->
-
-                                <!-- <h3 class="">Hand Made Art 2</h3> -->
-
-                                <!-- <h4 style="font-weight: bold;">₹ 100</h4> -->
-
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() ?>assets/images/artist/1.webp" alt=""
-                                        class="img-responsive">
-                                </a>
-                                <h3 class="">Panting</h3>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

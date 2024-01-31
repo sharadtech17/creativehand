@@ -55,6 +55,15 @@ $route['administrator/banner-list'] = 'BannerController/ViewBannerList';
 $route['addBannerPost'] = 'BannerController/StoreBannerPost';
 $route['editBanner'] = 'BannerController/updateBanner';
 
+// Promotive
+$route['administrator/promotive-list'] = 'PromotiveController/ViewPromotiveList';
+$route['addPromotivePost'] = 'PromotiveController/StorePromotivePost';
+$route['editPromotive'] = 'PromotiveController/updatePromotive';
+// News
+$route['administrator/news-list'] = 'PromotiveController/ViewNewsList';
+$route['addNewsPost'] = 'PromotiveController/StoreNewsPost';
+$route['editNews'] = 'PromotiveController/updateNews';
+
 // Blog
 $route['administrator/blog-list'] = 'BlogController/ViewBlogList';
 $route['addBlogPost'] = 'BlogController/StoreBlogPost';
@@ -112,5 +121,7 @@ $route['cartproduct/remove/(:any)'] = 'ShopController/deleteCart/$1';
 $route['user/orders'] = 'ShopController/viewOrderHistory';
 $route['order/place'] = 'ShopController/orderPlace';
 
+
 // admin order
 $route['administrator/orders'] = 'ShopController/viewOrderList';
+$route['administrator/view-Order-Details/(:any)'] = 'ShopController/viewOrderDetails/$1';

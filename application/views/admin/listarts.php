@@ -58,7 +58,7 @@
 	function deleteArt(artId) {
 		$.ajax({
 			type: 'POST',
-			url: '<?= base_url('Artist/deleteart') ?>',
+			url: '<?= base_url('ArtistController/deleteart') ?>',
 			data: { art_id: artId },
 			dataType: 'json',
 			success: function (response) {

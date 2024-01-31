@@ -42,8 +42,8 @@
 						</div>
 						<div id="noMatchMessage" style="display: none;"><p class="text-center" style="padding: 50px 0px;">No match found</p></div>
 						<?php foreach ($artistlist as $artist): ?>
-						<div class="single-varients-product gallery_product col-lg-3 col-md-3 col-sm-4 col-xs-6 filter irrigation artist-card" data-artist-name="<?= strtolower($artist->name) ?>">
-							<img src="<?=base_url().$artist->profileimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>artistassets/altuser.jpg'" class="img-responsive"></a>
+						<div class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation artist-card" data-artist-name="<?= strtolower($artist->name) ?>">
+							<img src="<?=base_url().$artist->profileimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>artistassets/altuser.jpg'" class="img-responsive" style="height:350px;object-fit: cover;"></a>
 							<div class="">
 								<div style="display: flex; justify-content:space-between ;">
 									<h5> <i class="fa fa-user"></i> <?=$artist->name?></h5>

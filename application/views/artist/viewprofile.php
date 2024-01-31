@@ -1,5 +1,12 @@
 <?php
-$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artistid])->row();
+$this->db->select('artist.*, categories.categoriesname as category_name, subcategories.subcategoriesname as subcategory_name');
+$this->db->from('artist');
+$this->db->join('categories', 'artist.categories = categories.id', 'left');
+$this->db->join('subcategories', 'artist.subcategories = subcategories.id', 'left');
+$this->db->where('artist.id', $artistid);
+$query = $this->db->get();
+$artistdata = $query->row();
+
 $jsonData = json_decode($artistdata->socialaccount);
 ?>
 <div class="profile-foreground position-relative mx-n4 mt-n4">
@@ -39,11 +46,6 @@ $jsonData = json_decode($artistdata->socialaccount);
 					<li class="nav-item">
 						<a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab" role="tab">
 							<i class="ri-airplay-fill d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Overview</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
-							<i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Arts</span>
 						</a>
 					</li>
 				</ul>
@@ -175,14 +177,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 										<div class="card-body">
 											<h5 class="card-title mb-4">Categories</h5>
 											<div class="d-flex flex-wrap gap-2 fs-15">
-												<?php
-												$categories = json_decode($artistdata->categories);						
-												if (is_array($categories)) {
-													foreach ($categories as $category) {
-														echo '<a href="javascript:void(0);" class="badge badge-soft-primary">' . htmlspecialchars($category) . '</a>';
-													}
-												}
-												?>
+												<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->category_name) ?></a>
 											</div>
 										</div>
 									</div>
@@ -190,14 +185,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 										<div class="card-body">
 											<h5 class="card-title mb-4">Sub Categories</h5>
 											<div class="d-flex flex-wrap gap-2 fs-15">
-												<?php
-												$subcategories = json_decode($artistdata->subcategories);						
-												if (is_array($subcategories)) {
-													foreach ($subcategories as $subcategory) {
-														echo '<a href="javascript:void(0);" class="badge badge-soft-primary">' . htmlspecialchars($subcategory) . '</a>';
-													}
-												}
-												?>
+											<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->subcategory_name) ?></a>
 											</div>
 										</div>
 									</div>

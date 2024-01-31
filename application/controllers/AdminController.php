@@ -86,7 +86,8 @@ class AdminController extends CI_Controller {
 	{
 		$Category_data = array(
 			'category'   => $this->input->post('name'),
-			'categoriesname'   => $this->input->post('name')
+			'categoriesname'   => $this->input->post('name'),
+			'category_type'   => $this->input->post('category_type')
 		);
 		$this->query->store_Category($Category_data); // Call the correct method on the loaded model
 		$this->session->set_flashdata('success', 'Category added.');
@@ -97,7 +98,8 @@ class AdminController extends CI_Controller {
 		
 		$Category_data = array(
 			'category'   => $this->input->post('name'),
-			'categoriesname'   => $this->input->post('name')
+			'categoriesname'   => $this->input->post('name'),
+			'category_type'   => $this->input->post('category_type')
 		);
 		$id= $this->input->post('category_id');
 		$this->query->update_Category($id,$Category_data); // Call the correct method on the loaded model

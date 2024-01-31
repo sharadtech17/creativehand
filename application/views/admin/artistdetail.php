@@ -1,5 +1,11 @@
 <?php
-$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artistid])->row();
+$this->db->select('artist.*, categories.categoriesname as category_name, subcategories.subcategoriesname as subcategory_name');
+$this->db->from('artist');
+$this->db->join('categories', 'artist.categories = categories.id', 'left');
+$this->db->join('subcategories', 'artist.subcategories = subcategories.id', 'left');
+$this->db->where('artist.id', $artistid);
+$query = $this->db->get();
+$artistdata = $query->row();
 $jsonData = json_decode($artistdata->socialaccount);
 ?>
 <div class="container-fluid">
@@ -160,14 +166,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="card-body">
 										<h5 class="card-title mb-4">Categories</h5>
 										<div class="d-flex flex-wrap gap-2 fs-15">
-											<?php
-											$categories = json_decode($artistdata->categories);						
-											if (is_array($categories)) {
-												foreach ($categories as $category) {
-													echo '<a href="javascript:void(0);" class="badge badge-soft-primary">' . htmlspecialchars($category) . '</a>';
-												}
-											}
-											?>
+											<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->category_name) ?></a>
 										</div>
 									</div>
 								</div>
@@ -175,14 +174,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="card-body">
 										<h5 class="card-title mb-4">Sub Categories</h5>
 										<div class="d-flex flex-wrap gap-2 fs-15">
-											<?php
-											$subcategories = json_decode($artistdata->subcategories);						
-											if (is_array($subcategories)) {
-												foreach ($subcategories as $subcategory) {
-													echo '<a href="javascript:void(0);" class="badge badge-soft-primary">' . htmlspecialchars($subcategory) . '</a>';
-												}
-											}
-											?>
+										<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->subcategory_name) ?></a>
 										</div>
 									</div>
 								</div>
@@ -248,7 +240,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 		$confirm = confirm("Are you sure?");		
 		if($confirm){
 			$.ajax({
-				url: '<?= base_url('Admin/verificationstatus') ?>',
+				url: '<?= base_url('AdminController/verificationstatus') ?>',
 				type: 'POST',
 				data: { 'artistid': $artistid, 'status': $status},
 				success: function (response) {

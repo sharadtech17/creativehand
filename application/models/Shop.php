@@ -8,7 +8,7 @@ class Shop extends CI_Model {
 	}
 	public function getShopList()
 	{
-		$this->db->select('art_shops.*, artist.name as artistname, categories.category as categoryname');
+		$this->db->select('art_shops.*, artist.name as artistname, categories.categoriesname as categoryname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = art_shops.category', 'left');
@@ -18,7 +18,7 @@ class Shop extends CI_Model {
 	}
 	public function searchArtShop($query)
 	{
-		$this->db->select('art_shops.*, artist.name as artistname, categories.category as categoryname');
+		$this->db->select('art_shops.*, artist.name as artistname, categories.categoriesname as categoryname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = art_shops.category', 'left');
@@ -48,16 +48,16 @@ class Shop extends CI_Model {
         return $this->db->update('art_shops', $data);
     }
 	public function get_Shop_by_id($id) {
-		$this->db->select('art_shops.*,artist.*,art_shops.id as shop_id, artist.description as artist_desc, art_shops.description as art_desc, categories.category as categoryname');
+		$this->db->select('art_shops.*,artist.*,art_shops.id as shop_id, artist.description as artist_desc,art_shops.category as shop_category,art_shops.subcategories as shop_subcategory, art_shops.description as art_desc, categories.categoriesname as categoryname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = art_shops.category', 'left');
-		$this->db->where('art_shops.id', $id); // Specify the table alias for 'id'
+		$this->db->where('art_shops.id', $id);
 		$query = $this->db->get();
 		return $query->row();
 	}
 	public function getShopListByArtist($id) {
-		$this->db->select('art_shops.*, artist.name as artistname, categories.category as categoryname');
+		$this->db->select('art_shops.*, artist.name as artistname, categories.categoriesname as categoryname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = art_shops.category', 'left');
@@ -83,6 +83,14 @@ class Shop extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function getOrdersById($id) {
+		$this->db->select('orders.*,user.first_name as customer_name,user.email as customer_email,user.phone as customer_phone,,user.ship_address as ship_address');
+		$this->db->from('orders');
+		$this->db->join('user', 'user.id = orders.user_id', 'left');
+		$this->db->where('orders.id', $id);
+		$query = $this->db->get();
+		return $query->row();
+	}
 	public function getOrderByUserId($user_id) {
 		$this->db->select('orders.*,user.first_name as customer_name');
 		$this->db->from('orders');
@@ -95,6 +103,18 @@ class Shop extends CI_Model {
         // Insert order item data into the 'order_items' table
         $this->db->insert('order_item', $order_item_data);
     }
-
+	public function getOrdersItemById($id) {
+		$this->db->select('order_item.*,art_shops.*');
+		$this->db->from('order_item');
+		$this->db->join('art_shops', 'art_shops.id = order_item.product_id', 'left');
+		$this->db->where('order_item.order_id', $id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function updateOrderStatus($orderId, $newStatus) {
+        // Update the order status in the database
+        $this->db->where('id', $orderId);
+        $this->db->update('orders', array('order_status' => $newStatus));
+    }
 }
 ?>

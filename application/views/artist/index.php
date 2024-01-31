@@ -192,7 +192,7 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 						</li>
 						<li class="nav-item">
 							<a href="<?=base_url()?>artist-panel/event-list" class="nav-link <?= ($title === 'Event List') ? 'active' : ''; ?>" data-key="t-calendar">
-							<i class="ri-layout-3-line"></i>Events
+							<i class="ri-calendar-event-fill"></i> Events
 							</a>
 						</li>
 						<li class="nav-item">
@@ -951,7 +951,19 @@ if (isset($this->session->userdata['creativehandsartist'])) {
     <script src="<?=base_url()?>cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="<?=base_url()?>cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="<?=base_url()?>artistassets/js/pages/datatables.init.js"></script>
-
 	<script src="<?=base_url()?>artistassets/js/app.js"></script>
+
+	<script src="<?=base_url()?>adminassets/js/table.min.js"></script>
+	<script src="<?=base_url()?>adminassets/js/pages/jquery-datatable.js"></script>
+	<script>
+		
+		$(document).ready(function() {
+		$('input[type="search"]').removeClass('form-control-sm');
+		$('input[type="search"]').attr('placeholder', 'Search');
+		$('#tableExport_filter label').contents().filter(function() {
+			return this.nodeType === 3 && this.nodeValue.trim() === 'Search:';
+		}).remove();
+	});
+	</script>
 </body>
 </html>

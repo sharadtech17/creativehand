@@ -73,7 +73,7 @@
                             <label class=" pull-left">Category :</label>
                             <ul class="social-li list-inline">
                                 <li><a href="#">
-                                <?php $shoplist->categoryname?>
+                                <?= $shoplist->categoryname ?>
                                     </a></li>
                             </ul>
                         </div>

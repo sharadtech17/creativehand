@@ -86,7 +86,7 @@ if (!isset($this->session->userdata['creativehandsuser'])) {
                                     <th scope="col">Date</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Total</th>
-                                    <th>Actions</th>
+                                    <!-- <th>Actions</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,14 +105,24 @@ if (!isset($this->session->userdata['creativehandsuser'])) {
                                             </p>
                                         </td>
                                         <td class="align-items-center">
-                                            <p class="" style="font-weight: 500;margin-top:30px;">Processing</p>
+                                            <?php
+                                                if ($order->order_status==0 ) {
+                                                    echo '<span style="font-weight: 500;margin-top:30px;" class="badge badge-soft-warning text-uppercase">Pending</span>';
+                                                }if ($order->order_status==1 ) {
+                                                    echo '<span style="font-weight: 500;margin-top:30px;" class="badge badge-soft-info text-uppercase">Procesing</span>';
+                                                }if ($order->order_status==2 ) {
+                                                    echo '<span style="font-weight: 500;margin-top:30px;" class="badge badge-soft-primary text-uppercase">Shipping</span>';
+                                                }if ($order->order_status==3 ) {
+                                                    echo '<span style="font-weight: 500;margin-top:30px;" class="badge badge-soft-success text-uppercase">Delivered</span>';
+                                                }
+                                            ?>
                                         </td>
                                         <td class="align-middle">
                                             <p class="mb-0" style="font-weight: 500;margin-top:30px;"> ₹<?= $order->total_amount?> </p>
                                         </td>
-                                        <td class="align-middle">
+                                        <!-- <td class="align-middle">
                                             <p class="mb-0" style="font-weight: 500;margin-top:30px;"><i class="fa fa-eye"></i></p>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>

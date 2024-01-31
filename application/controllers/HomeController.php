@@ -7,12 +7,16 @@ class HomeController extends CI_Controller {
 		$this->load->model('Banner');
 		$this->load->model('Event');
 		$this->load->model('Blog');
+		$this->load->model('Promotive');
+		$this->load->model('News');
 	}
 	public function index()
 	{
 		$data['bannerlist'] = $this->Banner->getBannerList(); 
 		$data['bloglist'] = $this->Blog->getBlogList(); 
 		$data['eventlist'] = $this->Event->getActiveEventList(); 
+		$data['promotivelist'] = $this->Promotive->getActivePromotiveList(); 
+		$data['newslist'] = $this->News->getNewsList(); 
 		$data['content'] = 'home.php';
 		$this->load->view('index',$data);
 	}

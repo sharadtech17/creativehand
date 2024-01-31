@@ -78,7 +78,7 @@
                             <label class=" pull-left">Category :</label>
                             <ul class="social-li list-inline">
                                 <li><a href="#">
-                                <?php $categories=json_decode($hand_art->subcategories); echo $categories[0]?>
+                                <?= $hand_art->categoriesname ?>
                                     </a></li>
 
 

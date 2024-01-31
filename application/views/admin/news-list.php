@@ -1,29 +1,29 @@
 
 <div class="container-fluid">
-
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Category</h4>
+                <h4 class="mb-sm-0">News</h4>
             </div>
         </div>
     </div>
     <!-- end page title -->
-
     <div class="row">
-
         <!-- end col -->
-
         <div class="col-xl-12 col-lg-8">
             <div class="card">
-            <?php include('flash-message.php');?>
+            <?php if ($this->session->flashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?php echo $this->session->flashdata('success'); ?>
+                </div>
+            <?php endif; ?>
                 <div class="card-header border-0">
                     <div class="d-flex align-items-center">
-                        <h5 class="card-title mb-0 flex-grow-1">Category</h5>
+                        <h5 class="card-title mb-0 flex-grow-1">News</h5>
                         <div class="flex-shrink-0">
                             <div class="d-flex gap-2 flex-wrap">
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCategory"><i class="ri-add-fill me-1 align-bottom"></i>Add Category</button>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNews"><i class="ri-add-fill me-1 align-bottom"></i>Add News</button>
                             </div>
                         </div>
                     </div>
@@ -43,21 +43,19 @@
                                 class="table-card gridjs-border-none">
                                 <div role="complementary" class="gridjs gridjs-container">
                                     <div class="gridjs-wrapper" style="height: auto;">
-                                        <table id="tableExport" role="grid" class="gridjs-table" style="height: auto;">
+                                        <table role="grid" id="tableExport" class="gridjs-table" style="height: auto;">
                                             <thead class="gridjs-thead">
                                                 <tr class="gridjs-tr ">
                                                     <th data-column-id="#" class="gridjs-th text-muted">
                                                         <div class="gridjs-th-content">Sr</div>
                                                     </th>
-                                                    <th data-column-id="orders"
-                                                        class="gridjs-th gridjs-th-sort text-muted"
-                                                        tabindex="0" >
-                                                        <div class="gridjs-th-content">Category Type</div>
+                                                    <th data-column-id="price"
+                                                        class="gridjs-th gridjs-th-sort text-muted" tabindex="0">
+                                                        <div class="gridjs-th-content">News Title</div>
                                                     </th>
-                                                    <th data-column-id="orders" class="gridjs-th gridjs-th-sort text-muted" tabindex="0" >
-                                                        <div class="gridjs-th-content">Category Name</div>
-                                                    </th>
-                                                    <th data-column-id="action" class="gridjs-th text-muted">
+                                                    <th data-column-id="action"
+                                                        class="gridjs-th text-muted"
+                                                        >
                                                         <div class="gridjs-th-content">Action</div>
                                                     </th>
                                                 </tr>
@@ -66,18 +64,17 @@
                                                 <?php 
                                                     $i=1;
                                                 ?>
-                                            <?php foreach ($categorylist as $Category): ?>
-                                                <tr class="gridjs-tr Categorylistdata">
+                                            <?php foreach ($Newslist as $News): ?>
+                                                <tr class="gridjs-tr Newslistdata">
                                                     <td><?=$i++;?></td>
-                                                    <td><?=$Category->categoriesname?></td>
-                                                    <td><?=$Category->category_type?></td>
+                                                    <td><?=$News->title?></td>
                                                     <td data-column-id="action" class=""><span>
                                                             <div class="">
                                                                 <ul class="">
-                                                                    <a href="" data-bs-toggle="modal" data-bs-target="#editCategory<?=$Category->id?>">
+                                                                    <a href="" data-bs-toggle="modal" data-bs-target="#editNews<?=$News->id?>">
                                                                         <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                     </a>
-                                                                    <a href="<?=base_url('AdminController/deleteCategory/' . $Category->id)?>">
+                                                                    <a href="<?=base_url('PromotiveController/deleteNews/' . $News->id)?>">
                                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
                                                                     </a>
                                                                 </ul>
@@ -89,16 +86,12 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="gridjs-footer">
-                                        <div class="gridjs-pagination">
-                                                    
-                                        </div>
-                                    </div>
-                                    <!-- <div id="gridjs-temp" class="gridjs-temp"></div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- end tab content -->
+
                     <!-- end card body -->
                 </div>
             </div>
@@ -110,37 +103,55 @@
     <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
-<!-- add Category -->
-<div class="modal fade zoomIn" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel"
+<!-- removeItemModal -->
+<div id="removeItemModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                id="btn-close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mt-2 text-center">
+                <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                    colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                    <h4>Are you sure ?</h4>
+                    <p class="text-muted mx-4 mb-0">Are you sure you want to remove this product ?</p>
+                </div>
+            </div>
+            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn w-sm btn-danger " id="delete-product">Yes, Delete
+                    It!</button>
+            </div>
+        </div>
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- add News -->
+<div class="modal fade zoomIn" id="addNews" tabindex="-1" aria-labelledby="addNewsLabel"
                         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCategoryLabel">Add Category</h5>
+                <h5 class="modal-title" id="addNewsLabel">Add News</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form  accept-charset="UTF-8" action="<?=base_url()?>addCategoryPost" method="POST" enctype="multipart/form-data">
+                <form  accept-charset="UTF-8" action="<?=base_url()?>addNewsPost" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="contactnumberInput" class="form-label">
-                                    Category Name</label>
-                                <input type="text" class="form-control" name="name"
-                                    id="contactnumberInput" placeholder="Enter Name" required>
+                                <label for="firstnameInput" class="form-label">Title</label>
+                                <input type="text" class="form-control" name="name" id="firstnameInput"
+                                    placeholder="Enter name" required>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="stocks-input">Category Type</label>
-                                <select class="form-select" id="choices-category-input" name="category_type" required data-choices data-choices-search-false>
-                                    <option value="" selected disabled>Select category type</option>
-                                    <option value="Hand Made Arts">Hand Made Arts</option>
-                                    <option value="Painting Arts">Painting Arts</option>
-                                </select>
-                            </div>
-                        </div>
+                        <!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button
@@ -162,37 +173,26 @@
     </div>
 </div>
 
-<?php foreach ($categorylist as $Category): ?>
-<!-- add Category -->
-<div class="modal fade zoomIn" id="editCategory<?=$Category->id?>" tabindex="-1" aria-labelledby="addCategoryLabel"
+<?php foreach ($Newslist as $News): ?>
+<!-- add News -->
+<div class="modal fade zoomIn" id="editNews<?=$News->id?>" tabindex="-1" aria-labelledby="addNewsLabel"
                         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCategoryLabel">Edit Category</h5>
+                <h5 class="modal-title" id="addNewsLabel">Edit News</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form  accept-charset="UTF-8" action="<?=base_url()?>editCategory" method="POST" enctype="multipart/form-data">
+                <form  accept-charset="UTF-8" action="<?=base_url()?>editNews" method="POST" enctype="multipart/form-data">
                     <div class="row">
-                    <input type="hidden" class="form-control" name="category_id" value="<?=$Category->id?>">
+                    <input type="hidden" class="form-control" name="News_id" value="<?=$News->id?>">
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="contactnumberInput" class="form-label">
-                                    Category Name</label>
-                                <input type="text" class="form-control" name="name"  value="<?=$Category->categoriesname?>"
-                                    id="contactnumberInput" placeholder="Enter Name" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="stocks-input">Category Type</label>
-                                <select class="form-select" id="choices-category-input" name="category_type" required data-choices data-choices-search-false>
-                                    <option value="" selected disabled>Select category type</option>
-                                    <option value="Hand Made Arts" <?= $Category->category_type=='Hand Made Arts' ? 'selected' : '' ?>>Hand Made Arts</option>
-                                    <option value="Painting Arts" <?= $Category->category_type=='Painting Arts' ? 'selected' : '' ?>>Painting Arts</option>
-                                </select>
+                                <label for="firstnameInput" class="form-label">Title</label>
+                                <input type="text" class="form-control" name="name" id="firstnameInput"
+                                    placeholder="Enter name" required value="<?=$News->title?>">
                             </div>
                         </div>
                         <!--end col-->
@@ -220,27 +220,27 @@
 
 <script>
     function searchfun() {
-        var filterName = document.getElementById('searchCategory').value.toUpperCase();
-        var listItem = list.getElementsByClassName('Categorylistdata');
+        var filterName = document.getElementById('searchNews').value.toUpperCase();
+        var listItem = list.getElementsByClassName('Newslistdata');
 
         var noResultsMessage = document.getElementById('noResultsMessage');
         var resultsFound = false;
 
         for (var i = 0; i < listItem.length; i++) {
-            var Category = listItem[i];
-            console.log(Category);
-            var CategoryName = Category.querySelector('h5 a').innerText.toUpperCase();
-            var CategoryCategory = Category.querySelector('.text-muted').innerText.toUpperCase();
+            var News = listItem[i];
+            console.log(News);
+            var NewsName = News.querySelector('h5 a').innerText.toUpperCase();
+            var NewsCategory = News.querySelector('.text-muted').innerText.toUpperCase();
 
-            if ((CategoryName.indexOf(filterName) > -1) && (filterCategory === '' || CategoryCategory.indexOf(filterCategory) > -1)) {
-                Category.style.display = "";
+            if ((NewsName.indexOf(filterName) > -1) && (filterCategory === '' || NewsCategory.indexOf(filterCategory) > -1)) {
+                News.style.display = "";
                 resultsFound = true;
             } else {
-                Category.style.display = "none";
+                News.style.display = "none";
             }
         }
 
-        // Display no results message if no matching Categorys are found
+        // Display no results message if no matching Newss are found
         noResultsMessage.style.display = resultsFound ? 'none' : 'block';
     }
 </script>

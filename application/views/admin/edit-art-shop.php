@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Create Arts</h4>
+                        <h4 class="mb-sm-0">Edit Arts</h4>
 
                     </div>
                 </div>
             </div>
             <!-- end page title -->
             <form  accept-charset="UTF-8" action="<?=base_url()?>editArtShopPost" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="artshop_id" value="<?= $artshop->id ?>">
+            <input type="hidden" name="artshop_id" value="<?= $artshop->shop_id?>">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="card">
@@ -109,7 +109,7 @@
                                 <select class="form-select" id="categorySelect" name="category">
                                     <option value="" selected disabled>Select Arts category</option>
                                     <?php foreach($categorylist as $category): ?>
-                                        <option value="<?=$category->id?>"  <?= $category->id==$artshop->category ? 'selected' : '' ?>><?=$category->categoriesname?></option>
+                                        <option value="<?=$category->id?>"  <?= $category->id==$artshop->shop_category ? 'selected' : '' ?>><?=$category->categoriesname?> </option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -123,7 +123,7 @@
                                 <select class="form-select" id="subcategory" name="subcategory">
                                 <option value="" selected disabled>Select Arts sub category</option>
                                     <?php foreach($subcategorylist as $subcategory): ?>
-                                        <option value="<?=$subcategory['id']?>"  <?= $subcategory['id']===$artshop->subcategories ? 'selected' : '' ?>><?=$subcategory['subcategoriesname']?></option>
+                                        <option value="<?=$subcategory['id']?>"  <?= $subcategory['id']==$artshop->shop_subcategory ? 'selected' : '' ?>><?=$subcategory['subcategoriesname']?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>

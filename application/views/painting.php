@@ -40,14 +40,14 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-9 col-md-9 col-xs-12">
+				<div class="col-sm-12 col-md-12 col-xs-12">
 					<?php if (!empty($paintinglist)) : ?>
 						<?php foreach ($paintinglist as $painting) : 
 							$categories=json_decode($painting->subcategories);
 							?>
 							<div style="margin-bottom: 40px;" class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
 								<a href="<?=base_url().'painting-details/'.$painting->id?>">
-								<img src="<?=base_url().$painting->mainimage?>" class="img-responsive">
+								<img src="<?=base_url().$painting->mainimage?>" class="img-responsive" style="height:350px;object-fit: cover;">
 								</a>
 								<div class="row">
 									<h6 class="col-md-9 text-left" style="font-size: large;">
@@ -59,7 +59,7 @@
 									</h6>
 									<h5 class="col-md-7"> <i class="fa fa-user"></i>
 									<?=$painting->artistname?></h5>
-									<h6 class="col-md-5"><?=$categories[0]?></h6>
+									<h6 class="col-md-5"><?=$painting->categoriesname?></h6>
 									<!-- <h6>Artist</h6> -->
 									</h5>
 								</div>

@@ -43,7 +43,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-sm-9 col-md-9 col-xs-12">
+						<div class="col-sm-12 col-md-12 col-xs-12" style="margin-top:30px ;">
 						<?php foreach ($shoplist as $shop): ?>
 							<div class="col-sm-4 col-md-4 col-xs-12" style="margin-bottom:30px ;">
 								<div class="product text-center">
@@ -51,7 +51,7 @@
 										<a href="<?=base_url().'view-shop-detail/'.$shop->id?>">
 											<div class=""></div>
 											<img src="<?=base_url().$shop->mainimage?>" alt=""
-												class="Shop img-responsive">
+												class="Shop img-responsive" style="height:250px;object-fit: cover;">>
 											<div class="row">
 												<div class=" col-lg-12">
 													<h4 class="col-md-9 text-left">

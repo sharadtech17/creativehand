@@ -72,8 +72,11 @@ class ArtistController extends CI_Controller {
 	public function editprofile()
 	{
 		$artistid = $this->session->userdata['creativehandsartist']['usr_id'];
-		$data['categoriesdata'] = $this->query->categoriesdata($artistid);
-		$data['subcategoriesdata'] = $this->query->subcategoriesdata($artistid);		
+		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artistid])->row();
+		$category_type=$artistdata->category;
+		$category_id=$artistdata->categories;
+		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
+		$data['subcategoriesdata'] = $this->query->fetchsubcategories($category_id);		
 		$data['title'] = "Edit Profile";
 		$data['content'] = "editprofile.php";
 		$this->load->view('artist/index',$data);
@@ -107,15 +110,15 @@ class ArtistController extends CI_Controller {
 		$wpnumbervisibly = !isset($artistwpnumbervisibly) ? '0' : '1';
 		$update_data = array(
 			'name' => $artistname,
-			'category' => $category,
+			'category' => $category_type,
 			'companyname' => $artistcompanyname,
 			'representing' => $artistrepresenting,
 			'number' => $artistnumber,
 			'wpnumber' => $artistwpnumber,
 			'email' => $artistemail,
 			'website' => $artistwebsite,
-			'categories' => json_encode($artistcategories),
-			'subcategories' => json_encode($artistsubcategories),
+			'categories' => $artistcategories,
+			'subcategories' => $artistsubcategories,
 			'skills' => $artistskills,
 			'socialaccount' => json_encode($socialaccount),
 			'address' => $artistaddress,
@@ -167,9 +170,25 @@ class ArtistController extends CI_Controller {
 	public function addart()
 	{
 		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$data['subcategoriesdata'] = $this->query->mysubcategoriesdata($artist_id);
+		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artist_id])->row();
+		$category_type=$artistdata->category;
+		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
 		$data['title'] = "Add Art";
 		$data['content'] = "addart.php";
+		$this->load->view('artist/index',$data);
+	}
+	public function editart($id)
+	{
+		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
+		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artist_id])->row();
+		$category_type=$artistdata->category;
+		$category_type=$artistdata->category;
+		$category_id=$artistdata->categories;
+		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
+		$data['subcategoriesdata'] = $this->query->fetchsubcategories($category_id);
+		$data['artdata'] = $this->query->getartById($id);
+		$data['title'] = "Edit Art";
+		$data['content'] = "editart.php";
 		$this->load->view('artist/index',$data);
 	}
 	public function mysubscription()
@@ -192,7 +211,8 @@ class ArtistController extends CI_Controller {
 			'title' => $this->input->post('title'),
 			'description' => $this->input->post('description'),
 			'mainimage' => '',
-			'subcategories' => json_encode($this->input->post('subcategories')),
+			'categories' =>$this->input->post('categories'),
+			'subcategories' => $this->input->post('subcategories'),
 			'tags' => $this->input->post('tags'),
 			'size' => $this->input->post('size'),
 			'price' => $this->input->post('price'),
@@ -215,6 +235,41 @@ class ArtistController extends CI_Controller {
 			return;
 		}
 		$inserted = $this->query->insert_art($data);
+		if ($inserted) {
+			echo json_encode(array('success' => true));
+		} else {
+			echo json_encode(array('success' => false, 'message' => 'Failed to insert data into the database.'));
+		}
+	}
+	public function updateart() {
+		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
+		$this->load->library('upload');
+		$data = array(
+			'artist_id' => $artist_id,
+			'title' => $this->input->post('title'),
+			'description' => $this->input->post('description'),
+			'categories' =>$this->input->post('categories'),
+			'subcategories' => $this->input->post('subcategories'),
+			'tags' => $this->input->post('tags'),
+			'size' => $this->input->post('size'),
+			'price' => $this->input->post('price'),
+			'shortdescription' => $this->input->post('shortdescription'),
+		);
+		if (empty($data['title']) || empty($data['description']) || empty($data['price']) || empty($data['subcategories'])) {
+			echo json_encode(array('success' => false, 'message' => 'Required fields are missing.'));
+			return;
+		}
+		$id=$this->input->post('art_id');
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = 2048;
+		$config['encrypt_name'] = TRUE;
+		$this->upload->initialize($config);
+		if ($this->upload->do_upload('mainimage')) {
+			$mainImageData = $this->upload->data();
+			$data['mainimage'] = 'uploads/' .  $mainImageData['file_name'];
+		}
+		$inserted = $this->query->update_art($id,$data);
 		if ($inserted) {
 			echo json_encode(array('success' => true));
 		} else {
