@@ -191,45 +191,9 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 								<span>Arts</span>
 							</h2>
 						</div>
-
-						<?php
-							if (!empty($artdata)) {
-							    $allSubcategories = [];
-
-							    // Collect all unique subcategories
-							    foreach ($artdata as $art) {
-							        $subcategories = json_decode($art->subcategories, true);
-							        $allSubcategories = array_merge($allSubcategories, $subcategories);
-							    }
-
-							    // Remove duplicates and sort the subcategories
-							    $uniqueSubcategories = array_unique($allSubcategories);
-							    sort($uniqueSubcategories);
-							    ?>
-
-							    <div align="center">
-							        <button class="btn btn-default filter-button" data-filter="all">All</button>
-
-							        <?php foreach ($uniqueSubcategories as $subcategory) : ?>
-							            <button class="btn btn-default filter-button" data-filter="<?= str_replace(' ', '_', $subcategory) ?>"><?= $subcategory ?></button>
-							        <?php endforeach; ?>
-							    </div>
-							<?php } ?>
-						<br />
 						<?php if (!empty($artdata)) : ?>
 						    <?php foreach ($artdata as $art) : ?>
-						        <?php
-						        $subcategories = json_decode($art->subcategories, true);
-
-						        // Remove spaces from individual subcategories
-						        $cleanedSubcategories = array_map(function($subcategory) {
-						            return str_replace(' ', '_', $subcategory);
-						        }, $subcategories);
-
-						        // Combine cleaned subcategories with spaces between them
-						        $classValue = implode(' ', $cleanedSubcategories);
-						        ?>
-						        <div class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter <?= $classValue; ?>">
+						        <div class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter">
 						            <a href="#">
 						                <img src="<?=base_url($art->mainimage)?>" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
 						                <h4 class="text-center"><?=$art->title?></h4>

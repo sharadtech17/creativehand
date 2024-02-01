@@ -52,14 +52,14 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 											</div>
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon14">Password</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="password">
+												<input type="password" class="form-control" aria-describedby="basic-addon3" name="password">
 
 											</div>
 											<div class="input-group margin-bottom-20">
 
 												<span class="input-group-addon" id="basic-addon14">Canfirm
 													Password</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="cpassword">
+												<input type="password" class="form-control" aria-describedby="basic-addon3" name="cpassword">
 											</div>
 											<div style="display: flex;  justify-content: center; gap: 6px;">
 												<div class="input-group margin-bottom-20" style="margin-top: 6px;">
@@ -123,7 +123,10 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 				alertAndFocus('Please enter a valid email address.', 'input[name="email"]');
 				return;
 			}
-
+			if (password.length < 8) {
+                alertAndFocus('Password must be at least 8 characters long.', 'input[name="password"]');
+                return;
+            }
 			if (password === '') {
 				alertAndFocus('Please enter your password.', 'input[name="password"]');
 				return;

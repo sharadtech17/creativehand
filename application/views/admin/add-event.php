@@ -16,12 +16,12 @@
                             <div class="col-lg-3">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-name-input">Event Title</label>
-                                    <input type="text" class="form-control" name="name" id="manufacturer-name-input" placeholder="Event Title">
+                                    <input type="text" class="form-control" name="name" id="manufacturer-name-input" required placeholder="Event Title">
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6">
                                 <label class="form-label" for="stocks-input">Artist Name</label>
-                                <select class="form-select" id="choices-category-input" name="artist_id" data-choices data-choices-search-false>
+                                <select class="form-select" id="choices-category-input" name="artist_id" required data-choices data-choices-search-false>
                                     <option value="" selected disabled>Select Artist</option>
                                     <?php foreach($artistlist as $artist): ?>
                                         <option value="<?=$artist->id?>"><?=$artist->name?></option>
@@ -32,7 +32,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-brand-input">Event Details</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea" name="event_details" placeholder="Enter your Details" rows="3"></textarea>
+                                    <textarea class="form-control" id="ckeditor-classic" name="event_details" placeholder="Enter your Details" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,6 @@
                             <div class="mb-3">
                                 <label class="form-label" for="product-discount-input">Venue / Address</label>
                                 <div class="input-group mb-3">
-
                                     <input type="text" class="form-control" id="product-discount-input" name="address"
                                         placeholder="Address" aria-label="discount"
                                         aria-describedby="product-discount-addon">
@@ -113,7 +112,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Google Loction Link</label>
-                                <input type="link" class="form-control" id="orders-input" name="goolge_location_link" placeholder="Google Loction Link"
+                                <input type="text" class="form-control" id="orders-input" name="goolge_location_link" placeholder="Google Loction Link"
                                     required>
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
@@ -121,7 +120,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub Link</label>
-                                <input type="link" class="form-control" id="orders-input" name="youtube_link" placeholder="Link" required>
+                                <input type="text" class="form-control" id="orders-input" name="youtube_link" placeholder="Link" required>
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -129,7 +128,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub video Details</label>
-                                <input type="link" class="form-control" id="orders-input" name="youtube_video_desc" required>
+                                <input type="text" class="form-control" id="orders-input" name="youtube_video_desc" required>
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>

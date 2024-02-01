@@ -36,26 +36,26 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 									<input name="utf8" type="hidden" value="✓">
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon15">Name</span>
-										<input type="text" class="form-control" aria-describedby="basic-addon3" name="name">
+										<input type="text" class="form-control" aria-describedby="basic-addon3" name="name" required>
 									</div>
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon13"> Number
 										</span>
-										<input type="number" id="mobile_code" class="form-control" aria-describedby="basic-addon3" name="number">
+										<input type="number" id="mobile_code" class="form-control" aria-describedby="basic-addon3" name="number" required>
 									</div>
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon13">Email</span>
-										<input type="email" class="form-control" aria-describedby="basic-addon3" name="email">
+										<input type="email" class="form-control" aria-describedby="basic-addon3" name="email" required>
 									</div>
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon14">Password</span>
-										<input type="password" class="form-control" aria-describedby="basic-addon3" name="password">
+										<input type="password" class="form-control" min="8" max="8" size="8" aria-describedby="basic-addon3" name="password" required>
 
 									</div>
 									<div class="input-group margin-bottom-20">
 										<span class="input-group-addon" id="basic-addon14">Canfirm
 											Password</span>
-										<input type="password" class="form-control" aria-describedby="basic-addon3" name="cpassword">
+										<input type="password" class="form-control" min="8" aria-describedby="basic-addon3" name="cpassword" required>
 									</div>
 									<div style="display: flex;  justify-content: center; gap: 6px;">
 										<div class="input-group margin-bottom-20" style="margin-top: 6px;">
@@ -120,20 +120,26 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 				return;
 			}
 
-			if (password === '') {
-				alertAndFocus('Please enter your password.', 'input[name="password"]');
-				return;
-			}
+    		if (password === '') {
+                alertAndFocus('Please enter your password.', 'input[name="password"]');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alertAndFocus('Password must be at least 8 characters long.', 'input[name="password"]');
+                return;
+            }
+            
+            if (cpassword === '') {
+                alertAndFocus('Please confirm your password.', 'input[name="cpassword"]');
+                return;
+            }
+            
+            if (password !== cpassword) {
+                alertAndFocus('Passwords do not match. Please enter matching passwords.', 'input[name="cpassword"]');
+                return;
+            }
 
-			if (cpassword === '') {
-				alertAndFocus('Please confirm your password.', 'input[name="cpassword"]');
-				return;
-			}
-			
-			if (password !== cpassword) {
-				alertAndFocus('Passwords do not match. Please enter matching passwords.', 'input[name="cpassword"]');
-				return;
-			}
 
 			if (!tandc) {
 				alertAndFocus('Please accept privacy policy & terms & conditions.', 'input[name="tandc"]');

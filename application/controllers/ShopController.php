@@ -42,7 +42,7 @@ class ShopController extends CI_Controller {
 		$data['categorylist'] = $this->query->getCategoryList();
 		$data['artistlist'] = $this->Artist->getfront_artists();
 		$data['title'] = 'Add Art Shop';
-		$data['content'] = 'add-art-Shop.php';
+		$data['content'] = 'add-art-shop.php';
 		$this->load->view('admin/index', $data);
 	}
 	public function StoreArtShopPost()

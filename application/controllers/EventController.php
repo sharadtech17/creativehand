@@ -71,9 +71,6 @@ class EventController extends CI_Controller {
 		if ($this->upload->do_upload('banner_image')) {
 			$mainImageData = $this->upload->data();
 			$event_image = 'uploads/events/' .  $mainImageData['file_name'];
-		} else {
-			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
-			return;
 		}
 		foreach ($_FILES['product_image']['name'] as $key => $value) {
 			$_FILES['image']['name']     = $_FILES['product_image']['name'][$key];

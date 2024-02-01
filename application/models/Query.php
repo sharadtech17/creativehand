@@ -301,7 +301,7 @@ class Query extends CI_Model {
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
-		$this->db->where('artist.category', 'Painting');
+		$this->db->where('artist.category', 'Painting Arts');
 		$this->db->order_by('art.id', 'desc');
 		$query = $this->db->get();
 		return $query->result();
@@ -313,7 +313,7 @@ class Query extends CI_Model {
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
-		$this->db->where('artist.category', 'Painting');
+		$this->db->where('artist.category', 'Painting Arts');
 		$this->db->like('art.title', $query);
 		$this->db->or_like('art.tags', $query);
         $this->db->or_like('artist.name', $query);
