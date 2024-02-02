@@ -178,8 +178,7 @@
                         <!--end col-->
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="lastnameInput" class="form-label">Last
-                                    Image</label>
+                                <label for="lastnameInput" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image" id="lastnameInput"
                                     placeholder="" required>
                             </div>
@@ -196,7 +195,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="contactnumberInput" class="form-label">Description</label>
-                                <textarea class="form-control" name="description"></textarea>
+                                <textarea class="form-control" id="ckeditor-classic" name="description"></textarea>
                             </div>
                         </div>
                         <!--end col-->
@@ -246,7 +245,7 @@
                         <!--end col-->
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="lastnameInput" class="form-label">Last
+                                <label for="lastnameInput" class="form-label">
                                     Image</label>
                                 <input type="file" class="form-control" name="image" id="lastnameInput"
                                     placeholder="">
@@ -265,7 +264,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="contactnumberInput" class="form-label">Description</label>
-                                <textarea class="form-control" name="description"><?=$Blog->description?></textarea>
+                                <textarea class="form-control" name="description" id="ckeditor-classic"><?=$Blog->description?></textarea>
                             </div>
                         </div>
                         <!--end col-->

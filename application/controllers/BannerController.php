@@ -21,7 +21,7 @@ class BannerController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 200048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		if ($this->upload->do_upload('image')) {
@@ -47,7 +47,7 @@ class BannerController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 200048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		$image='';

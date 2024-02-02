@@ -32,6 +32,14 @@
 												<i class="ri-more-fill align-middle"></i>
 											</button>
 											<ul class="dropdown-menu dropdown-menu-end">
+												<li>
+													<a class="dropdown-item"
+														href="<?= base_url('AdminController/editart/' . $art->id) ?>">
+														<i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+														View
+													</a>
+												</li>
+												<li>
 													<button class="dropdown-item remove-item-btn" onclick="confirmDelete(<?=$art->id?>)">
 														<i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
 													</button>

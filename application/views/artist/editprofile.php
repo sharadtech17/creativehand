@@ -116,34 +116,35 @@ $jsonData = json_decode($artistdata->socialaccount);
 											<select class="form-select" name="category_type" id="categoryTypeSelect" data-choices data-choices-search-false >
 												<option value="">Select Category Type</option>
 												<option value="Hand Made Arts" <?=$artistdata->category === 'Hand Made Arts' ? 'selected' : '';?>>Hand Made Arts</option>
-												<option value="Painting Arts" <?=$artistdata->category === 'Painting' ? 'selected' : '';?>>Painting</option>
+												<option value="Painting Arts" <?=$artistdata->category === 'Painting Arts' ? 'selected' : '';?>>Painting</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="mb-3">
-											<label class="form-label">
-											Select Category</label>
-											<select class="form-select" name="artistcategories" id="categoriesSelect" data-choices data-choices-search-false>
-												<option value="" selected disabled>Select Category</option>
-												<?php foreach($categoriesdata as $categories): ?>
-													<option value="<?= $categories->id ?>" <?= $categories->id==$artistdata->categories ? 'selected' : '' ?>><?= $categories->categoriesname ?> </option>
+											<label class="form-label">Select Category</label>
+											<select class="js-example-basic-multiple" name="artistcategories[]" id="categoriesSelect" multiple>
+												<?php foreach($categoriesdata as $category): ?>
+													<option value="<?= $category->id ?>" <?= in_array($category->id, explode(',', $artistdata->categories)) ? 'selected' : '' ?>>
+														<?= $category->categoriesname ?>
+													</option>
 												<?php endforeach ?>
 											</select>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="mb-3">
-											<label class="form-label">
-											Select Sub Category</label>
-											<select class="form-select" name="artistsubcategories" id="subcategoriesSelect" data-choices data-choices-search-false>
-												<option value="" selected disabled>Select Sub Category</option>
-												<?php foreach($subcategoriesdata as $subcategories): ?>
-													<option value="<?= $subcategories->id ?>" <?= $subcategories->id==$artistdata->subcategories ? 'selected' : '' ?>><?= $subcategories->subcategoriesname ?> </option>
+											<label class="form-label">Select Sub Category</label>
+											<select class="js-example-basic-multiple" name="artistsubcategories[]" id="subcategoriesSelect" multiple>
+												<?php foreach($subcategoriesdata as $subcategory): ?>
+													<option value="<?= $subcategory->id ?>" <?= in_array($subcategory->id, explode(',', $artistdata->subcategories)) ? 'selected' : '' ?>>
+														<?= $subcategory->subcategoriesname ?>
+													</option>
 												<?php endforeach ?>
 											</select>
 										</div>
 									</div>
+
 									<div class="col-lg-6">
 										<div class="mb-3">
 											<label for="firstnameInput" class="form-label">

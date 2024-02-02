@@ -47,7 +47,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
@@ -94,9 +93,8 @@
                                 <li><a href="#"><i class="fa fa-phone"
                                             style="color: black;"></i>
                                             <?= $hand_art->number ?>
-                                    </a></li>
-
-
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -118,17 +116,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tabs margin-bottom-30">
-                        <!-- Nav tabs -->
+                    <!-- <div class="tabs margin-bottom-30">
                         <ul class="nav nav-tabs single-product-tabs product-tabs text-center">
                             <li class="active"><a href="#description" class="text-capitalize"
                                     data-toggle="tab">Ratings & Reviews</a></li>
-
                         </ul>
                         <div>
                             <div class="">
                                 <br>
-                                <!-- <h>Star Rating</h6> -->
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
@@ -148,9 +143,7 @@
                             </div>
 
                         </div>
-                    </div>
-
-
+                    </div> -->
                     <div class="sicoal-share-widget margin-top-10  full-width pull-left">
                         <label class=" pull-left">Share :</label>
                         <ul class="social-li list-inline">

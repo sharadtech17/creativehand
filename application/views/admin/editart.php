@@ -10,21 +10,22 @@
 		</div>
 	</div>
 	<!-- end page title -->
-	<form action="<?= base_url('ArtistController/updateart') ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
+	<form action="#" method="POST" autocomplete="off" enctype="multipart/form-data">
 		<input type="hidden" name="art_id" value="<?= $artdata->id ?>">
+		<input type="hidden" name="admin" value="1">
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="card">
 					<div class="card-body">
 						<div class="mb-3">
 							<h5 class="card-title mb-0">Art Title :</h5>
-							<input type="text" class="form-control" name="title" id="title"
+							<input type="text" class="form-control" readonly name="title" id="title"
 								placeholder="Enter Art title" required value="<?= $artdata->title ?>">
 							<div class="invalid-feedback">Please Enter a Art title.</div>
 						</div>
 						<div>
 							<h5 class="card-title mb-0">Arts Description :</h5>
-							<textarea class="form-control" name="description" id="ckeditor-classic">
+							<textarea class="form-control" name="description" readonly id="ckeditor-classic">
 										<?= $artdata->description ?>
 									</textarea>
 						</div>
@@ -78,9 +79,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="text-end mb-3">
+				<!-- <div class="text-end mb-3">
 					<button type="submit" class="btn btn-success w-sm">Submit</button>
-				</div>
+				</div> -->
 			</div>
 			<!-- end col -->
 			<div class="col-lg-4">

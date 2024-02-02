@@ -1,6 +1,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
+	<?php include('flash-message.php'); ?>
 		<div class="card">			
 			<div class="card-header d-flex align-items-center">
 				<h5 class="card-title mb-0 flex-grow-1">Arts</h5>

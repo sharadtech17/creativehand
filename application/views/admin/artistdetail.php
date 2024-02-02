@@ -224,7 +224,19 @@ $jsonData = json_decode($artistdata->socialaccount);
 												<button type="button" class="btn btn-danger waves-effect waves-light" onclick="verificationstatus(<?=$artistdata->id?>,'2')"><i class="ri-check-fill align-bottom me-1" ></i>Reject</button>
 											</div>
 										</div>
-									<?php }?>
+									<?php }elseif($artistdata->verificationstatus === '1'){?>
+										<div class="d-flex justify-content-sm-end">
+											<div class="search-box ms-2">
+												<button type="button" class="btn btn-danger waves-effect waves-light" onclick="verificationstatus(<?=$artistdata->id?>,'2')"><i class="ri-check-fill align-bottom me-1" ></i>Reject</button>
+											</div>
+										</div>
+									<?php }elseif($artistdata->verificationstatus === '2'){?>
+									<div class="d-flex justify-content-sm-end">
+										<div class="search-box ms-2">
+										<button type="button" class="btn btn-success waves-effect waves-light" onclick="verificationstatus(<?=$artistdata->id?>,'1')"><i class="ri-check-fill align-bottom me-1" ></i>Verify</button>
+										</div>
+									</div>
+									<?php } ?>
 								</div>
 							</div>
 						</div>

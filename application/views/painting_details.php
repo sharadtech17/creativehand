@@ -63,7 +63,6 @@
                         </div>
 
                         <div class=" sicoal-share-widget margin-top-10  full-width pull-left">
-                            
                             <!-- <label class="pull-left ">Arts :</label> -->
                             <ul class="social-li list-inline">
                                 
@@ -80,11 +79,8 @@
                                 <li><a href="#">
                                 <?= $hand_art->categoriesname ?>
                                     </a></li>
-
-
                             </ul>
                         </div>
-
                         <div class="sicoal-share-widget margin-top-10  full-width pull-left">
                             <label class=" pull-left">Artist :</label>
                             <ul class="social-li list-inline">
@@ -95,8 +91,6 @@
                                             style="color: black;"></i>
                                             <?= $hand_art->number ?>
                                     </a></li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -118,8 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tabs margin-bottom-30">
-                        <!-- Nav tabs -->
+                    <!-- <div class="tabs margin-bottom-30">
                         <ul class="nav nav-tabs single-product-tabs product-tabs text-center">
                             <li class="active"><a href="#description" class="text-capitalize"
                                     data-toggle="tab">Ratings & Reviews</a></li>
@@ -128,7 +121,6 @@
                         <div>
                             <div class="">
                                 <br>
-                                <!-- <h>Star Rating</h6> -->
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
                                 <i class="fa fa-star" style="color: #c66b15;"></i>
@@ -148,7 +140,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="sicoal-share-widget margin-top-10  full-width pull-left">

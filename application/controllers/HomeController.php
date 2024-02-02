@@ -43,4 +43,15 @@ class HomeController extends CI_Controller {
 		$data['artid'] = $artid;
     	$this->load->view('artdetails', $data);
 	}
+	public function privacy_policy()
+	{
+		$data['content'] = 'privacy_policy.php';
+		$this->load->view('index',$data);
+	}
+	public function term_condition()
+	{
+		$data['content'] = 'term_condition.php';
+		$this->load->view('index',$data);
+	}
+	
 }

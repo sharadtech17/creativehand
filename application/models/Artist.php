@@ -47,6 +47,13 @@ class Artist extends CI_Model {
 		$query = $this->db->get('subcategories');
 		return $query->result();
 	}
+	public function fetchMulticategories($category)
+	{
+		$this->db->where('activeflag', '0');
+		$this->db->where_in('category', $category);
+		$query = $this->db->get('categories');
+		return $query->result();
+	}
 	public function categoriesdata($artistid)
 	{
 		$category = $this->db->select('category')->get_where('artist', ['id' => $artistid])->row('category');

@@ -31,7 +31,7 @@
                                             <h6><i class="fa fa-user"></i> <?=$event->artistname?></h6>
                                         </div>
                                         <div class="paira-single-product-image">
-                                            <img src="assets/images/gallry/download.webp" alt=""
+                                            <img src="<?= base_url().$event->event_image?>" alt=""
                                                 class="paira-product-image img-responsive">
                                         </div>
                                         <div>
@@ -58,10 +58,12 @@
                                     <br>
                                     <h3 style="text-align: left;">Event Video</h3>
                                     <hr>
-                                    <div>
-                                        <iframe width="350" height="215 "
-                                            src="<?=$event->youtube_link?>">
-                                        </iframe>
+                                    <div class="paira-product" style="padding-top: 50px;">
+                                        <div class="position-r pull-left paira-single-product-image-wrp  margin-bottom-40">
+                                            <div class="paira-single-product-image">
+                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $event->youtube_link ?>" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div>
                                         <p style="text-align: left; padding: 10px;">
@@ -94,14 +96,10 @@
                                     <iframe src="<?=$event->goolge_location_link?>" width="370" height="310" allowfullscreen=""
                                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
-
-
                                 <br>
                             </div>
                         </div>
                 </section>
-
-
             </div>
         </div>
     </section>

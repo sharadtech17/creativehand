@@ -121,11 +121,16 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 									<li><a href="https://www.facebook.com" target="_blank">
 											<?=$artistdata->name?>
 										</a></li>
-									<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-phone"
+									<li><a href="#" target="_blank"><i class="fa fa-phone"
 												style="color: black;"></i>
 											<?= $artistdata->numbervisibly == 1 ? $artistdata->number : '**********'; ?>
-										</a></li>
-
+										</a>
+									</li>
+									<li><a href="#" target="_blank"><i class="fa fa-whatsapp"
+												style="color: black;"></i>
+											<?= $artistdata->wpnumbervisibly == 1 ? $artistdata->wpnumber : '**********'; ?>
+										</a>
+									</li>
 
 								</ul>
 							</div>

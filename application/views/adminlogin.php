@@ -103,14 +103,14 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 							<div class="form-contact">
 								<div class="row">
 									<form accept-charset="UTF-8" action="<?=base_url()?>administratorlogin" class="contact-form" method="post" id="administratorlogin">
-										<div class="col-md-12 col-xs-12 col-sm-12">
+										<div class="col-md-12 col-xs-12 col-sm-12" style="justify-content: center;align-items: center;display: grid;">
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon13">Email</span>
 												<input type="text" class="form-control" aria-describedby="basic-addon3" name="administratoremail">
 											</div>
 											<div class="input-group margin-bottom-20">
 												<span class="input-group-addon" id="basic-addon14">Password</span>
-												<input type="text" class="form-control" aria-describedby="basic-addon3" name="administratorpassword">
+												<input type="password" class="form-control" aria-describedby="basic-addon3" name="administratorpassword">
 											</div>
 											<div class="for-pass full-width">
 												<button type="submit" class="btn btn-primary btn-lg" id="administratorsubmitBtn">Login</button>

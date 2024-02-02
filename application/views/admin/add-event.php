@@ -136,28 +136,7 @@
                     </div>
                     <div>
                         <h5 class="fs-14 mb-1">Product Gallery</h5>
-                        <p class="text-muted">Add Product Gallery Images.</p>
-
-                        <div class="dropzone">
-                            <div class="fallback">
-                                <input name="product_image[]" type="file" multiple="multiple">
-                            </div>
-                            <div class="dz-message needsclick">
-                                <div class="mb-3">
-                                    <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                </div>
-
-                                <h5>Drop files here or click to upload.</h5>
-                            </div>
-                        </div>
-
-                        <ul class="list-unstyled mb-0" id="dropzone-preview">
-                            <li class="mt-2" id="dropzone-preview-list">
-                                <!-- This is used as the file preview template -->
-
-                            </li>
-                        </ul>
-                        <!-- end dropzon-preview -->
+                        <input name="product_image[]" type="file" multiple="multiple" class="form-control">
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-2 flex-wrap">

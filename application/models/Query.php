@@ -91,7 +91,7 @@ class Query extends CI_Model {
 	public function fetchsubcategories($categories)
 	{
 		$this->db->where('activeflag', '0');
-		$this->db->where('categories', $categories);
+		$this->db->where_in('categories', $categories);
 		$query = $this->db->get('subcategories');
 		return $query->result();
 	}

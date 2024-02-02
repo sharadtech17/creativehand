@@ -114,12 +114,12 @@ class ShopController extends CI_Controller {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/arts/' .  $mainImageData['file_name'];
 		}
-		foreach ($_FILES['image_gallry']['name'] as $key => $value) {
-			$_FILES['image']['name']     = $_FILES['image_gallry']['name'][$key];
-			$_FILES['image']['type']     = $_FILES['image_gallry']['type'][$key];
-			$_FILES['image']['tmp_name'] = $_FILES['image_gallry']['tmp_name'][$key];
-			$_FILES['image']['error']    = $_FILES['image_gallry']['error'][$key];
-			$_FILES['image']['size']     = $_FILES['image_gallry']['size'][$key];
+		foreach ($_FILES['galleryimage']['name'] as $key => $value) {
+			$_FILES['image']['name']     = $_FILES['galleryimage']['name'][$key];
+			$_FILES['image']['type']     = $_FILES['galleryimage']['type'][$key];
+			$_FILES['image']['tmp_name'] = $_FILES['galleryimage']['tmp_name'][$key];
+			$_FILES['image']['error']    = $_FILES['galleryimage']['error'][$key];
+			$_FILES['image']['size']     = $_FILES['galleryimage']['size'][$key];
 
 			if ($this->upload->do_upload('image')) {
 				$mainImageData = $this->upload->data();

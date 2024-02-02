@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ArtistController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('upload');
+		$this->load->model('Artist');
 	}
 	public function index()
 	{
@@ -74,9 +76,9 @@ class ArtistController extends CI_Controller {
 		$artistid = $this->session->userdata['creativehandsartist']['usr_id'];
 		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artistid])->row();
 		$category_type=$artistdata->category;
-		$category_id=$artistdata->categories;
+		$category_id=explode(',',$artistdata->categories);
 		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
-		$data['subcategoriesdata'] = $this->query->fetchsubcategories($category_id);		
+		$data['subcategoriesdata'] = $this->Artist->fetchsubcategories($category_id);
 		$data['title'] = "Edit Profile";
 		$data['content'] = "editprofile.php";
 		$this->load->view('artist/index',$data);
@@ -104,8 +106,10 @@ class ArtistController extends CI_Controller {
 		} else {
 			$image_path = '';
 		}
-		$artistcategories = isset($artistcategories) ? $artistcategories : [];
-		$artistsubcategories = isset($artistsubcategories) ? $artistsubcategories : [];
+		$selected_categories = $this->input->post('artistcategories');
+		$selected_subcategories = $this->input->post('artistsubcategories');
+		$categories_string = implode(',', $selected_categories);
+		$subcategories_string = implode(',', $selected_subcategories);
 		$numbervisibly = !isset($artistnumbervisibly) ? '0' : '1';
 		$wpnumbervisibly = !isset($artistwpnumbervisibly) ? '0' : '1';
 		$update_data = array(
@@ -117,8 +121,8 @@ class ArtistController extends CI_Controller {
 			'wpnumber' => $artistwpnumber,
 			'email' => $artistemail,
 			'website' => $artistwebsite,
-			'categories' => $artistcategories,
-			'subcategories' => $artistsubcategories,
+			'categories' => $categories_string,
+			'subcategories' => $subcategories_string,
 			'skills' => $artistskills,
 			'socialaccount' => json_encode($socialaccount),
 			'address' => $artistaddress,
@@ -150,7 +154,7 @@ class ArtistController extends CI_Controller {
 	public function getSubcategories()
 	{
 		$categories = $this->input->post('categories');
-		$subcategories = $this->query->fetchsubcategories($categories);
+		$subcategories = $this->Artist->fetchsubcategories($categories);
 		echo json_encode(['subcategories' => $subcategories]);
 	}
 	public function getSubcategoriesByCategoryID()
@@ -222,17 +226,32 @@ class ArtistController extends CI_Controller {
 			echo json_encode(array('success' => false, 'message' => 'Required fields are missing.'));
 			return;
 		}
-		$config['upload_path'] = './uploads/';
+		$config['upload_path'] = './uploads/arts/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
 		$config['max_size'] = 2048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		if ($this->upload->do_upload('mainimage')) {
 			$mainImageData = $this->upload->data();
-			$data['mainimage'] = 'uploads/' .  $mainImageData['file_name'];
+			$data['mainimage'] = 'uploads/arts/' .  $mainImageData['file_name'];
 		} else {
 			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
 			return;
+		}
+		foreach ($_FILES['galleryimage']['name'] as $key => $value) {
+			$_FILES['image']['name']     = $_FILES['galleryimage']['name'][$key];
+			$_FILES['image']['type']     = $_FILES['galleryimage']['type'][$key];
+			$_FILES['image']['tmp_name'] = $_FILES['galleryimage']['tmp_name'][$key];
+			$_FILES['image']['error']    = $_FILES['galleryimage']['error'][$key];
+			$_FILES['image']['size']     = $_FILES['galleryimage']['size'][$key];
+
+			if ($this->upload->do_upload('image')) {
+				$galleryData = $this->upload->data();
+				$image_gallrys[] = 'uploads/arts/' .  $galleryData['file_name'];
+			}
+		}
+		if (!empty($image_gallrys)) {
+			$data['galleryimage'] = json_encode($image_gallrys);
 		}
 		$inserted = $this->query->insert_art($data);
 		if ($inserted) {
@@ -242,40 +261,55 @@ class ArtistController extends CI_Controller {
 		}
 	}
 	public function updateart() {
+		
+		$config['file_name'] = time();
+		$config['upload_path'] = './uploads/arts/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = 20048;
+		$config['encrypt_name'] = TRUE;
+		$this->upload->initialize($config);
+		$image_gallrys = array();
+		$image='';
+		if ($this->upload->do_upload('mainimage')) {
+			$mainImageData = $this->upload->data();
+			$image = 'uploads/arts/' .  $mainImageData['file_name'];
+		}
+		foreach ($_FILES['galleryimage']['name'] as $key => $value) {
+			$_FILES['image']['name']     = $_FILES['galleryimage']['name'][$key];
+			$_FILES['image']['type']     = $_FILES['galleryimage']['type'][$key];
+			$_FILES['image']['tmp_name'] = $_FILES['galleryimage']['tmp_name'][$key];
+			$_FILES['image']['error']    = $_FILES['galleryimage']['error'][$key];
+			$_FILES['image']['size']     = $_FILES['galleryimage']['size'][$key];
+
+			if ($this->upload->do_upload('image')) {
+				$galleryData = $this->upload->data();
+				$image_gallrys[] = 'uploads/arts/' .  $galleryData['file_name'];
+			}
+		}
 		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
 		$this->load->library('upload');
 		$data = array(
 			'artist_id' => $artist_id,
 			'title' => $this->input->post('title'),
 			'description' => $this->input->post('description'),
-			'categories' =>$this->input->post('categories'),
+			'categories' => $this->input->post('categories'),
 			'subcategories' => $this->input->post('subcategories'),
 			'tags' => $this->input->post('tags'),
 			'size' => $this->input->post('size'),
 			'price' => $this->input->post('price'),
 			'shortdescription' => $this->input->post('shortdescription'),
 		);
-		if (empty($data['title']) || empty($data['description']) || empty($data['price']) || empty($data['subcategories'])) {
-			echo json_encode(array('success' => false, 'message' => 'Required fields are missing.'));
-			return;
+		$id = $this->input->post('art_id');
+		if (!empty($image_gallrys)) {
+			$data['galleryimage'] = json_encode($image_gallrys);
 		}
-		$id=$this->input->post('art_id');
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
-		$config['encrypt_name'] = TRUE;
-		$this->upload->initialize($config);
-		if ($this->upload->do_upload('mainimage')) {
-			$mainImageData = $this->upload->data();
-			$data['mainimage'] = 'uploads/' .  $mainImageData['file_name'];
+		if (!empty($image)) {
+			$data['mainimage']=$image;
 		}
-		$inserted = $this->query->update_art($id,$data);
-		if ($inserted) {
-			echo json_encode(array('success' => true));
-		} else {
-			echo json_encode(array('success' => false, 'message' => 'Failed to insert data into the database.'));
-		}
+		$inserted = $this->query->update_art($id, $data);
+		return redirect('artist-panel/view-all-arts')->with('success','Art Updated..');
 	}
+	
 	public function deleteart() {
 		if (!$this->input->is_ajax_request()) {
 			show_404();

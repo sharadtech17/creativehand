@@ -69,22 +69,19 @@
                                     <p class="text-muted">Add Arts Gallery Images.</p>
 
                                     <div class="dropzone">
-                                        <div class="fallback">
-                                            <input type="file" name="image_gallry[]" multiple="multiple">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                            </div>
-
-                                            <h5>Drop files here or click to upload.</h5>
-                                        </div>
+                                    <div>
+                                    <h5 class="fs-14 mb-1">Add Art Gallery Images</h5>
+                                    <div class="mb-3">
+                                        <!-- <h5 class="card-title mb-0">Upload </h5> -->
+                                        <input type="file" class="form-control" name="galleryimage[]" multiple="multiple">
+                                    </div>
+                                </div>
                                         <?php
                                             $galleryimage_arr=json_decode($artshop->galleryimage);
                                             if (!empty($galleryimage_arr)) {
                                                 foreach ($galleryimage_arr as $value) {
                                                     ?>
-                                                    <img src="<?=base_url().$value?>" alt="" height="45">
+                                                    <img src="<?=base_url().$value?>" alt="" width="100px">
                                                     <?php
                                                 }
                                             }

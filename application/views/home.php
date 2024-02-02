@@ -141,26 +141,15 @@
                                 <div class="paira-product" style="padding-top: 50px;">
                                     <div class="position-r pull-left paira-single-product-image-wrp  margin-bottom-40">
                                         <div class=" paira-single-product-image">
-                                            <!-- <img src="<?= base_url() ?>assets/images/gallry/download.webp" alt=""
-                                                        class="paira-product-image img-responsive"
-                                                        style="border-radius:20px 60px;"> -->
-
                                             <iframe width="600" height="500"
-                                                src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                                src="https://www.youtube.com/embed/VS1sa-F-UxE?si=grUBe8BHMKYPecGn">
                                             </iframe>
                                         </div>
-                                        <div>
-
-                                        </div>
-
-                                        <!-- <div class="single-product-container"></div> -->
-                                    </div>
+                                    <div>
                                 </div>
                             </div>
                         </div>
                 </section>
-
-
             </div>
         </div>
     </section>

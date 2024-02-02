@@ -501,8 +501,8 @@
                             <div class="paira-widget paira-menu">
                                 <h4>Policy</h4>
                                 <ul class="list-unstyled">
-                                    <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                                    <li><a href="Terms-and_Conditions.html">Terms and Conditions</a></li>
+                                    <li><a href="<?= base_url()?>HomeController/privacy_policy">Privacy Policy</a></li>
+                                    <li><a href="<?= base_url()?>HomeController/term_condition">Terms and Conditions</a></li>
                                 </ul>
                             </div>
                         </div>
