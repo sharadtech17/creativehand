@@ -104,12 +104,12 @@
 			<!-- end card -->
 			<div class="card">
 				<div class="card-header">
-					<h5 class="card-title mb-0">Size:</h5>
+					<h5 class="card-title mb-0">Size (inches) :</h5>
 				</div>
 				<div class="card-body">
 					<div class="hstack gap-3 align-items-start">
 						<div class="flex-grow-1">
-							<input class="form-control" data-choices data-choices-multiple-remove="true" placeholder="Enter Size" type="text" name="size"/>
+							<input class="form-control" data-choices data-choices-multiple-remove="true" placeholder="18 x 20 inches" type="text" name="size"/>
 						</div>
 					</div>
 				</div>

@@ -1,11 +1,11 @@
 <?php
-$this->db->select('artist.*, categories.categoriesname as category_name, subcategories.subcategoriesname as subcategory_name');
-$this->db->from('artist');
-$this->db->join('categories', 'artist.categories = categories.id', 'left');
-$this->db->join('subcategories', 'artist.subcategories = subcategories.id', 'left');
-$this->db->where('artist.id', $artistid);
-$query = $this->db->get();
-$artistdata = $query->row();
+	$this->db->select('artist.*, categories.categoriesname as category_name, subcategories.subcategoriesname as subcategory_name');
+	$this->db->from('artist');
+	$this->db->join('categories', 'artist.categories = categories.id', 'left');
+	$this->db->join('subcategories', 'artist.subcategories = subcategories.id', 'left');
+	$this->db->where('artist.id', $artistid);
+	$query = $this->db->get();
+	$artistdata = $query->row();
 $jsonData = json_decode($artistdata->socialaccount);
 ?>
 <div class="container-fluid">

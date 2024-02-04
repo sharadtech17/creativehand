@@ -33,7 +33,14 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" for="stocks-input">Date</label>
+                                <label class="form-label" for="stocks-input">Start Date</label>
+                                <input type="date" class="form-control" id="stocks-input" name="start_date" placeholder="Stocks" required>
+                                <div class="invalid-feedback">Please Enter a product stocks.</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="stocks-input">End Date</label>
                                 <input type="date" class="form-control" id="stocks-input" name="date" placeholder="Stocks" required>
                                 <div class="invalid-feedback">Please Enter a product stocks.</div>
                             </div>

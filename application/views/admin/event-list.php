@@ -137,7 +137,15 @@
                                                             <span><?= $event->address ?></span>
                                                         </td>
                                                         <td>
-                                                            <?= ($event->date > date('Y-m-d')) ? '<span class="badge badge-soft-success text-uppercase">Up-coming</span>' : '<span class="badge badge-soft-danger text-uppercase">Past</span>' ?>
+                                                        <?php
+                                                            if ($event->start_date > date('Y-m-d')) {
+                                                                echo '<span class="badge badge-soft-success text-uppercase">Up-coming</span>';
+                                                            } elseif ($event->date < date('Y-m-d')) {
+                                                                echo '<span class="badge badge-soft-danger text-uppercase">Past</span>';
+                                                            } else {
+                                                                echo '<span class="badge badge-soft-warning text-uppercase">Running</span>';
+                                                            }
+                                                        ?>
                                                         </td>
                                                         <td>
                                                             <?= ($event->status==='0') ? '<span class="badge badge-soft-success text-uppercase">Approved</span>' : '<span class="badge badge-soft-danger text-uppercase">Pandding</span>' ?>

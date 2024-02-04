@@ -50,20 +50,26 @@
                                         style="border-radius: 6px;background-image: url(assets/images/artist/banner/17.jpg);">
                                         <div style="margin-bottom: 100px;">
                                             <h5>
-                                            <?= ($event->date > date('Y-m-d')) ? 
-                                                    '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Upcoming</button>' : 
-                                                    '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Past</button>' ?>
+                                            <?php
+                                                if ($event->start_date > date('Y-m-d')) {
+                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Upcoming</button>';
+                                                } elseif ($event->date < date('Y-m-d')) {
+                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Past</button>';
+                                                } else {
+                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Running</button>';
+                                                }
+                                            ?>
                                             </h5>
                                         </div>
                                         <div class="row" style="padding-left:5px;">
-                                            <div class="col-md-7" style="bottom: -25px;">
+                                            <div class="col-md-6" style="bottom: -25px;">
                                                 <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
                                                     <h5><?= $event->name ?></h5>
                                                 </a>
                                             </div>
-                                            <div class="col-md-5" style="bottom: -30px;">
+                                            <div class="col-md-6" style="bottom: -30px;">
                                                 <i class="fa fa-calendar"></i>
-                                                <a href=""><?= date('d/m/Y', strtotime($event->date)) ?></a>
+                                                <a href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
                                             </div>
                                         </div>
                                         <hr>

@@ -22,10 +22,10 @@
                                     <input type="text" class="form-control" name="name" id="manufacturer-name-input" value="<?=$event->name?>" placeholder="Event Title">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-9">
                                 <div class="mb-3">
                                     <label class="form-label" for="manufacturer-brand-input">Event Details</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea" name="event_details" placeholder="Enter your Details" rows="3"><?=$event->event_details?></textarea>
+                                    <textarea class="form-control"  id="ckeditor-classic" name="event_details" placeholder="Enter your Details" rows="3"><?=$event->event_details?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,14 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" for="stocks-input">Date</label>
+                                <label class="form-label" for="stocks-input">Start Date</label>
+                                <input type="date" class="form-control" id="stocks-input" name="start_date" placeholder="Stocks" required value="<?=$event->start_date ?>">
+                                <div class="invalid-feedback">Please Enter a product stocks.</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="stocks-input">End Date</label>
                                 <input type="date" class="form-control" id="stocks-input" name="date" placeholder="Stocks" required value="<?=$event->date ?>">
                                 <div class="invalid-feedback">Please Enter a product stocks.</div>
                             </div>

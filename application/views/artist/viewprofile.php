@@ -35,15 +35,19 @@ $jsonData = json_decode($artistdata->socialaccount);
 						<i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i><?=$artistdata->representing?>
 					</div>
 				</div>
-				<?php
-					if ($artistdata->verificationstatus==0) {
-						echo '<h5 class="text-warning mb-1">Pandding</h5>';
-					}elseif ($artistdata->verificationstatus==1) {
-						echo '<h5 class="text-success mb-1">Approved</h5>';
-					}elseif($artistdata->verificationstatus==2){
-						echo '<h5 class="text-danger mb-1">Rejected</h5>';
-					}
-				?>
+				<div class="hstack text-white-50 gap-1">
+					<h5 class="me-1 text-white-75 fs-16 align-middle">Account Status -</h5>
+					<?php
+						if ($artistdata->verificationstatus==0) {
+							echo '<h5 class="text-warning mb-1">Pandding</h5>';
+						}elseif ($artistdata->verificationstatus==1) {
+							echo '<h5 class="text-success mb-1">Approved</h5>';
+						}elseif($artistdata->verificationstatus==2){
+							echo '<h5 class="text-danger mb-1">Rejected</h5>';
+						}
+					?>
+				</div>
+				
 			</div>
 		</div>
 	</div>

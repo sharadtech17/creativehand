@@ -104,9 +104,13 @@
                                                                     <a href="" data-bs-toggle="modal" data-bs-target="#editBanner<?=$banner->id?>">
                                                                         <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                     </a>
-                                                                    <a href="<?=base_url('BannerController/deleteBanner/' . $banner->id)?>">
-                                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                    </a>
+                                                                    <?php
+                                                                        if ($banner->active_status==1) {
+                                                                    ?>
+                                                                        <a href="<?=base_url('BannerController/deleteBanner/' . $banner->id)?>">
+                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                        </a>
+                                                                    <?php } ?>
                                                                 </ul>
                                                             </div>
                                                         </span>

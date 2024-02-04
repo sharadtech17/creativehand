@@ -48,19 +48,16 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 							<div class="product-detles">
 								<ul class="nav nav-tabs single-product-tabs product-tabs text-center">
 									<li class="active col-lg-6">
-										<h1 class="text-left  
-										margin-clear"><?=$artistdata->name?></h1>
-
+										<h1 class="text-left margin-clear"><?=$artistdata->name?></h1>
 									</li>
 									<li>
-										<button class="text-right btn btn-primary btn-lg text-capitalize 
-										"><?=$artistdata->category?></button>
+										<button class="text-right btn btn-primary btn-lg text-capitalize"><?=$artistdata->category?></button>
 									</li>
 								</ul>
 							</div>
 							<div class="product-detles">
 								<ul class="nav nav-tabs single-product-tabs product-tabs text-center">
-									<li class="active col-lg-6">
+									<!-- <li class="active col-lg-6">
 										<h6 class="text-left  margin-bottom-15 
 										margin-clear">Overall Rating :
 											<i class="fa fa-star"></i><i class="fa fa-star"></i><i
@@ -78,8 +75,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 											<i class="fa fa-star-o"></i>
 											<i class="fa fa-star-o"></i>
 										</h5>
-
-									</li>
+									</li> -->
 									<!-- <li>
 										<button class="text-right btn btn-primary btn-lg text-capitalize 
 										margin-bottom-20">3D Artist</button>
@@ -90,9 +86,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 							<div class="tabs margin-bottom-30">
 								<!-- Nav tabs -->
 								<ul class="nav nav-tabs single-product-tabs product-tabs text-center">
-									<li class="active"><a href="#description" class="text-capitalize"
-											data-toggle="tab">Description</a></li>
-
+									<li class="active"><a href="#description" class="text-capitalize" data-toggle="tab">Description</a></li>
 								</ul>
 								<!-- Tab panes -->
 								<div class="tab-content">
@@ -102,7 +96,6 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 
 								</div>
 							</div>
-
 							<div class="sicoal-share-widget margin-top-10  full-width pull-left">
 								<label class=" pull-left">Category :</label>
 								<ul class="social-li list-inline">
@@ -110,8 +103,6 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 												style="color: black;"></i>
 											<?=$artistdata->category?>
 										</a></li>
-
-
 								</ul>
 							</div>
 
@@ -147,7 +138,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 								</ul>
 							</div>
 
-							<div class="sicoal-share-widget margin-top-10  full-width pull-left">
+							<!-- <div class="sicoal-share-widget margin-top-10  full-width pull-left">
 
 								<label class=" pull-left">Share :</label>
 								<ul class="social-li list-inline">
@@ -166,7 +157,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 									<li><a href="https://www.linkedin.com" target="_blank"><i
 												class="fa fa-telegram font-size-18" ></i></a></li>
 								</ul>
-							</div>
+							</div> -->
 
 							<div class="sicoal-share-widget margin-top-10  full-width pull-left">
 								<h4 class="list-group full-width text-capitalize margin-bottom-15 

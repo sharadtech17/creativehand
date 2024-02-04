@@ -97,9 +97,9 @@ class ArtistController extends CI_Controller {
 		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
 		$config['upload_path'] = './profileimages/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['file_name'] = $artist_id;
-		$this->load->library('upload', $config);
-
+		$config['max_size'] = 200048;
+		$config['encrypt_name'] = TRUE;
+		$this->upload->initialize($config);
 		if ($this->upload->do_upload('artistprofileimage')) {
 			$upload_data = $this->upload->data();
 			$image_path = 'profileimages/' . $upload_data['file_name'];

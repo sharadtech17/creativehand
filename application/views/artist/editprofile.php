@@ -13,7 +13,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 			<div class="card mt-n5">
 				<div class="card-body p-4">
 					<div class="text-center">
-						<form method="POST" id="editprofileform">
+						<form method="POST" id="editprofileform" enctype="multipart/form-data">
 							<div class="profile-user position-relative d-inline-block mx-auto mb-4">
 								<img src="<?=base_url().$artistdata->profileimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>artistassets/altuser.jpg'" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
 								<div class="avatar-xs p-0 rounded-circle profile-photo-edit">
@@ -342,8 +342,8 @@ $jsonData = json_decode($artistdata->socialaccount);
 				}
 			});
 		});
-			$('#categoriesSelect').change(function () {
-				var selectedCategory = $(this).val();
+		$('#categoriesSelect').change(function () {
+			var selectedCategory = $(this).val();
 			$.ajax({
 				url: '<?= base_url('ArtistController/getSubcategories') ?>',
 				type: 'post',
@@ -409,7 +409,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 			if (validateprForm()) {
 				var formData = new FormData($(this)[0]);
 				$.ajax({
-					url: '<?= base_url('Artist/editpassword') ?>',
+					url: '<?= base_url('ArtistController/editpassword') ?>',
 					type: 'post',
 					data: formData,
 					contentType: false,

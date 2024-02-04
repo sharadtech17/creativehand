@@ -76,7 +76,6 @@ $route['EditEventPost'] = 'EventController/updateEvent';
 
 // artist
 $route['artist-panel/event-list'] = 'EventController/ViewArtistEvent';
-$route['addEventPost'] = 'EventController/StoreEventPost';
 $route['EditEventPost'] = 'EventController/updateEvent';
 
 // category
