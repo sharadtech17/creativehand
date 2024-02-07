@@ -9,9 +9,9 @@
         </div>
         <!-- end page title -->
         <form  accept-charset="UTF-8" action="<?=base_url()?>EditEventPost" method="POST" enctype="multipart/form-data">
-        <input type="hidden" class="form-control" name="event_id" value="<?=$event->id?>">
-        <input type="hidden" class="form-control" name="artist_id" value="<?= $this->session->userdata['creativehandsartist']['usr_id']; ?>">
-        <input type="hidden" class="form-control" name="is_artist" value="1">
+            <input type="hidden" class="form-control" name="event_id" value="<?=$event->id?>">
+            <input type="hidden" class="form-control" name="artist_id" value="<?= $this->session->userdata['creativehandsartist']['usr_id']; ?>">
+            <input type="hidden" class="form-control" name="is_artist" value="1">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
@@ -146,14 +146,15 @@
                                 if (!empty($product_img_arr)) {
                                     foreach ($product_img_arr as $value) {
                                         ?>
-                                        <img src="<?=base_url().$value?>" alt="" height="45">
+                                        <img src="<?=base_url().$value?>" alt="" height="90">
+                                        <a class="btn btn-info" href="<?= base_url().'EventController/deleteGalleryImg/'.$event->id.'/1/'.$value ?>"><i class="ri-delete-bin-fill"></i></a>
                                         <?php
                                     }
                                 }
                             ?>
                         </div>
                     </div>
-                    <div class="flex-shrink-0">
+                    <div class="flex-shrink-0 p-2">
                         <div class="d-flex gap-2 flex-wrap">
                             <button class="btn btn-primary" type="submit" >Submit</button>
                         </div>

@@ -62,12 +62,16 @@ class EventController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/events/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 200048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		$product_images = array();
 		$event_image='';
 		$artist_status=0;
+		$artist_status=$this->input->post('is_artist');
+		if (empty($artist_status)) {
+			$artist_status=0;
+		}
 		if ($this->upload->do_upload('banner_image')) {
 			$mainImageData = $this->upload->data();
 			$event_image = 'uploads/events/' .  $mainImageData['file_name'];
@@ -83,10 +87,13 @@ class EventController extends CI_Controller {
 				$mainImageData = $this->upload->data();
 				$product_images[] = 'uploads/events/' .  $mainImageData['file_name'];
 			}
-		}
-		$artist_status=$this->input->post('is_artist');
-		if (empty($artist_status)) {
-			$artist_status=0;
+			else {
+				$this->session->set_flashdata('error',$this->upload->display_errors());
+				if ($artist_status==='1') {
+					redirect('artist-panel/event-list');
+				}
+				redirect('administrator/event-list');
+			}
 		}
 		$Event_data = array(
 			'name'   => $this->input->post('name'),
@@ -133,16 +140,18 @@ class EventController extends CI_Controller {
 	public function updateEvent()
 	{
 		$config['file_name'] = time();
-		$config['upload_path'] = './uploads/events';
-		$config['allowed_types'] = 'gif|jpg|jpeg|png|jpg';
+		$config['upload_path'] = './uploads/events/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
 		$config['max_size'] = 200048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		
 		$event_image = '';
 		$product_images = array();
-
-		// Upload event image
+		$artist_status=$this->input->post('is_artist');
+		if (empty($artist_status)) {
+			$artist_status=0;
+		}
 		if ($this->upload->do_upload('event_image')) {
 			$event_image_data = $this->upload->data();
 			$event_image = 'uploads/events/' . $event_image_data['file_name'];
@@ -155,8 +164,15 @@ class EventController extends CI_Controller {
 			$_FILES['image']['size']     = $_FILES['product_image']['size'][$key];
 
 			if ($this->upload->do_upload('image')) {
-				$mainImageData = $this->upload->data();
-				$product_images[] = 'uploads/events' .  $mainImageData['file_name'];
+				$productimages = $this->upload->data();
+				$product_images[] = 'uploads/events/'.$productimages['file_name'];
+			}
+			else {
+				$this->session->set_flashdata('error',$this->upload->display_errors());
+				if ($artist_status==='1') {
+					redirect('artist-panel/event-list');
+				}
+				redirect('administrator/event-list');
 			}
 		}
 		$Event_data = array(
@@ -188,11 +204,31 @@ class EventController extends CI_Controller {
 		$id= $this->input->post('event_id');
 		$this->Event->update_Event($id,$Event_data); // Call the correct method on the loaded model
 		$this->session->set_flashdata('success', 'Event updated.');
-		$artist_status=$this->input->post('is_artist');
-		if (empty($artist_status)) {
-			$artist_status=0;
-		}
 		if ($artist_status==='1') {
+			redirect('artist-panel/event-list');
+		}
+		redirect('administrator/event-list');
+	}
+	
+	public function deleteGalleryImg($id,$status,$folder,$folder1,$image) {
+		$existing_Event = $this->Event->get_Event_by_id($id);
+		$removeArray=$folder.'/'.$folder1.'/'.$image;
+		if (!$existing_Event) {
+			show_error('Event not found!', 404);
+		}
+		$jsonString=$existing_Event->product_image;
+		$imageArray = json_decode($jsonString, true);
+		$index = array_search($removeArray, $imageArray);
+		if ($index !== false) {
+			unset($imageArray[$index]);
+		}
+		$newJsonString = json_encode(array_values($imageArray));
+		$data=array(
+			'product_image'=> $newJsonString
+		);
+		$this->Event->update_Event($id,$data);
+		$this->session->set_flashdata('success', 'Event Gallery Image removed.');
+		if ($status==1) {
 			redirect('artist-panel/event-list');
 		}
 		redirect('administrator/event-list');

@@ -16,6 +16,16 @@ class Shop extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function getBestSellerList()
+	{
+		$this->db->select('art_shops.*, artist.name as artistname, categories.categoriesname as categoryname');
+		$this->db->from('art_shops');
+		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
+		$this->db->join('categories', 'categories.id = art_shops.category', 'left');
+		$this->db->where('art_shops.best_seller_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function searchArtShop($query)
 	{
 		$this->db->select('art_shops.*, artist.name as artistname, categories.categoriesname as categoryname');
@@ -34,7 +44,7 @@ class Shop extends CI_Model {
 		$this->db->select('art_shops.*, artist.name as artistname');
 		$this->db->from('art_shops');
 		$this->db->join('artist', 'artist.id = art_shops.artist_id', 'left');
-		$this->db->where('art_shops.status', 0);
+		$this->db->where('art_shops.activeflag', 0);
 		$this->db->order_by('art_shops.id', 'desc');
 		$query = $this->db->get();
 		return $query->result();

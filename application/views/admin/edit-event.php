@@ -113,7 +113,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Banner</label>
-                                <input type="file" class="form-control" id="orders-input" name="banner_image" placeholder="Banner Event">
+                                <input type="file" class="form-control" id="orders-input" name="event_image" placeholder="Banner Event">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                             <img src="<?=base_url().$event->event_image?>" alt="" height="45">
@@ -153,6 +153,7 @@
                                     foreach ($product_img_arr as $value) {
                                         ?>
                                         <img src="<?=base_url().$value?>" alt="" height="45">
+                                        <a class="btn btn-info" href="<?= base_url().'EventController/deleteGalleryImg/'.$event->id.'/0/'.$value ?>"><i class="ri-delete-bin-fill"></i></a>
                                         <?php
                                     }
                                 }

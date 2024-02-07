@@ -13,11 +13,7 @@
         <!-- end col -->
         <div class="col-xl-12 col-lg-8">
             <div class="card">
-            <?php if ($this->session->flashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?php echo $this->session->flashdata('success'); ?>
-                </div>
-            <?php endif; ?>
+            <?php include('flash-message.php');?>
                 <div class="card-header border-0">
                     <div class="d-flex align-items-center">
                         <h5 class="card-title mb-0 flex-grow-1">Banner</h5>
@@ -105,7 +101,7 @@
                                                                         <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                     </a>
                                                                     <?php
-                                                                        if ($banner->active_status==1) {
+                                                                        if ($banner->active_status!=1) {
                                                                     ?>
                                                                         <a href="<?=base_url('BannerController/deleteBanner/' . $banner->id)?>">
                                                                             <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
@@ -188,7 +184,7 @@
                         <!--end col-->
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="lastnameInput" class="form-label">Last
+                                <label for="lastnameInput" class="form-label">
                                     Image</label>
                                 <input type="file" class="form-control" name="image" id="lastnameInput"
                                     placeholder="" required>
@@ -266,7 +262,7 @@
                         <!--end col-->
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="lastnameInput" class="form-label">Last
+                                <label for="lastnameInput" class="form-label">
                                     Image</label>
                                 <input type="file" class="form-control" name="image" id="lastnameInput"
                                     placeholder="">

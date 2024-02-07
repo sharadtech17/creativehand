@@ -27,9 +27,9 @@ class BannerController extends CI_Controller {
 		if ($this->upload->do_upload('image')) {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/' .  $mainImageData['file_name'];
-		} else {
-			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
-			return;
+		}else {
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('administrator/banner-list');
 		}
 		$banner_data = array(
 			'name'   => $this->input->post('name'),

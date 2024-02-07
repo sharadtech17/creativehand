@@ -58,6 +58,9 @@ class ShopController extends CI_Controller {
 		if ($this->upload->do_upload('mainimage')) {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/arts/' .  $mainImageData['file_name'];
+		}else {
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('administrator/art-shop-list');
 		}
 		foreach ($_FILES['image_gallry']['name'] as $key => $value) {
 			$_FILES['image']['name']     = $_FILES['image_gallry']['name'][$key];
@@ -69,6 +72,10 @@ class ShopController extends CI_Controller {
 			if ($this->upload->do_upload('image')) {
 				$mainImageData = $this->upload->data();
 				$image_gallrys[] = 'uploads/arts/' .  $mainImageData['file_name'];
+			}
+			else {
+				$this->session->set_flashdata('error',$this->upload->display_errors());
+				redirect('administrator/art-shop-list');
 			}
 		}
 		$artshop_data = array(
@@ -114,6 +121,10 @@ class ShopController extends CI_Controller {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/arts/' .  $mainImageData['file_name'];
 		}
+		else {
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('administrator/art-shop-list');
+		}
 		foreach ($_FILES['galleryimage']['name'] as $key => $value) {
 			$_FILES['image']['name']     = $_FILES['galleryimage']['name'][$key];
 			$_FILES['image']['type']     = $_FILES['galleryimage']['type'][$key];
@@ -124,6 +135,9 @@ class ShopController extends CI_Controller {
 			if ($this->upload->do_upload('image')) {
 				$mainImageData = $this->upload->data();
 				$image_gallrys[] = 'uploads/arts/' .  $mainImageData['file_name'];
+			}else {
+				$this->session->set_flashdata('error',$this->upload->display_errors());
+				redirect('administrator/art-shop-list');
 			}
 		}
 		$artshop_data = array(

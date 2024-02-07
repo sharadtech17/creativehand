@@ -51,7 +51,7 @@
 										<a href="<?=base_url().'view-shop-detail/'.$shop->id?>">
 											<div class=""></div>
 											<img src="<?=base_url().$shop->mainimage?>" alt=""
-												class="Shop img-responsive" style="height:250px;object-fit: cover;">>
+												class="Shop img-responsive" style="height:250px;object-fit: cover;">
 											<div class="row">
 												<div class=" col-lg-12">
 													<h4 class="col-md-9 text-left">

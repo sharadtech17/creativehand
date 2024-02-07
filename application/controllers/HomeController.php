@@ -9,6 +9,8 @@ class HomeController extends CI_Controller {
 		$this->load->model('Blog');
 		$this->load->model('Promotive');
 		$this->load->model('News');
+		$this->load->model('Artist');
+		$this->load->model('Shop');
 	}
 	public function index()
 	{
@@ -17,6 +19,11 @@ class HomeController extends CI_Controller {
 		$data['eventlist'] = $this->Event->getActiveEventList(); 
 		$data['promotivelist'] = $this->Promotive->getActivePromotiveList(); 
 		$data['newslist'] = $this->News->getNewsList(); 
+		$data['paintingArt'] = $this->query->getPaintingByArtist();
+		$data['handArt'] = $this->query->getArtByHandArtArtist();
+		$data['shoplist'] = $this->Shop->getShopList();
+		$data['bestsellerlist'] = $this->Shop->getBestSellerList();
+		$data['artistlist'] = $this->Artist->getfront_artists();
 		$data['content'] = 'home.php';
 		$this->load->view('index',$data);
 	}

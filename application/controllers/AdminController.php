@@ -158,14 +158,13 @@ class AdminController extends CI_Controller {
 	}
 	public function editart($id)
 	{
-		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
-		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artist_id])->row();
+		$data['artdata'] = $this->query->getartById($id);
+		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $data['artdata']->artist_id])->row();
 		$category_type=$artistdata->category;
 		$category_type=$artistdata->category;
 		$category_id=$artistdata->categories;
 		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
 		$data['subcategoriesdata'] = $this->query->fetchsubcategories($category_id);
-		$data['artdata'] = $this->query->getartById($id);
 		$data['title'] = "Edit Art";
 		$data['content'] = "editart.php";
 		$this->load->view('admin/index',$data);

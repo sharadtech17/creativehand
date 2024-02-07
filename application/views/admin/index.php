@@ -211,7 +211,7 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link menu-link <?= ($title === 'bannerlist') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/banner-list" role="button"
+							<a class="nav-link menu-link <?= ($title === 'Banner List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/banner-list" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
 								<i class="ri-image-line"></i> <span data-key="t-layouts">Banner</span>
 							</a>

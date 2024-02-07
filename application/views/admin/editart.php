@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="page-title-box d-sm-flex align-items-center justify-content-between">
-				<h4 class="mb-sm-0">Edit Arts</h4>
+				<h4 class="mb-sm-0">View Arts</h4>
 
 			</div>
 		</div>

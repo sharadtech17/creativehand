@@ -35,15 +35,15 @@ class BlogController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 20048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		if ($this->upload->do_upload('image')) {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/' .  $mainImageData['file_name'];
 		} else {
-			echo json_encode(array('success' => false, 'message' => $this->upload->display_errors()));
-			return;
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('administrator/blog-list');
 		}
 		$blog_data = array(
 			'name'   => $this->input->post('name'),
@@ -60,13 +60,16 @@ class BlogController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 2048;
+		$config['max_size'] = 20048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		$image='';
 		if ($this->upload->do_upload('image')) {
 			$mainImageData = $this->upload->data();
 			$image = 'uploads/' .  $mainImageData['file_name'];
+		} else {
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			redirect('administrator/blog-list');
 		}
 		$blog_data = array(
 			'name'   => $this->input->post('name'),
