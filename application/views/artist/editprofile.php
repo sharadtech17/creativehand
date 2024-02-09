@@ -181,11 +181,11 @@ $jsonData = json_decode($artistdata->socialaccount);
 											<label class="form-check-label" for="switchnumber">Visibal on
 											Your Profile</label>
 											<div class="d-flex gap-2">
-												<h4>Yes</h4>
+												<h4>No</h4>
 												<a class="form-check form-switch form-switch-lg" dir="ltr">
 													<input type="checkbox" class="form-check-input" name="artistnumbervisibly" id="switchnumber" <?=$artistdata->numbervisibly == 1 ? 'checked' : '';?>>
 												</a>
-												<h4>No</h4>
+												<h4>Yes</h4>
 											</div>
 										</div>
 									</div>
@@ -201,11 +201,11 @@ $jsonData = json_decode($artistdata->socialaccount);
 											<label class="form-check-label" for="customSwitchsizelg">Visibal on
 											Your Profile</label>
 											<div class="d-flex gap-2">
-												<h4>Yes</h4>
+												<h4>No</h4>
 												<a class="form-check form-switch form-switch-lg" dir="ltr">
 													<input type="checkbox" class="form-check-input" name="artistwpnumbervisibly" id="customSwitchsizelg" <?=$artistdata->wpnumbervisibly == 1 ? 'checked' : '';?>>
 												</a>
-												<h4>No</h4>
+												<h4>Yes</h4>
 											</div>
 										</div>
 									</div>

@@ -76,6 +76,13 @@ class EventController extends CI_Controller {
 			$mainImageData = $this->upload->data();
 			$event_image = 'uploads/events/' .  $mainImageData['file_name'];
 		}
+		else {
+			$this->session->set_flashdata('error',$this->upload->display_errors());
+			if ($artist_status==='1') {
+				redirect('artist-panel/event-list');
+			}
+			redirect('administrator/event-list');
+		}
 		foreach ($_FILES['product_image']['name'] as $key => $value) {
 			$_FILES['image']['name']     = $_FILES['product_image']['name'][$key];
 			$_FILES['image']['type']     = $_FILES['product_image']['type'][$key];
@@ -87,13 +94,6 @@ class EventController extends CI_Controller {
 				$mainImageData = $this->upload->data();
 				$product_images[] = 'uploads/events/' .  $mainImageData['file_name'];
 			}
-			else {
-				$this->session->set_flashdata('error',$this->upload->display_errors());
-				if ($artist_status==='1') {
-					redirect('artist-panel/event-list');
-				}
-				redirect('administrator/event-list');
-			}
 		}
 		$Event_data = array(
 			'name'   => $this->input->post('name'),
@@ -103,6 +103,7 @@ class EventController extends CI_Controller {
 			'date'   => $this->input->post('date'),
 			'time'   => $this->input->post('time'),
 			'address'   => $this->input->post('address'),
+			'city'   => $this->input->post('city'),
 			'event_type'   => $this->input->post('event_type'),
 			'total_seat'   => $this->input->post('total_seat'),
 			'ticket_price'   => $this->input->post('ticket_price'),
@@ -167,13 +168,6 @@ class EventController extends CI_Controller {
 				$productimages = $this->upload->data();
 				$product_images[] = 'uploads/events/'.$productimages['file_name'];
 			}
-			else {
-				$this->session->set_flashdata('error',$this->upload->display_errors());
-				if ($artist_status==='1') {
-					redirect('artist-panel/event-list');
-				}
-				redirect('administrator/event-list');
-			}
 		}
 		$Event_data = array(
 			'name'   => $this->input->post('name'),
@@ -183,6 +177,7 @@ class EventController extends CI_Controller {
 			'date'   => $this->input->post('date'),
 			'time'   => $this->input->post('time'),
 			'address'   => $this->input->post('address'),
+			'city'   => $this->input->post('city'),
 			'event_type'   => $this->input->post('event_type'),
 			'total_seat'   => $this->input->post('total_seat'),
 			'ticket_price'   => $this->input->post('ticket_price'),
@@ -202,7 +197,7 @@ class EventController extends CI_Controller {
 			$Event_data['product_image']=json_encode($product_images);
 		}
 		$id= $this->input->post('event_id');
-		$this->Event->update_Event($id,$Event_data); // Call the correct method on the loaded model
+		$this->Event->update_Event($id,$Event_data);
 		$this->session->set_flashdata('success', 'Event updated.');
 		if ($artist_status==='1') {
 			redirect('artist-panel/event-list');

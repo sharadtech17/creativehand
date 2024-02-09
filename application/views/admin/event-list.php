@@ -69,7 +69,7 @@
                                                     <th data-column-id="published"
                                                         class="gridjs-th gridjs-th-sort text-muted" tabindex="0"
                                                         style="width: 220px;">
-                                                        <div class="gridjs-th-content">Location
+                                                        <div class="gridjs-th-content">City
                                                         </div>
                                                     </th>
                                                     <th data-column-id="published"
@@ -134,7 +134,7 @@
                                                         </td>
 
                                                         <td data-column-id="published" class="gridjs-td">
-                                                            <span><?= $event->address ?></span>
+                                                            <span><?= $event->city ?></span>
                                                         </td>
                                                         <td>
                                                         <?php

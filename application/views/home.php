@@ -36,7 +36,6 @@
             <div><p><i class="fa fa-check-circle"></i> WELCOME TO CREATIVE HANDS OF INDIA <i class="fa fa-check-circle"></i></p></div>
         <?php endif; ?>
     </marquee>
-
     <section class="banner-small paira-margin-bottom-2 " style="margin-top:60px;">
         <div class="container">
             <div class="row">
@@ -82,70 +81,65 @@
                 </div>
                 <section class="single-product paira-margin-bottom-3">
                     <div class="">
-
-                        <div class="row">
-
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <div class="product-detles">
-
-                                    <!--=================== tab content Section ===================-->
-                                    <div class="tabs margin-bottom-30">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs single-product-tabs product-tabs ">
-                                            <li class="active"><a href="#" class="" data-toggle="tab">
-                                                    <h3> Unleash your creativity on our artist
-                                                        platform –</h3>A canvas for your imagination, where your
-                                                    passion
-                                                    transforms into captivating masterpieces.
-                                                </a></li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div class="tab-pane active margin-top-20" id="description">
-                                                <p class="rale-light margin-bottom-0">Creative Hands of India
-                                                    was initiated by Joe Dodani in Ahmedabad Gujarat. CHOI
-                                                    wishes to help new & budding artists and gives them
-                                                    international exposure. We invite art in all forms and we
-                                                    would like to connect them to various organizations &
-                                                    communities all over the world. As part of the initiative,
-                                                    we are launching a simple directory where the artist can
-                                                    create their professional profile and can connect with the
-                                                    artist community worldwide. The directory in the current
-                                                    form is free.
-                                                </p>
-                                                <p>
-                                                    artworks at an art fair, show or festival? We actively
-                                                    participate in art scene events and display artworks that
-                                                    are specially selected for each art show and the thematic
-                                                    surroundings of the event. </p>
-                                                <ul class="list-unstyled lists margin-top-10">
-                                                    <li>>> Request artwork collections for your event</li>
-                                                    <li>>> Companies can offset rental fees against tax</li>
-                                                </ul>
-                                            </div>
-
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="product-detles">
+                                <!--=================== tab content Section ===================-->
+                                <div class="tabs margin-bottom-30">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs single-product-tabs product-tabs ">
+                                        <li class="active"><a href="#" class="" data-toggle="tab">
+                                                <h3> Unleash your creativity on our artist
+                                                    platform –</h3>A canvas for your imagination, where your
+                                                passion
+                                                transforms into captivating masterpieces.
+                                            </a></li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active margin-top-20" id="description">
+                                            <p class="rale-light margin-bottom-0">Creative Hands of India
+                                                was initiated by Joe Dodani in Ahmedabad Gujarat. CHOI
+                                                wishes to help new & budding artists and gives them
+                                                international exposure. We invite art in all forms and we
+                                                would like to connect them to various organizations &
+                                                communities all over the world. As part of the initiative,
+                                                we are launching a simple directory where the artist can
+                                                create their professional profile and can connect with the
+                                                artist community worldwide. The directory in the current
+                                                form is free.
+                                            </p>
+                                            <p>
+                                                artworks at an art fair, show or festival? We actively
+                                                participate in art scene events and display artworks that
+                                                are specially selected for each art show and the thematic
+                                                surroundings of the event. </p>
+                                            <ul class="list-unstyled lists margin-top-10">
+                                                <li>>> Request artwork collections for your event</li>
+                                                <li>>> Companies can offset rental fees against tax</li>
+                                            </ul>
                                         </div>
+
                                     </div>
-                                    <span class="input-group-btn">
-                                        <a href="<?= base_url() ?>view-about">
-                                            <button class="btn btn-success" type="button" style="border-radius: 20px;">
-                                                Read more
-                                            </button>
-                                        </a>
-                                    </span>
+                                </div>
+                                <span class="input-group-btn">
+                                    <a href="<?= base_url() ?>view-about">
+                                        <button class="btn btn-success" type="button" style="border-radius: 20px;">
+                                            Read more
+                                        </button>
+                                    </a>
+                                </span>
 
-                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <div class="paira-product" style="padding-top: 50px;">
-                                    <div class="position-r pull-left paira-single-product-image-wrp  margin-bottom-40">
-                                        <div class=" paira-single-product-image">
-                                            <iframe width="600" height="500"
-                                                src="https://www.youtube.com/embed/VS1sa-F-UxE?si=grUBe8BHMKYPecGn">
-                                            </iframe>
-                                        </div>
-                                    <div>
-                                </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="paira-product" style="padding-top: 50px;">
+                                <div class="position-r pull-left paira-single-product-image-wrp  margin-bottom-40">
+                                    <div class=" paira-single-product-image">
+                                        <iframe width="600" height="500"
+                                            src="https://www.youtube.com/embed/VS1sa-F-UxE?si=grUBe8BHMKYPecGn">
+                                        </iframe>
+                                    </div>
+                                <div>
                             </div>
                         </div>
                 </section>
@@ -185,9 +179,6 @@
             </div>
         </div>
     </section>
-
-
-
     <section class="latest-picture paira-margin-bottom-2">
         <div class="">
             <div class="container">
@@ -287,37 +278,24 @@
 
                         </div>
                     </div>
-
                     <div class="col-md-6 col-xs-6 col-sm-6">
                         <div class="">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-
                                 <div class="carousel-inner">
                                     <div class=" item active">
                                         <img src="<?= base_url() ?>assets/images/slider/4.jpg" alt="Los Angeles">
-
                                     </div>
-
                                     <div class="item">
                                         <img src="<?= base_url() ?>assets/images/slider/5.jpg" alt="Chicago">
 
                                     </div>
-
                                     <div class="item">
                                         <img src="<?= base_url() ?>assets/images/slider/6.jpg" alt="New york">
-
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
     </section>
 
@@ -326,8 +304,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 heading-title">
-                        <h2 class="text-capitalize margin-clear pull-left"><span>Our Hand Made Arts
-                                Products</span>
+                        <h2 class="text-capitalize margin-clear pull-left"><span>Our Hand Made Arts Products</span>
                         </h2>
                         <a href="hand-made-art" class="text-uppercase pull-right margin-top-10">View All</a>
                     </div>
@@ -395,8 +372,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-xs-12">
-
-
                 <div class="col-md-12 heading-title margin-bottom-40 margin-top-40">
                     <h2 class="text-capitalize margin-clear pull-left "><span>Events</span>
                     </h2>
@@ -408,20 +383,26 @@
                             style="border-radius: 6px;background-image: url(assets/images/artist/banner/17.jpg);">
                             <div style="margin-bottom: 100px;">
                                 <h5>
-                                <?= ($event->date > date('Y-m-d')) ? 
-                                        '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Upcoming</button>' : 
-                                        '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Past</button>' ?>
+                                <?php
+                                    if ($event->start_date > date('Y-m-d')) {
+                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Upcoming</button>';
+                                    } elseif ($event->date < date('Y-m-d')) {
+                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Past</button>';
+                                    } else {
+                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Running</button>';
+                                    }
+                                ?>
                                 </h5>
                             </div>
                             <div class="row" style="padding-left:5px;">
-                                <div class="col-md-7" style="bottom: -25px;">
+                                <div class="col-md-6">
                                     <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
                                         <h5><?= $event->name ?></h5>
                                     </a>
                                 </div>
-                                <div class="col-md-5" style="bottom: -30px;">
+                                <div class="col-md-6">
                                     <i class="fa fa-calendar"></i>
-                                    <a href=""><?= date('d/m/Y', strtotime($event->date)) ?></a>
+                                    <a href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
                                 </div>
                             </div>
                             <hr>

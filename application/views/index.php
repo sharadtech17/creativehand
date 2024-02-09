@@ -41,13 +41,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" rel="stylesheet">
 <style>
-    .iti__country-list{
-            z-index: 3;
-    }
-    .contact-form .form-control {
-        width: 376px;
-    }
-        .paira-single-product-image iframe {
+      .paira-single-product-image iframe {
             width: 100%;
         }
 
@@ -163,11 +157,18 @@
                 transition: all 0.7s ease;
                 z-index: 10000;
             }
-
+            .sm-head{
+                align-items: center;
+                display: flex;
+                text-align: right;
+                justify-content: space-between;
+            }
             .navbar ul li a {
                 font-size: 16px !important;
             }
-
+            #searchbax{
+                display: none !important;
+            }
             .hamburger div {
                 width: 30px;
                 height: 3px;
@@ -179,7 +180,7 @@
 
             .nav-links {
                 position: fixed;
-                background: red;
+                background: #c66b15;
                 height: 100vh;
                 width: 100%;
                 flex-direction: column;
@@ -273,8 +274,7 @@
             <section class="">
                 <div style="background-color:#023020; color:white;">
                     <div class="container">
-
-                        <ul class="nav navbar-nav navbar-nav navbar-right " style="margin: -10px;">
+                        <ul class="nav navbar-nav navbar-nav navbar-right">
                             <li>
                                 <i class="fas fa-sign-in-alt"></i>
 
@@ -291,13 +291,13 @@
                     </div>
                 </div>
                 <div class="container-fluid ">
-                    <div class="row padding-fix">
-                        <div class="pull-left logo col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+                    <div class="row sm-head padding-fix">
+                        <div class="pull-left logo col-lg-3 col-md-3 col-sm-3">
                             <a href="<?=base_url()?>" style="margin-top: -15px; ">
                                 <img src="<?=base_url()?>assets/images/logo1.png" alt="" class=" rounded-top"
                                     style="background-color: white; border-radius: 15px 50px; "></a>
                         </div>
-                        <div class=" col-md-7 col-sm-7 col-xs-9" style="padding-top: 40px;">
+                        <div class="col-md-7 col-sm-7" style="padding-top: 40px;">
                             <form method="GET" action="" id="searchForm">
                                 <div style="display: flex;" class="search-wrp">
                                     <input type="text" name="query" class=" form-control " placeholder="Search by Keywords..."
@@ -323,13 +323,12 @@
                                 </div>
                             </form>
                         </div>
-                        <div class=" pull-right col-md-2 col-sm-2 col-xs-3  " style="padding-top: 25px;">
+                        <div class=" pull-right col-md-2 col-sm-2 col-xs-3" style="padding-top: 25px;">
                             <div class="account-ajax-cart">
-                                <ul class="list-inline  " style="display: flex;justify-content: center; ">
+                                <ul class="list-inline" style="display: flex;justify-content: center; ">
                                     <!-- <ul class="nav navbar-nav navbar- right"> -->
                                     <li><a href="<?=base_url()?>user-login"> <i class="fa fa-user fa-lg" style="color: #c66b15;"></i>
                                         </a>
-                                    </li>
                                     </li>
                                     <li>
                                         <a href="<?=base_url()?>view-cart"> <i class="fa fa-shopping-cart fa-lg"
@@ -347,12 +346,12 @@
                 </div>
                 <!-- <div class="container-fluid " style="background-color: #c2a476; "> -->
                 <div class="container-fluid " style="background-color: #c66b15; ">
-                    <div class="row  ">
+                    <div class="row ">
                         <div class="col-md-12">
                             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 ">
                                 <nav class="navbar navbar-collapse" role=""
                                     style="display: flex;justify-content: space-between;">
-                                    <ul class="nav-links ">
+                                    <ul class="nav-links">
                                         <li>
                                             <a href="<?=base_url()?>home" style="color: white;font-size: large;"><span
                                                     class="fa fa-home" style="color:white;"></span> Home</a>
@@ -363,15 +362,13 @@
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>view-painting" style="color: white;font-size: large;"><span
-                                                    class="fa fa-paint-brush" style="color:white;"></span>Painting</a>
+                                                    class="fa fa-paint-brush" style="color:white;"></span> Painting</a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>artist" style="color: white;font-size: large;"><span
                                                     class="fa fa-users" style="color:white;"></span> Artist</a>
                                         </li>
-                                        
                                         <li>
-                                            
                                             <a href="<?=base_url()?>view-event" style="color: white;font-size: large;"><span
                                                     class="fa fa-envira" style="color:white;"></span> Events</a>
                                         </li>
@@ -379,22 +376,17 @@
                                             <a href="<?=base_url()?>view-shop" style="color: white;font-size: large;"><span
                                                     class="fa fa-shopping-cart" style="color:white;"></span> Shop</a>
                                         </li>
-                                    </ul>
-                                    <ul class="nav-links">
-                                        
                                         <li>
                                             <a href="<?=base_url()?>view-about" style="color: white;font-size: large;"><span
                                                     class="fa fa-male" style="color:white;"></span> About</a>
                                         </li>
-
-
                                         <li>
                                             <a href="<?=base_url()?>view-blog" style="color: white;font-size: large;"><span
-                                                    class="fa fa-paste" style="color:white;"></span>blog</a>
+                                                    class="fa fa-paste" style="color:white;"></span> Blog</a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>view-contact" style="color: white;font-size: large;"><span
-                                                    class="fa fa-address-card" style="color:white;"></span>Contact us</a>
+                                                    class="fa fa-address-card" style="color:white;"></span> Contact us</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -408,9 +400,9 @@
                     </div>
                 </div>
 
-                <div class="moblie-search-wrp">
+                <div class="moblie-search-wrp" id="">
                     <input type="text" class=" form-control " placeholder="Search by Keywords..."
-                        style="  padding-top: 21px; padding-bottom: 21px;border-color: #c66b15; border-radius: 0;">
+                        style="padding-top: 21px; padding-bottom: 21px;border-color: #c66b15; border-radius: 0;">
                     <style>
                         input::placeholder {
                             font-weight: bold;
@@ -426,10 +418,7 @@
                             <option>Hand Made Arts</option>
                         </select>
                     </div>
-
-                    <button class="btn btn-default" type="button" style="background-color: #c66b15;"><i
-                            class="fa fa-search " style=" 
-                        color: white;"></i></button>
+                    <button class="btn btn-default" type="button" style="background-color: #c66b15;"><i class="fa fa-search " style="color: white;"></i></button>
                 </div>
             </section>
         </header>
@@ -522,8 +511,8 @@
                                             <img src="<?=base_url()?>assets/images/artist/16.jpg" alt=""
                                                 style="width: 70px;height: 70px; ">
                                             <img src="<?=base_url()?>assets/images/artist/12.jpg" alt=""
-                                                style="width: 70px;height: 70px; "></a></li>
-    
+                                                style="width: 70px;height: 70px; "></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -623,6 +612,18 @@ $("#mobile_code").intlTelInput({
 	utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
 });
 </script>
+<script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const links = document.querySelectorAll(".nav-links li");
+
+        hamburger.addEventListener('click', () => {
+            //Animate Links
+            navLinks.classList.toggle("open");
+            //Hamburger Animation
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
 </body>
 <!-- Mirrored from demo.enpek.com/html-templates/dye/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 12:56:27 GMT -->
 </html>

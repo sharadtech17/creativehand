@@ -75,6 +75,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-discount-input">City</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="city" placeholder="City" aria-label="discount" value="<?=$event->city ?>" aria-describedby="product-discount-addon">
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Type</label>
@@ -100,15 +108,6 @@
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="orders-input">Event Status</label>
-                                <input type="number" class="form-control" id="orders-input" name="event_status" placeholder="Event Status"
-                                    required>
-                                <div class="invalid-feedback">Please Enter a product orders.</div>
-                            </div>
-                        </div>
-
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">Event Banner</label>

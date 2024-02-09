@@ -10,6 +10,7 @@
 					<thead>
 						<tr>
 							<th>Sr. No</th>
+							<th>Art Name</th>
 							<th>Artist Name</th>
 							<th>Category</th>
 							<th>Sub Category</th>
@@ -24,7 +25,8 @@
 							<?php $i=1; foreach ($artsdata as $art) : ?>
 								<tr>
 									<td><?=$i++;?></td>
-									<td> <img src="<?=base_url().$art->mainimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>bannerassets/altuser.jpg'" alt="" width="45" height="45"> <?=$art->artistname?></td>
+									<td> <img src="<?=base_url().$art->mainimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>bannerassets/altuser.jpg'" alt="" width="45" height="45"> <?=$art->title?></td>
+									<td><?=$art->artistname?></td>
 									<td><?=$art->category_name?></td>
 									<td><?=$art->subcategory_name?></td>
 									<td><?=$art->price?></td>
