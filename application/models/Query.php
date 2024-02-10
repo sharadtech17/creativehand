@@ -38,6 +38,7 @@ class Query extends CI_Model {
 	// category
 	public function getCategoryList()
 	{
+		$this->db->order_by('id', "desc");
 		$query = $this->db->get('categories');
 		return $query->result();
 	}
@@ -63,6 +64,7 @@ class Query extends CI_Model {
 		$this->db->select('subcategories.*, categories.categoriesname as categoryname');
 		$this->db->from('subcategories');
 		$this->db->join('categories', 'categories.id = subcategories.categories', 'left');
+		$this->db->order_by('subcategories.id', "desc");
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -106,6 +108,7 @@ class Query extends CI_Model {
 	public function getcategoriesdata()
 	{
 		$this->db->where('activeflag', '0');
+		$this->db->order_by('id', "desc");
 		$query = $this->db->get('categories');
 		return $query->result();
 	}

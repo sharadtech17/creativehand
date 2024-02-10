@@ -69,8 +69,8 @@
                                             <?php foreach ($categorylist as $Category): ?>
                                                 <tr class="gridjs-tr Categorylistdata">
                                                     <td><?=$i++;?></td>
-                                                    <td><?=$Category->categoriesname?></td>
                                                     <td><?=$Category->category_type?></td>
+                                                    <td><?=$Category->categoriesname?></td>
                                                     <td data-column-id="action" class=""><span>
                                                             <div class="">
                                                                 <ul class="">

@@ -47,7 +47,6 @@ $jsonData = json_decode($artistdata->socialaccount);
 						}
 					?>
 				</div>
-				
 			</div>
 		</div>
 	</div>

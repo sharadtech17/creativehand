@@ -196,6 +196,12 @@ if (isset($this->session->userdata['creativehandsartist'])) {
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Inquiry List') ? 'active' : ''; ?>" href="<?=base_url()?>artist/inquiry-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-article-fill"></i> <span data-key="t-layouts">Inquiry</span>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'My Subscription' || $title ==='Subscription History') ? 'active' : ''; ?>" href="#sidebarLayouts1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
 								<i class="ri-layout-3-line"></i> <span data-key="t-layouts">Subscription</span>
 							</a>

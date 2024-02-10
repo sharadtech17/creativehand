@@ -263,6 +263,43 @@
             }
 
         }
+        /* Popup Container Styles */
+        .popup-container {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+
+        /* Popup Image Styles */
+        #popupImage {
+            display: block;
+            margin: 50px auto;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        /* Close Button Styles */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .close-btn:hover {
+            color: #bbb;
+        }
+        nav < ul {
+            list-style-type: disc; /* Set the list style type to disc for bullets */
+        }
     </style>
 </head>
 
@@ -335,9 +372,9 @@
                                                 style="color: #c66b15;"></i>
                                         </a>
                                     </li>
-                                    <li class="moblie-search-icon">
+                                    <!-- <li class="moblie-search-icon">
                                         <i class="fa fa-search fa-lg mobile-search-btn" style="color: #c66b15;"></i>
-                                    </li>
+                                    </li> -->
 
                                 </ul>
                             </div>
@@ -350,7 +387,7 @@
                         <div class="col-md-12">
                             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 ">
                                 <nav class="navbar navbar-collapse" role=""
-                                    style="display: flex;justify-content: space-between;">
+                                    style="display: flex;justify-content: space-between;list-style-type: none;">
                                     <ul class="nav-links">
                                         <li>
                                             <a href="<?=base_url()?>home" style="color: white;font-size: large;"><span
@@ -424,29 +461,10 @@
         </header>
         <?php include_once($content);?>
         <footer>
-            <!--=================== Footer Top Section ===================-->
-            <section class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                            <div class="paira-widget paira-subscribe">
-                                <h3 class="text-center margin-clear text-uppercase">Sign up for the newsletter</h3>
-                                <hr class="margin-bottom-40 margin-top-15">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Email Address">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">SUBSCRIBE</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             <!--=================== Footer Bottom Section ===================-->
             <section class="footer-bottom">
                 <div class="container-fluid">
-                    <div class="row" style="padding-bottom: 50px;">
+                    <div class="row" style="padding-bottom: 100px;">
     
                         <div class="col-md-2 col-sm-6 col-xs-12">
                             <div class="paira-widget paira-menu">
@@ -474,18 +492,17 @@
                                 </ul>
                             </div>
                         </div>
-    
                         <div class="col-md-2 col-sm-6 col-xs-12">
                             <div class="paira-widget paira-menu">
-                                <h4>Link Heding</h4>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Forums</a></li>
-                                    <li><a href="#">AutThemetidy Blog</a></li>
-                                    <li><a href="#">Faqs</a></li>
-                                </ul>
+                                    <h4>Call Us On</h4>
+                                    <ul class="list-unstyled">
+                                        <li style="display: flex;">
+                                            <i class="fa fa-phone" style="width: 30px;"></i>
+                                            <a href="tel:8155919651">8155919651 ,<br> 8866770388</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-md-2 col-sm-6 col-xs-12">
                             <div class="paira-widget paira-menu">
                                 <h4>Policy</h4>
@@ -496,90 +513,23 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="paira-widget paira-menu ">
-                                <h4>Instagram Feed</h4>
-                                <ul class="list-unstyled ">
-                                    <li><a href="#">
-                                            <img src="<?=base_url()?>assets/images/artist/2.jpg" alt="" style="width: 70px;height: 70px; ">
-                                            <img src="<?=base_url()?>assets/images/artist/5.jpg" alt="" style="width: 70px;height: 70px; ">
-                                            <img src="<?=base_url()?>assets/images/artist/9.jpg" alt=""
-                                                style="width: 70px;height: 70px; "></a></li>
-    
-                                    <li><a href="#">
-                                            <img src="<?=base_url()?>assets/images/artist/15.jpeg" alt=""
-                                                style="width: 70px;height: 70px;">
-                                            <img src="<?=base_url()?>assets/images/artist/16.jpg" alt=""
-                                                style="width: 70px;height: 70px; ">
-                                            <img src="<?=base_url()?>assets/images/artist/12.jpg" alt=""
-                                                style="width: 70px;height: 70px; "></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                    </div>
-                    <hr>
-                    <div class=" row">
-    
-                        <div class="col-md-2 col-sm-6 col-xs-12 ">
-                            <div class="paira-widget paira-menu">
-    
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 ">
-                            <div class="paira-widget paira-menu">
-                                <h4>Call Us On</h4>
-                                <ul class="list-unstyled">
-    
-                                    <li style="display: flex;">
-                                        <i class="fa fa-phone" style="width: 30px;"></i>
-                                        <a href="">8155919651,<br> 8866770388</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="paira-widget paira-social">
-                                <h4>Follow Us</h4>
-                                <ul class="list-inline list-unstyled">
-                                    <li><a href="https://www.facebook.com/Creativehandsofindia" target="_blank"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://www.creativehandsofindia.com/" target="_blank"><i
-                                                class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li><a href="https://twitter.com/CreativeHands56" target="_blank"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/company/themetidy" target="_blank"><i
-                                                class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="https://in.pinterest.com/dodaniworld/" target="_blank"><i
-                                                class="fa fa-pinterest"></i></a></li>
-                                    <li><a href="https://www.instagram.com/creativehandsofindia/" target="_blank"><i
-                                                class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-    
-                        </div>
-    
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <div class="paira-widget paira-social">
-    
                                 <h4>Payment Methode</h4>
                                 <img src="<?=base_url()?>assets/images/footer/payment-icon.png" alt="">
                             </div>
-    
                         </div>
-    
-                        <div class="col-md-12 col-xs-12 col-sm-12  ">
+                    </div>
+                    <hr>
+                    <div class=" row">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
                             <div class="paira-widget paira-copyright text-center">
                                 <p class="margin-clear">©CreativeHandsOfIndia. All Rights Reserved.</p>
-    
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </footer>
-
     </div>
     <!--=================== Placed at the end of the document, so the pages load faster ===================-->
     <!-- <script src="<?=base_url()?>assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -591,6 +541,12 @@
     <script src="<?=base_url()?>assets/js/jquery.bxslider.min.js"></script> -->
     <!--=================== Paira Framework Main Javascript ===================-->
     <!-- <script src="<?=base_url()?>assets/js/paira.js" type="text/javascript"></script> -->
+
+<!-- Hidden Popup Container -->
+<div id="popupContainer" class="popup-container">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <img id="popupImage" src="" alt="Popup Image">
+</div>
 
     <script>
     document.getElementById('searchSection').addEventListener('change', function() {
@@ -623,6 +579,17 @@ $("#mobile_code").intlTelInput({
             //Hamburger Animation
             hamburger.classList.toggle("toggle");
         });
+
+        // Function to display the image in the popup
+        function showPopup(imageSrc) {
+            document.getElementById('popupImage').src = imageSrc;
+            document.getElementById('popupContainer').style.display = 'block';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popupContainer').style.display = 'none';
+        }
     </script>
 </body>
 <!-- Mirrored from demo.enpek.com/html-templates/dye/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 12:56:27 GMT -->

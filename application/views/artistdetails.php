@@ -1,5 +1,13 @@
 <?php
-$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artistid])->row();
+$this->db->select('artist.*, GROUP_CONCAT(DISTINCT categories.categoriesname) as category_names, GROUP_CONCAT(DISTINCT subcategories.subcategoriesname) as subcategory_names');
+$this->db->from('artist');
+$this->db->join('categories', 'FIND_IN_SET(categories.id, artist.categories)', 'left');
+$this->db->join('subcategories', 'FIND_IN_SET(subcategories.id, artist.subcategories)', 'left');
+$this->db->where('artist.id', $artistid);
+$this->db->group_by('artist.id');
+$query = $this->db->get();
+$artistdata = $query->row();
+
 $socialAccountsJson = $artistdata->socialaccount;
 
 // Convert JSON string to an array
@@ -55,33 +63,6 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 									</li>
 								</ul>
 							</div>
-							<div class="product-detles">
-								<ul class="nav nav-tabs single-product-tabs product-tabs text-center">
-									<!-- <li class="active col-lg-6">
-										<h6 class="text-left  margin-bottom-15 
-										margin-clear">Overall Rating :
-											<i class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star-o"></i><i
-												class="fa fa-star-o"></i>
-											3/5 (<i
-											class="fa fa-users"></i> 223)
-										</h6>
-
-										<h5 class="text-left  margin-bottom-15 
-										margin-clear">Rate Artist :
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-										</h5>
-									</li> -->
-									<!-- <li>
-										<button class="text-right btn btn-primary btn-lg text-capitalize 
-										margin-bottom-20">3D Artist</button>
-									</li> -->
-								</ul>
-							</div>
 							<!--=================== tab content Section ===================-->
 							<div class="tabs margin-bottom-30">
 								<!-- Nav tabs -->
@@ -97,27 +78,45 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 								</div>
 							</div>
 							<div class="sicoal-share-widget margin-top-10  full-width pull-left">
-								<label class=" pull-left">Category :</label>
+								<label class=" pull-left">City :</label>
 								<ul class="social-li list-inline">
-									<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-image"
-												style="color: black;"></i>
-											<?=$artistdata->category?>
+									<li><a><?=$artistdata->city?>
 										</a></li>
 								</ul>
 							</div>
-
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title mb-4">Categories :</h5>
+									<div class="d-flex flex-wrap gap-2 fs-15">
+										<?php if (!empty($artistdata->category_names)) {
+											$category_names = explode(',', $artistdata->category_names); foreach ($category_names as $category_name): ?>
+											<a class="badge badge-soft-primary"><?= htmlspecialchars($category_name) ?></a>
+										<?php endforeach; } ?>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title mb-4">Sub Categories :</h5>
+									<div class="d-flex flex-wrap gap-2 fs-15">
+										<?php if (!empty($artistdata->subcategory_names)) { $subcategory_names = explode(',', $artistdata->subcategory_names); foreach ($subcategory_names as $category_name): ?>
+											<a class="badge badge-soft-primary"><?= htmlspecialchars($category_name) ?></a>
+										<?php endforeach; } ?>
+									</div>
+								</div>
+							</div>
 							<div class="sicoal-share-widget margin-top-10  full-width pull-left">
 								<label class=" pull-left">Artist :</label>
 								<ul class="social-li list-inline">
-									<li><a href="https://www.facebook.com" target="_blank">
+									<li><a>
 											<?=$artistdata->name?>
 										</a></li>
-									<li><a href="#" target="_blank"><i class="fa fa-phone"
+									<li><a href="tel:<?= $artistdata->numbervisibly == 1 ? $artistdata->number : ''; ?>" target="_blank"><i class="fa fa-phone"
 												style="color: black;"></i>
 											<?= $artistdata->numbervisibly == 1 ? $artistdata->number : '**********'; ?>
 										</a>
 									</li>
-									<li><a href="#" target="_blank"><i class="fa fa-whatsapp"
+									<li><a><i href="https://wa.me/<?= $artistdata->wpnumbervisibly == 1 ? $artistdata->wpnumber : ''; ?>" target="_blank" class="fa fa-whatsapp"
 												style="color: black;"></i>
 											<?= $artistdata->wpnumbervisibly == 1 ? $artistdata->wpnumber : '**********'; ?>
 										</a>
@@ -190,7 +189,7 @@ $socialAccountsArray = json_decode($socialAccountsJson, true);
 						<?php if (!empty($artdata)) : ?>
 						    <?php foreach ($artdata as $art) : ?>
 						        <div class="single-varients-product gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter">
-						            <a href="#">
+						            <a href="<?= $artistdata->category=='Painting Arts' ?  base_url().'painting-details/'.$art->id :  base_url().'hand-made-art-details/'.$art->id ?>">
 						                <img src="<?=base_url($art->mainimage)?>" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
 						                <h4 class="text-center"><?=$art->title?></h4>
 						                <h6 class="text-center"><?=$art->shortdescription?></h6>

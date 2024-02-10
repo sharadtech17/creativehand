@@ -47,7 +47,12 @@
                             <?php foreach ($eventlist as $event): ?>
                                 <div class="col-md-4 col-sm-6 item">
                                     <div
-                                        style="border-radius: 6px;background-image: url(assets/images/artist/banner/17.jpg);">
+                                        style="border-radius: 6px;
+                                            background-repeat: no-repeat;
+                                            background-image: url(<?= base_url().$event->event_image ?>);
+                                            background-color: #c66b156e;
+                                            background-blend-mode: multiply;
+                                            background-position-x: center;">
                                         <div style="margin-bottom: 100px;">
                                             <h5>
                                             <?php
@@ -76,7 +81,7 @@
                                         <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px; ">
                                             <h5>
                                                 <i class="fa fa-map-marker"></i>
-                                                <?= $event->address ?>
+                                                <?= $event->city ?>
                                             </h5>
                                             <!-- <h4>$20</h4> -->
                                             <h6><i class="fa fa-user"></i>

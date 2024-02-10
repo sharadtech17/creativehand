@@ -126,7 +126,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub Link</label>
-                                <input type="text" class="form-control" id="orders-input" name="youtube_link" placeholder="Link" required>
+                                <input type="text" class="form-control" id="orders-input" name="youtube_link" placeholder="Link">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" for="orders-input">YouTub video Details</label>
-                                <input type="text" class="form-control" id="orders-input" name="youtube_video_desc" required>
+                                <input type="text" class="form-control" id="orders-input" name="youtube_video_desc">
                                 <div class="invalid-feedback">Please Enter a product orders.</div>
                             </div>
                         </div>

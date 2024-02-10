@@ -65,37 +65,37 @@
 					<div class="form-contact">
 						<div class="row">
 							<div class="col-md-12 col-xs-12 col-sm-12">
-								<form accept-charset="UTF-8" action="#" class="contact-form" method="post">
+								<form accept-charset="UTF-8" action="<?php echo base_url()?>addContact" class="contact-form" method="post">
 									<input name="form_type" type="hidden" value="new_comment">
 									<input name="utf8" type="hidden" value="✓">
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon7">Name</span>
-											<input type="text" class="form-control"
+											<input type="text" name="name" class="form-control"
 												aria-describedby="basic-addon3">
 										</div>
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon8">Phone</span>
-											<input type="text" class="form-control"
+											<input type="text" name="phone" class="form-control"
 												aria-describedby="basic-addon3">
 										</div>
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon9">Email</span>
-											<input type="text" class="form-control"
+											<input type="email" name="email" class="form-control"
 												aria-describedby="basic-addon3">
 										</div>
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon10">Subject</span>
-											<input type="text" class="form-control"
+											<input type="text" name="subject" class="form-control"
 												aria-describedby="basic-addon3">
 										</div>
 									</div>
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon11">Comment</span>
-											<textarea rows="10" name="contact[body]"
+											<textarea name="comment" rows="10" name="contact[body]"
 												class="form-control"></textarea>
 										</div>
 									</div>

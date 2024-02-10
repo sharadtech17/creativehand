@@ -264,7 +264,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="col-lg-12">
 										<div class="mb-3 pb-2">
 											<label for="exampleFormControlTextarea" class="form-label">Description</label>
-											<textarea class="form-control" name="artistdescription" id="exampleFormControlTextarea" placeholder="Enter your description" rows="6"><?=$artistdata->description?></textarea>
+											<textarea class="form-control" name="artistdescription" id="ckeditor-classic" placeholder="Enter your description" rows="6"><?=$artistdata->description?></textarea>
 										</div>
 									</div>
 									<div class="col-lg-12">

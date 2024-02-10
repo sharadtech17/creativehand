@@ -32,21 +32,34 @@
                                         </div>
                                         <div class="paira-single-product-image">
                                             <img src="<?= base_url().$event->event_image?>" alt=""
-                                                class="paira-product-image img-responsive">
+                                                class="paira-product-image img-responsive" width="500px" height="auto">
                                         </div>
                                         <div>
                                             <h3 class="text-capitalize">Events Details</h3>
                                             <br>
-                                            <p><strong>Page Shipping Tab:</strong> <?=$event->event_details?>	</p>
+                                            <?= $event->event_details ?>
                                         </div>
                                         <br>
-                                        <div class="product-detles">
-
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-success" type="button">
-                                                    REQUEST ARTWORKS FOR YOUR EVENT
-                                                </button>
-                                            </span>
+                                        <div class="pull-left small-verient-product">
+                                            <h3 class="text-capitalize">Gallery images</h3>
+                                            <div class="col-md-12">
+                                                <div style="display:flex ;gap: 2px; justify-content: space-evenly;margin-top: 20px;">
+                                                    <?php
+                                                        $galleryimage_arr=json_decode($event->product_image);
+                                                        if (!empty($galleryimage_arr)) {
+                                                            foreach ($galleryimage_arr as $value) {
+                                                                ?>
+                                                                <div>
+                                                                    <a>
+                                                                        <img onclick="showPopup(this.src)" src="<?=base_url().$value?>" alt="product-14" class="img-responsive center-block" />
+                                                                    </a>
+                                                                </div>
+                                                            <?php
+                                                            }
+                                                        }
+                                                    ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,84 +116,4 @@
             </div>
         </div>
     </section>
-
-    <!-- <section class="latest-picture paira-margin-bottom-2">
-        <div class="picture-container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 heading-title">
-                        <h2 class="text-capitalize margin-clear pull-left"><span>More event impressions? Take a
-                                look!</span></h2>
-                        <a href="#" class="text-uppercase pull-right margin-top-10">View All</a>
-                    </div>
-
-
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/18.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/18.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/19.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/20.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/21.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="assets/images/artist/24.jpg" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
 </main>

@@ -1,11 +1,13 @@
 <?php
-	$this->db->select('artist.*, categories.categoriesname as category_name, subcategories.subcategoriesname as subcategory_name');
-	$this->db->from('artist');
-	$this->db->join('categories', 'artist.categories = categories.id', 'left');
-	$this->db->join('subcategories', 'artist.subcategories = subcategories.id', 'left');
-	$this->db->where('artist.id', $artistid);
-	$query = $this->db->get();
-	$artistdata = $query->row();
+$this->db->select('artist.*, GROUP_CONCAT(DISTINCT categories.categoriesname) as category_names, GROUP_CONCAT(DISTINCT subcategories.subcategoriesname) as subcategory_names');
+$this->db->from('artist');
+$this->db->join('categories', 'FIND_IN_SET(categories.id, artist.categories)', 'left');
+$this->db->join('subcategories', 'FIND_IN_SET(subcategories.id, artist.subcategories)', 'left');
+$this->db->where('artist.id', $artistid);
+$this->db->group_by('artist.id');
+$query = $this->db->get();
+$artistdata = $query->row();
+
 $jsonData = json_decode($artistdata->socialaccount);
 ?>
 <div class="container-fluid">
@@ -33,6 +35,18 @@ $jsonData = json_decode($artistdata->socialaccount);
 						<div>
 							<i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i><?=$artistdata->representing?>
 						</div>
+					</div>
+					<div class="hstack text-white-50 gap-1">
+						<h5 class="me-1 text-white-75 fs-16 align-middle">Account Status -</h5>
+						<?php
+							if ($artistdata->verificationstatus==0) {
+								echo '<h5 class="text-warning mb-1">Pandding</h5>';
+							}elseif ($artistdata->verificationstatus==1) {
+								echo '<h5 class="text-success mb-1">Approved</h5>';
+							}elseif($artistdata->verificationstatus==2){
+								echo '<h5 class="text-danger mb-1">Rejected</h5>';
+							}
+						?>
 					</div>
 				</div>
 			</div>
@@ -166,7 +180,10 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="card-body">
 										<h5 class="card-title mb-4">Categories</h5>
 										<div class="d-flex flex-wrap gap-2 fs-15">
-											<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->category_name) ?></a>
+											<?php if (!empty($artistdata->category_names)) {
+												$category_names = explode(',', $artistdata->category_names); foreach ($category_names as $category_name): ?>
+												<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($category_name) ?></a>
+											<?php endforeach; } ?>
 										</div>
 									</div>
 								</div>
@@ -174,7 +191,9 @@ $jsonData = json_decode($artistdata->socialaccount);
 									<div class="card-body">
 										<h5 class="card-title mb-4">Sub Categories</h5>
 										<div class="d-flex flex-wrap gap-2 fs-15">
-										<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($artistdata->subcategory_name) ?></a>
+											<?php if (!empty($artistdata->subcategory_names)) { $subcategory_names = explode(',', $artistdata->subcategory_names); foreach ($subcategory_names as $category_name): ?>
+												<a href="javascript:void(0);" class="badge badge-soft-primary"><?= htmlspecialchars($category_name) ?></a>
+											<?php endforeach; } ?>
 										</div>
 									</div>
 								</div>

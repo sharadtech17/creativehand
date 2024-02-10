@@ -11,7 +11,7 @@ class Event extends CI_Model {
 		$this->db->select('events.*, artist.name as artistname');
 		$this->db->from('events');
 		$this->db->join('artist', 'artist.id = events.artist_id', 'left');
-		$this->db->order_by('events.id', 'desc');
+		$this->db->order_by('events.id', "desc");
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -21,7 +21,7 @@ class Event extends CI_Model {
 		$this->db->from('events');
 		$this->db->join('artist', 'artist.id = events.artist_id', 'left');
 		$this->db->where('events.status', 0);
-		$this->db->order_by('events.id', 'desc');
+		$this->db->order_by('events.id', "DESC");
 		$query = $this->db->get();
 		return $query->result();
 	}

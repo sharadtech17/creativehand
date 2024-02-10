@@ -15,7 +15,16 @@ $route['view-event'] = 'EventController/index';
 $route['view-painting'] = 'HandArtController/viewPainting';
 $route['painting-details/(:any)'] = 'HandArtController/viewPaintingDetails/$1';
 
+//Contact
 $route['view-contact'] = 'ContactController/index';
+$route['addContact'] = 'ContactController/StoreContactPost';
+$route['administrator/contact-list'] = 'ContactController/ViewContactList';
+
+//inquiry
+$route['view-inquiry'] = 'InquiryController/index';
+$route['addInquiry'] = 'InquiryController/StoreinquiryPost';
+$route['artist/inquiry-list'] = 'InquiryController/ViewinquiryList';
+
 $route['view-blog'] = 'BlogController/index';
 $route['view-blog-detail'] = 'BlogController/viewBlogDetails';
 $route['artist'] = 'HomeController/artist';

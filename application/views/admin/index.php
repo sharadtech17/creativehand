@@ -228,6 +228,12 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 								<i class="ri-article-fill"></i> <span data-key="t-layouts">News</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Contact List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/contact-list" role="button"
+								aria-expanded="false" aria-controls="sidebarLayouts">
+								<i class="ri-article-fill"></i> <span data-key="t-layouts">Contact</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
