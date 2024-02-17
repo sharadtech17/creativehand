@@ -41,6 +41,10 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" rel="stylesheet">
 <style>
+        .rowfix{
+            display: flex;
+            flex-wrap: wrap;
+        }
       .paira-single-product-image iframe {
             width: 100%;
         }

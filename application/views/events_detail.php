@@ -31,8 +31,7 @@
                                             <h6><i class="fa fa-user"></i> <?=$event->artistname?></h6>
                                         </div>
                                         <div class="paira-single-product-image">
-                                            <img src="<?= base_url().$event->event_image?>" alt=""
-                                                class="paira-product-image img-responsive" width="500px" height="auto">
+                                            <img src="<?= base_url().$event->event_image?>" alt="" class="img-responsive" style="height:350px;width:auto;object-fit: cover;">
                                         </div>
                                         <div>
                                             <h3 class="text-capitalize">Events Details</h3>
@@ -43,48 +42,26 @@
                                         <div class="pull-left small-verient-product">
                                             <h3 class="text-capitalize">Gallery images</h3>
                                             <div class="col-md-12">
-                                                <div style="display:flex ;gap: 2px; justify-content: space-evenly;margin-top: 20px;">
-                                                    <?php
-                                                        $galleryimage_arr=json_decode($event->product_image);
-                                                        if (!empty($galleryimage_arr)) {
-                                                            foreach ($galleryimage_arr as $value) {
-                                                                ?>
-                                                                <div>
-                                                                    <a>
-                                                                        <img onclick="showPopup(this.src)" src="<?=base_url().$value?>" alt="product-14" class="img-responsive center-block" />
-                                                                    </a>
-                                                                </div>
-                                                            <?php
-                                                            }
+                                                <?php
+                                                    $galleryimage_arr=json_decode($event->product_image);
+                                                    if (!empty($galleryimage_arr)) {
+                                                        foreach ($galleryimage_arr as $value) {
+                                                            ?>
+                                                            <div class="col-md-3">
+                                                                <a>
+                                                                    <img onclick="showPopup(this.src)" src="<?=base_url().$value?>" alt="product-14" class="img-responsive center-block" />
+                                                                </a>
+                                                            </div>
+                                                        <?php
                                                         }
-                                                    ?>
-                                                </div>
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12 col-sm-6 ">
-
-                                <div class="creat-account picture-container" style="padding: 5px !important;background-color:
-                                             #c66b15;border-radius: 8px;">
-                                    <br>
-                                    <h3 style="text-align: left;">Event Video</h3>
-                                    <hr>
-                                    <div class="paira-product" style="padding-top: 50px;">
-                                        <div class="position-r pull-left paira-single-product-image-wrp  margin-bottom-40">
-                                            <div class="paira-single-product-image">
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $event->youtube_link ?>" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p style="text-align: left; padding: 10px;">
-                                            <?=$event->youtube_video_desc?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <br>
                                 <div class="creat-account picture-container"
                                     style="padding: 10px !important; text-align: left;border-radius: 2%;">
                                     <h6>Price : <span> ₹<?=$event->ticket_price?></span></h6>
@@ -98,16 +75,36 @@
                                     <h6>Reg. Deadline : <span>June 1, 2023</span></h6>
                                     <hr>
                                     <h6>Address :<span> <?=$event->address?> </span></h6>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success" type="button">
-                                            Register
-                                        </button>
-                                    </span>
                                 </div>
                                 <br>
-                                <div>
-                                    <iframe src="<?=$event->goolge_location_link?>" width="370" height="310" allowfullscreen=""
-                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <div class="creat-account picture-container" style="padding: 5px !important;background-color:
+                                             #c66b15;border-radius: 8px;">
+                                    <br>
+                                    <h3 style="text-align: left;">Event Video</h3>
+                                    <hr>
+                                    <div class="paira-product">
+                                        <div class="position-r pull-left paira-single-product-image-wrp">
+                                            <div class="paira-single-product-image">
+                                                <?= $event->youtube_link!=null ? $event->youtube_link : '' ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <?=$event->youtube_video_desc?>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="creat-account picture-container" style="padding: 5px !important;background-color: #c66b15;border-radius: 8px;">
+                                    <div class="paira-product">
+                                        <div class="position-r pull-left paira-single-product-image-wrp">
+                                            <div class="paira-single-product-image">
+                                                <?= $event->goolge_location_link!=null ? $event->goolge_location_link : '' ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 style="text-align: left;">Event Location</h3>
+                                    </div>
                                 </div>
                                 <br>
                             </div>

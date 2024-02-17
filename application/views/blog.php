@@ -17,7 +17,7 @@
 	<!--=================== latest Collection Section ===================-->
 	<section class="latest-blog paira-margin-bottom-3">
 		<div class="container">
-			<div class="row">
+			<div class="row rowfix">
 				<?php foreach ($bloglist as $blog): ?>
 					<div class="col-md-4 col-xs-12 col-sm-6 margin-top-30">
 						<div class="blog">

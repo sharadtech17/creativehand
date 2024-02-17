@@ -44,52 +44,51 @@
 							</div>
 						</div>
                         <div class="col-sm-12 col-md-12">
-                            <?php foreach ($eventlist as $event): ?>
-                                <div class="col-md-4 col-sm-6 item">
-                                    <div
-                                        style="border-radius: 6px;
-                                            background-repeat: no-repeat;
-                                            background-image: url(<?= base_url().$event->event_image ?>);
-                                            background-color: #c66b156e;
-                                            background-blend-mode: multiply;
-                                            background-position-x: center;">
-                                        <div style="margin-bottom: 100px;">
-                                            <h5>
-                                            <?php
-                                                if ($event->start_date > date('Y-m-d')) {
-                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Upcoming</button>';
-                                                } elseif ($event->date < date('Y-m-d')) {
-                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Past</button>';
-                                                } else {
-                                                    echo '<button class="btn" style="background-color:transparent;border-color: black;color: #c66b15;">Running</button>';
-                                                }
-                                            ?>
-                                            </h5>
+                        <?php foreach ($eventlist as $event): ?>
+                            <div class="col-md-4 col-sm-6 item">
+                                <div style="border-radius: 6px;
+                                        background-repeat: no-repeat;
+                                        background-image: url(<?= base_url().$event->event_image ?>);
+                                        background-color: #000000bf;
+                                        color:#ffffff !important;
+                                        background-blend-mode: multiply;
+                                        background-position-x: center;">
+                                    <div style="margin-bottom: 100px;">
+                                        <h5>
+                                        <?php
+                                            if ($event->start_date > date('Y-m-d')) {
+                                                echo '<button class="btn" style="background-color:transparent;border-color: black;color: green;">Upcoming</button>';
+                                            } elseif ($event->date < date('Y-m-d')) {
+                                                echo '<button class="btn" style="background-color:transparent;border-color: black;color: red;">Past</button>';
+                                            } else {
+                                                echo '<button class="btn" style="background-color:transparent;border-color: black;color: yellow;">Running</button>';
+                                            }
+                                        ?>
+                                        </h5>
+                                    </div>
+                                    <div class="row" style="padding-left:5px;">
+                                        <div class="col-md-6" style="bottom: -25px;">
+                                            <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
+                                                <h5 style="color:#ffffff !important;"><?= $event->name ?></h5>
+                                            </a>
                                         </div>
-                                        <div class="row" style="padding-left:5px;">
-                                            <div class="col-md-6" style="bottom: -25px;">
-                                                <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
-                                                    <h5><?= $event->name ?></h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-6" style="bottom: -30px;">
-                                                <i class="fa fa-calendar"></i>
-                                                <a href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px; ">
-                                            <h5>
-                                                <i class="fa fa-map-marker"></i>
-                                                <?= $event->city ?>
-                                            </h5>
-                                            <!-- <h4>$20</h4> -->
-                                            <h6><i class="fa fa-user"></i>
-                                            <?= $event->artistname ?></h6>
+                                        <div class="col-md-6" style="bottom: -20px;">
+                                            <i class="fa fa-calendar"></i>
+                                            <a style="color:#ffffff !important;" href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px;">
+                                        <h5 style="color:#ffffff !important;">
+                                            <i class="fa fa-map-marker"></i>
+                                            <?= $event->city ?>
+                                        </h5>
+                                        <h6 style="color:#ffffff !important;"><i class="fa fa-user"></i>
+                                        <?= $event->artistname ?></h6>
+                                    </div>
                                 </div>
-                            <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
                         </div>
                     </div>
                 </section>

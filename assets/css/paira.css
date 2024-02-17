@@ -1306,7 +1306,8 @@ select::-ms-expand {
 
 .picture-container {
     background: url(../images/banner/home-banner-big.jpg) no-repeat fixed;
-    padding: 80px 0
+    padding: 80px 0;
+    background-position: center;
 }
 
 .product-container {
@@ -1333,7 +1334,8 @@ select::-ms-expand {
 
 .gallery-background {
     background: url(../images/banner/home-banner-big.jpg) no-repeat fixed;
-    padding: 80px 0
+    padding: 80px 0;
+    background-position: center;
 }
 
 .banner-desc {

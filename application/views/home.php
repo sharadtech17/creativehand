@@ -7,7 +7,7 @@
                         <img src="<?= base_url() . $banner->image ?>" alt="Chicago" style="object-fit: cover;">
                         <div class="">
                             <div class="carousel-caption carousel-caption1">
-                                <h1 class="text-left margin-bottom-20 " data-paira-animation="fadeInLeft"
+                                <h1 class="text-left margin-bottom-20" data-paira-animation="fadeInLeft"
                                     data-paira-animation-delay="0.2s">
                                 </h1>
                             </div>
@@ -21,10 +21,6 @@
             <a class="right carousel-control" href="#myCarousel" data-slide="next" data-paira-animation="fadeIn"
                 data-paira-animation-delay="0.10ms">
                 <span>NE<br>XT</span></a>
-            <!-- <ol class="carousel-indicators">
-                <li data-target="#Carousel" data-slide-to="0" class="active">01</li>
-            </ol> -->
-            <!-- <span class="carousel-indicators-total"></span> -->
         </div>
     </div>
     <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12" style="background-color: #023020;color: white;font-size: x-large;">
@@ -73,7 +69,6 @@
     </section>
 
     <section class="latest-blog paira-margin-bottom-3">
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12 heading-title margin-bottom-15">
@@ -128,7 +123,6 @@
                                         </button>
                                     </a>
                                 </span>
-
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -152,9 +146,10 @@
                 <div class="row">
                     <div class="col-md-12 heading-title">
                         <h2 class="text-capitalize margin-clear pull-left"><span>Painting Arts</span></h2>
-                        <a href="view-painting" class="text-uppercase pull-right margin-top-10">View
-                            All</a>
+                        <a href="view-painting" class="text-uppercase pull-right margin-top-10">View All</a>
                     </div>
+                </div>
+                <div class="row rowfix">
                     <?php if (!empty($paintingArt)): ?>
                         <?php
                             $i=0;
@@ -164,12 +159,11 @@
                                 }
                                 $i++;
                         ?>
-                            <div class="col-sm-3 col-md-3 col-xs-12 margin-top-10">
+                            <div class="col-md-3 margin-top-10">
                                 <div class="product text-center">
-                                    <div class="product-image ">
-                                        <div class=""></div>
+                                    <div class="product-image">
                                         <img src="<?= isset($paiting->mainimage) ? base_url().$paiting->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
-                                        <h3><?= $paiting->title ?></h3>
+                                        <h5><?= $paiting->title ?></h5>
                                     </div>
                                 </div>
                             </div>
@@ -187,6 +181,8 @@
                         <h2 class="text-capitalize margin-clear pull-left"><span>Our Lastest Arts</span></h2>
                         <a href="view-shop" class="text-uppercase pull-right margin-top-10">View All</a>
                     </div>
+                </div>
+                <div class="row rowfix">
                     <?php if (!empty($shoplist)): ?>
                         <?php
                             $i=0;
@@ -196,15 +192,12 @@
                                 }
                                 $i++;
                         ?>
-                        <div class="col-sm-3 col-md-3 col-xs-12 margin-top-30">
+                        <div class="col-md-3 margin-top-30">
                             <div class="product text-center">
                                 <div class="product-image ">
-                                    <a href="#">
-                                        <div class=""></div>
-                                        <img src="<?=base_url().$shop->mainimage?>" alt="" class="Shop img-responsive" style="height:250px;object-fit: cover;">>
-                                    </a>
+                                    <img src="<?=base_url().$shop->mainimage?>" alt="" class="Shop img-responsive" style="height:250px;object-fit: cover;">
                                     <h6 class="">₹<?= $shop->price ?></h6>
-                                    <h3 class=""><?= $shop->title ?></h3>
+                                    <h5 class=""><?= $shop->title ?></h5>
                                     <a href="<?= base_url('addToCart/' . (int)str_replace(',', '', $shop->price) . '/' . $shop->id) ?>" class="product-cart-con btn btn-primary btn-lg text-capitalize margin-bottom-30">Add To Cart</a>
                                 </div>
                             </div>
@@ -215,7 +208,6 @@
             </div>
         </div>
     </section>
-
     <section class="latest-picture paira-margin-bottom-2">
         <div class="gallery-background">
             <div class="container">
@@ -251,9 +243,6 @@
                                             artist community worldwide. The directory in the
                                             current
                                             form is free.
-
-
-
                                         </p>
                                         <p>
                                             artworks at an art fair, show or festival? We
@@ -307,6 +296,8 @@
                         </h2>
                         <a href="hand-made-art" class="text-uppercase pull-right margin-top-10">View All</a>
                     </div>
+                </div>
+                <div class="row rowfix">
                     <?php if (!empty($handArt)): ?>
                         <?php
                             $i=0;
@@ -316,14 +307,11 @@
                                 }
                                 $i++;
                         ?>
-                        <div class="col-sm-3 col-md-3 col-xs-12 margin-top-30">
+                        <div class="col-md-3 margin-top-30">
                             <div class="product text-center">
                                 <div class="product-image ">
-                                    <a href="#">
-                                        <div class=""></div>
                                         <img src="<?= isset($hand->mainimage) ? base_url().$hand->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
-                                    </a>
-                                    <h3 class=""><?= $hand->title ?></h3>
+                                    <h5 class=""><?= $hand->title ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -341,6 +329,8 @@
                 <div class="col-md-12 heading-title">
                     <h2 class="text-capitalize margin-clear pull-left"><span>Best Selling Arts</span></h2>
                 </div>
+            </div>
+            <div class="row rowfix">
                 <?php if (!empty($bestsellerlist)): ?>
                 <?php
                     $i=0;
@@ -350,7 +340,7 @@
                         }
                         $i++;
                 ?>
-                    <div class="col-sm-4 col-md-4 col-xs-12 margin-top-30">
+                    <div class="col-md-4 margin-top-30">
                         <div class="product text-center">
                             <div class="product-image position-r">
                                 <a href="#">
@@ -378,11 +368,11 @@
                 </div>
                 <?php foreach ($eventlist as $event): ?>
                     <div class="col-md-4 col-sm-6 item">
-                        <div
-                            style="border-radius: 6px;
+                        <div style="border-radius: 6px;
                                 background-repeat: no-repeat;
                                 background-image: url(<?= base_url().$event->event_image ?>);
-                                background-color: #c66b156e;
+                                background-color: #000000bf;
+                                color:#ffffff !important;
                                 background-blend-mode: multiply;
                                 background-position-x: center;">
                             <div style="margin-bottom: 100px;">
@@ -401,22 +391,21 @@
                             <div class="row" style="padding-left:5px;">
                                 <div class="col-md-6" style="bottom: -25px;">
                                     <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
-                                        <h5><?= $event->name ?></h5>
+                                        <h5 style="color:#ffffff !important;"><?= $event->name ?></h5>
                                     </a>
                                 </div>
-                                <div class="col-md-6" style="bottom: -30px;">
+                                <div class="col-md-6" style="bottom: -20px;">
                                     <i class="fa fa-calendar"></i>
-                                    <a href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
+                                    <a style="color:#ffffff !important;" href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
                                 </div>
                             </div>
                             <hr>
-                            <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px; ">
-                                <h5>
+                            <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px;">
+                                <h5 style="color:#ffffff !important;">
                                     <i class="fa fa-map-marker"></i>
                                     <?= $event->city ?>
                                 </h5>
-                                <!-- <h4>$20</h4> -->
-                                <h6><i class="fa fa-user"></i>
+                                <h6 style="color:#ffffff !important;"><i class="fa fa-user"></i>
                                 <?= $event->artistname ?></h6>
                             </div>
                         </div>
@@ -498,11 +487,11 @@
                     <div class="col-md-3 col-xs-6 col-sm-6 margin-top-30">
                         <div class="instragram">
                             <div class="instragram-image position-r">
-                                <a href="artist detail.html">
+                                <a href="<?= base_url().'artist-details/'.$artist->id?>">
                                     <div class=""></div>
                                     <img src="<?=base_url().$artist->profileimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>artistassets/altuser.jpg'" class="img-responsive" style="height:350px;object-fit: cover;">
                                 </a>
-                                <h3><?= $artist->name ?></h3>
+                                <h5><?= $artist->name ?></h5>
                                 <h6>Artist</h6>
                             </div>
                         </div>
@@ -515,7 +504,7 @@
 </section>
 <section class="latest-blog paira-margin-bottom-2">
     <div class="container">
-        <div class="row">
+        <div class="row rowfix">
             <div class="col-md-12 heading-title">
                 <h2 class="text-capitalize margin-clear pull-left"><span>Blog</span></h2>
                 <a href="<?=base_url()?>view-blog" class="text-uppercase pull-right margin-top-10">View All</a>
@@ -538,9 +527,9 @@
                             <p class="margin-bottom-5">
                                 <?= date('M d,Y', strtotime($blog->date)) ?>
                             </p>
-                            <h4 class="margin-top-0 margin-bottom-10"><a href="<?= base_url() ?>viewblogdetails">
+                            <h5 class="margin-top-0 margin-bottom-10"><a href="<?= base_url() ?>viewblogdetails">
                                     <?= $blog->name ?>
-                                </a></h4>
+                                </a></h5>
                             <a href="<?= base_url('BlogController/viewblogdetails/' . $blog->id) ?>"
                                 class="text-uppercase read-more">Read More<i
                                     class="fa fa-long-arrow-right margin-left-5"></i></a>
@@ -567,7 +556,7 @@
                                     <div class=""></div>
                                     <img src="<?= base_url() . $promotive->image ?>" alt="" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
                                 </a>
-                                <h3 class=""><?= $promotive->name ?></h3>
+                                <h5 class=""><?= $promotive->name ?></h5>
                             </div>
                         </div>
                     </div>

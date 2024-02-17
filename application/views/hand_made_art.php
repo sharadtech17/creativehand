@@ -51,7 +51,7 @@
 								</ul>
 							</div>
 						</div>
-                        <div class="col-sm-12 col-md-12 col-xs-12">
+                        <div class="col-sm-12 col-md-12 col-xs-12 rowfix">
                         <?php if (!empty($handartlist)) : ?>
 							<?php foreach ($handartlist as $art) :
                                 ?>

@@ -51,7 +51,7 @@
 										<a href="<?=base_url().'view-shop-detail/'.$shop->id?>">
 											<div class=""></div>
 											<img src="<?=base_url().$shop->mainimage?>" alt=""
-												class="Shop img-responsive" style="height:250px;object-fit: cover;">
+												class="Shop img-responsive" style="height:250px;width:300px;object-fit: cover;">
 											<div class="row">
 												<div class=" col-lg-12">
 													<h4 class="col-md-9 text-left">
@@ -108,7 +108,7 @@
 		}
 
 		.Shop {
-			transition: transform .2s;
+			transition: transform 0.4s;
 			width: 20px;
 			height: 20px;
 			margin: 0 auto;
@@ -118,7 +118,7 @@
 		}
 
 		.Shop:hover {
-			transform: scale(1.2);
+			transform: scale(0.9);
 		}
 	</style>
 </main>
