@@ -136,7 +136,7 @@
                                 <label class="form-label" for="stocks-input">Category Type</label>
                                 <select class="form-select" id="choices-category-input" name="category_type" required data-choices data-choices-search-false>
                                     <option value="" selected disabled>Select category type</option>
-                                    <option value="Hand Made Arts">Hand Made Arts</option>
+                                    <option value="Hand Made Arts">Hand Made Products</option>
                                     <option value="Painting Arts">Painting Arts</option>
                                 </select>
                             </div>
@@ -190,7 +190,7 @@
                                 <label class="form-label" for="stocks-input">Category Type</label>
                                 <select class="form-select" id="choices-category-input" name="category_type" required data-choices data-choices-search-false>
                                     <option value="" selected disabled>Select category type</option>
-                                    <option value="Hand Made Arts" <?= $Category->category_type=='Hand Made Arts' ? 'selected' : '' ?>>Hand Made Arts</option>
+                                    <option value="Hand Made Arts" <?= $Category->category_type=='Hand Made Arts' ? 'selected' : '' ?>>Hand Made Products</option>
                                     <option value="Painting Arts" <?= $Category->category_type=='Painting Arts' ? 'selected' : '' ?>>Painting Arts</option>
                                 </select>
                             </div>

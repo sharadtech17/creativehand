@@ -337,7 +337,7 @@ class Query extends CI_Model {
 	}
 	public function getHandArtArtistByArtId($id)
 	{
-		$this->db->select('art.*, artist.*, artist.description as artist_desc, art.description as art_desc,categories.categoriesname as categoriesname');
+		$this->db->select('art.*, artist.*,art.id as art_id, artist.description as artist_desc, art.description as art_desc,categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = artist.categories', 'left');

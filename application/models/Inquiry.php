@@ -8,10 +8,13 @@ class Inquiry extends CI_Model {
 	}
 	public function getInquiryList($artist_id)
 	{
-		$this->db->where('artist_id', $artist_id);
-		$this->db->order_by('id', 'desc');
-		$query = $this->db->get('inquiry');
-	
+		$this->db->select('inquiry.*, artist.name as artistname, art.title as artname');
+		$this->db->from('inquiry');
+		$this->db->join('artist', 'artist.id = inquiry.artist_id', 'left');
+		$this->db->join('art', 'art.id = inquiry.art_id', 'left');
+		$this->db->where('inquiry.artist_id', $artist_id);
+		$this->db->order_by('inquiry.id', 'desc');
+		$query = $this->db->get();
 		if ($query) {
 			return $query->result();
 		} else {

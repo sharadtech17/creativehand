@@ -115,7 +115,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 											Select Arts Category</label>
 											<select class="form-select" name="category_type" id="categoryTypeSelect" data-choices data-choices-search-false >
 												<option value="">Select Category Type</option>
-												<option value="Hand Made Arts" <?=$artistdata->category === 'Hand Made Arts' ? 'selected' : '';?>>Hand Made Arts</option>
+												<option value="Hand Made Arts" <?=$artistdata->category === 'Hand Made Arts' ? 'selected' : '';?>>Hand Made Products</option>
 												<option value="Painting Arts" <?=$artistdata->category === 'Painting Arts' ? 'selected' : '';?>>Painting</option>
 											</select>
 										</div>

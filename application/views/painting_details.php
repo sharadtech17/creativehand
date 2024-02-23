@@ -113,10 +113,9 @@
                         </div>
                     </div>
                     <div class="social-share-widget margin-top-10 full-width pull-left">
-                        <label class="pull-left">Copy Link:</label>
                         <div>
-                            <input type="text" id="urlInput" class="form-control" value="<?= base_url($this->input->server('REQUEST_URI')) ?>" readonly>
-                            <button id="copyButton" class="btn btn-primary">Copy URL</button>
+                            <input type="hidden" id="urlInput" class="form-control" value="<?= base_url($this->input->server('REQUEST_URI')) ?>" readonly>
+                            <button id="copyButton" class="btn btn-primary">Share Art</button>
                         </div>
                     </div>
                 </div>
@@ -135,9 +134,14 @@
                         <form accept-charset="UTF-8" action="<?=base_url()?>addInquiry" class="contact-form" method="post">
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <div class="input-group margin-bottom-20">
-                                    <span class="input-group-addon" id="basic-addon13">Subject</span>
-                                    <input type="text" class="form-control" aria-describedby="basic-addon3" name="subject">
+                                    <span class="input-group-addon" id="basic-addon13">Name</span>
+                                    <input type="text" class="form-control" aria-describedby="basic-addon3" name="name">
                                     <input type="hidden" class="form-control" aria-describedby="basic-addon3" name="artist_id" value="<?= $hand_art->artist_id ?>">
+                                    <input type="hidden" class="form-control" aria-describedby="basic-addon3" name="art_id" value="<?= $hand_art->art_id ?>">
+                                </div>
+                                <div class="input-group margin-bottom-20">
+                                    <span class="input-group-addon" id="basic-addon13">Email</span>
+                                    <input type="text" class="form-control" aria-describedby="basic-addon3" name="email">
                                 </div>
                                 <div class="input-group margin-bottom-20">
                                     <span class="input-group-addon" id="basic-addon14">Message</span>
@@ -156,14 +160,17 @@
 <script>
 $(document).ready(function(){
     $("#copyButton").click(function(){
-        // Select the text in the input field
-        $("#urlInput").select();
-
-        // Copy the selected text to the clipboard
+        // Select the input field and copy its value
+        var urlInputValue = $("#urlInput").val();
+        var tempInput = $("<input>");
+        $("body").append(tempInput);
+        tempInput.val(urlInputValue).select();
         document.execCommand("copy");
+        tempInput.remove();
 
         // Alert the user that the URL has been copied
-        alert("URL copied to clipboard: " + $("#urlInput").val());
+        alert("URL copied to clipboard: " + urlInputValue);
     });
 });
+
 </script>

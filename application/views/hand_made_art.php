@@ -6,11 +6,11 @@
             <div class="container-fluid padding-fix">
 
                 <ul class="list-inline text-center" style="padding-top: 100px; padding-bottom: 100px;">
-                    <h1 class="" style="color:white;">Hand Made Arts</h1>
+                    <h1 class="" style="color:white;">Hand Made Products</h1>
                     <li><a href="<?= base_url() ?>" style="font-size: larger;color: white;">Home <i
                                 class="fa fa-angle-right"></i></a>
                     </li>
-                    <li class="" style="color:#c66b15;">Hand Made Arts</li>
+                    <li class="" style="color:#c66b15;">Hand Made Products</li>
                 </ul>
             </div>
         </div>

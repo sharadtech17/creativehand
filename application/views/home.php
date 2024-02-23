@@ -1,28 +1,28 @@
-<main class="home-page">
-    <div class="">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <?php foreach ($bannerlist as $banner): ?>
-                    <div class="item <?= $banner->active_status === '1' ? 'active' : '' ?>">
-                        <img src="<?= base_url() . $banner->image ?>" alt="Chicago" style="object-fit: cover;">
-                        <div class="">
-                            <div class="carousel-caption carousel-caption1">
-                                <h1 class="text-left margin-bottom-20" data-paira-animation="fadeInLeft"
-                                    data-paira-animation-delay="0.2s">
-                                </h1>
-                            </div>
+<div class="">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <?php foreach ($bannerlist as $banner): ?>
+                <div class="item <?= $banner->active_status === '1' ? 'active' : '' ?>">
+                    <img src="<?= base_url() . $banner->image ?>" alt="Chicago">
+                    <div class="">
+                        <div class="carousel-caption carousel-caption1">
+                            <h1 class="text-left margin-bottom-20" data-paira-animation="fadeInLeft"
+                                data-paira-animation-delay="0.2s">
+                            </h1>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <a class="left carousel-control " href="#myCarousel" data-slide="prev" data-paira-animation="fadeIn"
-                data-paira-animation-delay="0.0ms">
-                <span>PR<br>EV</span></a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next" data-paira-animation="fadeIn"
-                data-paira-animation-delay="0.10ms">
-                <span>NE<br>XT</span></a>
+                </div>
+            <?php endforeach; ?>
         </div>
+        <a class="left carousel-control " href="#myCarousel" data-slide="prev" data-paira-animation="fadeIn"
+            data-paira-animation-delay="0.0ms">
+            <span class="font-weight-bold">PR<br>EV</span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next" data-paira-animation="fadeIn"
+            data-paira-animation-delay="0.10ms">
+            <span class="font-weight-bold">NE<br>XT</span></a>
     </div>
+</div>
+<main class="home-page">
     <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12" style="background-color: #023020;color: white;font-size: x-large;">
         <?php if (!empty($newslist)): ?>
             <?php foreach ($newslist as $news): ?>
@@ -213,7 +213,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 heading-title">
-                        <h2 class="text-capitalize margin-clear pull-left"><span>Hand Made Arts</span></h2>
+                        <h2 class="text-capitalize margin-clear pull-left"><span>Hand Made Products</span></h2>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="product-detles">
@@ -292,7 +292,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 heading-title">
-                        <h2 class="text-capitalize margin-clear pull-left"><span>Our Hand Made Arts Products</span>
+                        <h2 class="text-capitalize margin-clear pull-left"><span>Our Hand Made Products</span>
                         </h2>
                         <a href="hand-made-art" class="text-uppercase pull-right margin-top-10">View All</a>
                     </div>
@@ -545,7 +545,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 heading-title">
-                    <h2 class="text-capitalize margin-clear pull-left"><span>We are Promotive </span>
+                    <h2 class="text-capitalize margin-clear pull-left"><span>Our Sponsors </span>
                     </h2>
                 </div>
                 <?php foreach ($promotivelist as $promotive): ?>

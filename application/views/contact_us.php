@@ -72,19 +72,19 @@
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon7">Name</span>
 											<input type="text" name="name" class="form-control"
-												aria-describedby="basic-addon3">
+												aria-describedby="basic-addon3" required>
 										</div>
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon8">Phone</span>
 											<input type="text" name="phone" class="form-control"
-												aria-describedby="basic-addon3">
+												aria-describedby="basic-addon3" required>
 										</div>
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon9">Email</span>
 											<input type="email" name="email" class="form-control"
-												aria-describedby="basic-addon3">
+												aria-describedby="basic-addon3" required>
 										</div>
 										<div class="input-group margin-bottom-20">
 											<span class="input-group-addon" id="basic-addon10">Subject</span>

@@ -62,7 +62,7 @@ class EventController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/events/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 200048;
+		$config['max_size'] = 200000048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		$product_images = array();
@@ -143,7 +143,7 @@ class EventController extends CI_Controller {
 		$config['file_name'] = time();
 		$config['upload_path'] = './uploads/events/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
-		$config['max_size'] = 200048;
+		$config['max_size'] = 200000048;
 		$config['encrypt_name'] = TRUE;
 		$this->upload->initialize($config);
 		

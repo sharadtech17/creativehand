@@ -355,7 +355,7 @@
                                             <option selected disabled>Select section</option>
                                             <option value="<?= base_url('HomeController/artist') ?>">Artist</option>
                                             <option value="<?= base_url('HandArtController/viewPainting') ?>">Painting</option>
-                                            <option value="<?= base_url('HandArtController/index') ?>">Hand Made Arts</option>
+                                            <option value="<?= base_url('HandArtController/index') ?>">Hand Made Products</option>
                                             <option value="<?= base_url('EventController/index') ?>">Events</option>
                                             <option value="<?= base_url('ShopController/index') ?>">Shop</option>
                                         </select>
@@ -399,7 +399,7 @@
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>hand-made-art" style="color: white;font-size: large;"><span
-                                                    class="fa fa-image" style="color:white;"></span> Hand Made Arts</a>
+                                                    class="fa fa-image" style="color:white;"></span> Hand Made Products</a>
                                         </li>
                                         <li>
                                             <a href="<?=base_url()?>view-painting" style="color: white;font-size: large;"><span
@@ -456,7 +456,7 @@
                             <option>Section</option>
                             <option>Artist</option>
                             <option>Painting</option>
-                            <option>Hand Made Arts</option>
+                            <option>Hand Made Products</option>
                         </select>
                     </div>
                     <button class="btn btn-default" type="button" style="background-color: #c66b15;"><i class="fa fa-search " style="color: white;"></i></button>

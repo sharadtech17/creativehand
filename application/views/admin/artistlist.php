@@ -18,7 +18,7 @@
 					<div>
 						<select class="form-control" id="categoryFilter" onchange="searchfun()" data-choices data-choices-search-false>
 							<option value="">Select Arts Category</option>
-							<option value="Hand Made Arts">Hand Made Arts</option>
+							<option value="Hand Made Arts">Hand Made Products</option>
 							<option value="Painting">Painting</option>
 							<option value="Not selected">Not selected</option>
 						</select>

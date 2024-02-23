@@ -23,7 +23,9 @@ class InquiryController extends CI_Controller {
 	{
 		$Inquiry_data = array(
 			'artist_id'   => $this->input->post('artist_id'),
-			'subject'   => $this->input->post('subject'),
+			'art_id'   => $this->input->post('art_id'),
+			'name'   => $this->input->post('name'),
+			'email'   => $this->input->post('email'),
 			'message'   => $this->input->post('message')
 		);
 		$this->Inquiry->store_Inquiry($Inquiry_data); // Call the correct method on the loaded model

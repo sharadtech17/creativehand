@@ -24,15 +24,15 @@ class Contact extends CI_Model {
     }
 	public function update_Contact($id,$data) {
 		$this->db->where('id', $id);
-        return $this->db->update('Contact', $data);
+        return $this->db->update('contact', $data);
     }
 	public function get_Contact_by_id($id) {
-        $query = $this->db->get_where('Contact', array('id' => $id));
+        $query = $this->db->get_where('contact', array('id' => $id));
         return $query->row();
     }
 	public function delete_Contact($id) {
         $this->db->where('id', $id);
-        $this->db->delete('Contact');
+        $this->db->delete('contact');
     }
 
 }

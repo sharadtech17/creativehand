@@ -42,19 +42,22 @@
                                                     <th data-column-id="#" class="gridjs-th text-muted">
                                                         <div class="gridjs-th-content">Sr</div>
                                                     </th>
-                                                    <th data-column-id="action"
-                                                        class="gridjs-th text-muted"
-                                                        >
-                                                        <div class="gridjs-th-content">Subject</div>
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
+                                                        <div class="gridjs-th-content">Name</div>
                                                     </th>
-                                                    <th data-column-id="action"
-                                                        class="gridjs-th text-muted"
-                                                        >
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
+                                                        <div class="gridjs-th-content">Email</div>
+                                                    </th>
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
+                                                        <div class="gridjs-th-content">Artist Name</div>
+                                                    </th>
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
+                                                        <div class="gridjs-th-content">Art Name</div>
+                                                    </th>
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
                                                         <div class="gridjs-th-content">Message</div>
                                                     </th>
-                                                    <th data-column-id="action"
-                                                        class="gridjs-th text-muted"
-                                                        >
+                                                    <th data-column-id="action" class="gridjs-th text-muted">
                                                         <div class="gridjs-th-content">Action</div>
                                                     </th>
                                                 </tr>
@@ -66,7 +69,10 @@
                                             <?php foreach ($inquirylist as $inquiry): ?>
                                                 <tr class="gridjs-tr inquirylistdata">
                                                     <td><?=$i++;?></td>
-                                                    <td><?=$inquiry->subject?></td>
+                                                    <td><?=$inquiry->name?></td>
+                                                    <td><?=$inquiry->email?></td>
+                                                    <td><?=$inquiry->artistname?></td>
+                                                    <td><?=$inquiry->artname?></td>
                                                     <td><?=$inquiry->message?></td>
                                                     <td data-column-id="action" class="">
                                                         <a href="<?=base_url('inquiryController/deleteinquiry/' . $inquiry->id)?>">
