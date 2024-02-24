@@ -275,26 +275,55 @@ class Query extends CI_Model {
 		$query = $this->db->get('art');
 		return $query->result();
 	}
-	public function searchArtByHandArtArtist($query)
+	public function searchArtByHandArtArtist($query, $limit, $offset)
 	{
-		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
+		$this->db->select('art.*, artist.name as artistname, categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = artist.categories', 'left');
 		$this->db->where('art.activeflag', '0');
 		$this->db->where('artist.category', 'Hand Made Arts');
+		$this->db->group_start();
 		$this->db->like('art.title', $query);
 		$this->db->or_like('art.tags', $query);
-        $this->db->or_like('artist.name', $query);
-        $this->db->or_like('artist.category', $query);
+		$this->db->or_like('artist.name', $query);
+		$this->db->or_like('artist.category', $query);
+		$this->db->group_end();
 		$this->db->where('artist.verificationstatus', '1');
 		$this->db->order_by('art.id', 'desc');
+		$this->db->limit($limit, $offset); // Apply pagination
+	
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getArtByHandArtArtist()
+	public function countHandArtProduct()
 	{
-		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
+		$this->db->select('COUNT(*) as total');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Hand Made Arts');
+		$this->db->where('artist.verificationstatus', '1');
+		$query = $this->db->get();
+		$result = $query->row();
+		return $result->total;
+	}
+	
+	public function countPaitingArt()
+	{
+		$this->db->select('COUNT(*) as total');
+		$this->db->from('art');
+		$this->db->join('artist', 'artist.id = art.artist_id');
+		$this->db->where('art.activeflag', '0');
+		$this->db->where('artist.category', 'Painting Arts');
+		$this->db->where('artist.verificationstatus', '1');
+		$query = $this->db->get();
+		$result = $query->row();
+		return $result->total;
+	}
+	public function getArtByHandArtArtist($limit, $offset)
+	{
+		$this->db->select('art.*, artist.name as artistname, categories.categoriesname as categoriesname');
 		$this->db->from('art');
 		$this->db->join('artist', 'artist.id = art.artist_id', 'left');
 		$this->db->join('categories', 'categories.id = artist.categories', 'left');
@@ -302,10 +331,13 @@ class Query extends CI_Model {
 		$this->db->where('artist.verificationstatus', '1');
 		$this->db->where('artist.category', 'Hand Made Arts');
 		$this->db->order_by('art.id', 'desc');
+		$this->db->limit($limit, $offset); // Apply pagination
+	
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getPaintingByArtist()
+	
+	public function getPaintingByArtist($limit, $offset)
 	{
 		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
@@ -315,10 +347,11 @@ class Query extends CI_Model {
 		$this->db->where('artist.category', 'Painting Arts');
 		$this->db->where('artist.verificationstatus', '1');
 		$this->db->order_by('art.id', 'desc');
+		$this->db->limit($limit, $offset); // Apply pagination
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function searchPaintingByArtist($query)
+	public function searchPaintingByArtist($query, $limit, $offset)
 	{
 		$this->db->select('art.*, artist.name as artistname,categories.categoriesname as categoriesname');
 		$this->db->from('art');
@@ -332,6 +365,7 @@ class Query extends CI_Model {
         $this->db->or_like('artist.name', $query);
         $this->db->or_like('artist.category', $query);
 		$this->db->order_by('art.id', 'desc');
+		$this->db->limit($limit, $offset); // Apply pagination
 		$query = $this->db->get();
 		return $query->result();
 	}

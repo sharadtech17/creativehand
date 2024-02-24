@@ -19,8 +19,8 @@ class HomeController extends CI_Controller {
 		$data['eventlist'] = $this->Event->getActiveEventList(); 
 		$data['promotivelist'] = $this->Promotive->getActivePromotiveList(); 
 		$data['newslist'] = $this->News->getNewsList(); 
-		$data['paintingArt'] = $this->query->getPaintingByArtist();
-		$data['handArt'] = $this->query->getArtByHandArtArtist();
+		$data['paintingArt'] = $this->query->getPaintingByArtist(4,0);
+		$data['handArt'] = $this->query->getArtByHandArtArtist(4,0);
 		$data['shoplist'] = $this->Shop->getShopList();
 		$data['bestsellerlist'] = $this->Shop->getBestSellerList();
 		$data['artistlist'] = $this->Artist->getfront_artists();

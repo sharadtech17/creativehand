@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="article-description">
                                 <img src="<?=base_url().$blog->image?>" alt=""
-                                    class="img-responsive margin-bottom-30">
+                                    class="img-responsive margin-bottom-30" style="width: 100%;height: auto;object-fit: cover;">
                                 <p class="brand-color"><?= date('M d,Y', strtotime($blog->date)) ?></p>
                                 <h1 class="margin-top-5"><?=$blog->name ?></h1>
                                 <p class="margin-top-15"><?=$blog->description ?></p>
@@ -31,7 +31,7 @@
                     </div>
                     <hr class="margin-top-30 paira-margin-bottom-3 pull-left full-width">
                     <!--=================== Send Comment Section ===================-->
-                    <div class="form-contact">
+                    <!-- <div class="form-contact">
                         <h3 class="text-capitalize  margin-bottom-30">Leave A Comment</h3>
                         <div class="row">
                             <form accept-charset="UTF-8" action="#" class="contact-form" method="post">
@@ -69,7 +69,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
         </main>
