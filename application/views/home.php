@@ -14,22 +14,32 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <a class="left carousel-control " href="#myCarousel" data-slide="prev" data-paira-animation="fadeIn"
+        <!-- Previous Control with Font Awesome Icon -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev" data-paira-animation="fadeIn"
             data-paira-animation-delay="0.0ms">
-            <span class="font-weight-bold">PR<br>EV</span></a>
+            <i class="fa fa-arrow-left"></i>
+        </a>
+        <!-- Next Control with Font Awesome Icon -->
         <a class="right carousel-control" href="#myCarousel" data-slide="next" data-paira-animation="fadeIn"
             data-paira-animation-delay="0.10ms">
-            <span class="font-weight-bold">NE<br>XT</span></a>
+            <i class="fa fa-arrow-right"></i>
+        </a>
     </div>
 </div>
+
 <main class="home-page">
-    <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12" style="background-color: #023020;color: white;font-size: x-large;">
+    <marquee class="html-marquee" direction="left" behavior="scroll" scrollamount="12"
+        style="background-color: #023020;color: white;font-size: x-large;">
         <?php if (!empty($newslist)): ?>
             <?php foreach ($newslist as $news): ?>
-                <i class="fa fa-check-circle"></i> <?= $news->title ?> <i class="fa fa-check-circle"></i>
+                <i class="fa fa-check-circle"></i>
+                <?= $news->title ?> <i class="fa fa-check-circle"></i>
             <?php endforeach; ?>
         <?php else: ?>
-            <div><p><i class="fa fa-check-circle"></i> WELCOME TO CREATIVE HANDS OF INDIA <i class="fa fa-check-circle"></i></p></div>
+            <div>
+                <p><i class="fa fa-check-circle"></i> WELCOME TO CREATIVE HANDS OF INDIA <i class="fa fa-check-circle"></i>
+                </p>
+            </div>
         <?php endif; ?>
     </marquee>
     <section class="banner-small paira-margin-bottom-2 " style="margin-top:60px;">
@@ -133,9 +143,9 @@
                                             src="https://www.youtube.com/embed/VS1sa-F-UxE?si=grUBe8BHMKYPecGn">
                                         </iframe>
                                     </div>
-                                <div>
-                            </div>
-                        </div>
+                                    <div>
+                                    </div>
+                                </div>
                 </section>
             </div>
         </div>
@@ -152,18 +162,21 @@
                 <div class="row rowfix">
                     <?php if (!empty($paintingArt)): ?>
                         <?php
-                            $i=0;
-                            foreach ($paintingArt as $paiting):
-                                if ($i==8) {
-                                    break;
-                                }
-                                $i++;
-                        ?>
+                        $i = 0;
+                        foreach ($paintingArt as $paiting):
+                            if ($i == 8) {
+                                break;
+                            }
+                            $i++;
+                            ?>
                             <div class="col-md-3 margin-top-10">
                                 <div class="product text-center">
                                     <div class="product-image">
-                                        <img src="<?= isset($paiting->mainimage) ? base_url().$paiting->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
-                                        <h5><?= $paiting->title ?></h5>
+                                        <img src="<?= isset($paiting->mainimage) ? base_url() . $paiting->mainimage : base_url() . 'assets/images/artist/6.jpg' ?>"
+                                            alt="" class="img-responsive" style="height:300px;object-fit: cover;">
+                                        <h5>
+                                            <?= $paiting->title ?>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -185,23 +198,30 @@
                 <div class="row rowfix">
                     <?php if (!empty($shoplist)): ?>
                         <?php
-                            $i=0;
-                            foreach ($shoplist as $shop):
-                                if ($i==4) {
-                                    break;
-                                }
-                                $i++;
-                        ?>
-                        <div class="col-md-3 margin-top-30">
-                            <div class="product text-center">
-                                <div class="product-image ">
-                                    <img src="<?=base_url().$shop->mainimage?>" alt="" class="Shop img-responsive" style="height:250px;object-fit: cover;">
-                                    <h6 class="">₹<?= $shop->price ?></h6>
-                                    <h5 class=""><?= $shop->title ?></h5>
-                                    <a href="<?= base_url('addToCart/' . (int)str_replace(',', '', $shop->price) . '/' . $shop->id) ?>" class="product-cart-con btn btn-primary btn-lg text-capitalize margin-bottom-30">Add To Cart</a>
+                        $i = 0;
+                        foreach ($shoplist as $shop):
+                            if ($i == 4) {
+                                break;
+                            }
+                            $i++;
+                            ?>
+                            <div class="col-md-3 margin-top-30">
+                                <div class="product text-center">
+                                    <div class="product-image ">
+                                        <img src="<?= base_url() . $shop->mainimage ?>" alt="" class="Shop img-responsive"
+                                            style="height:250px;object-fit: cover;">
+                                        <h6 class="">₹
+                                            <?= $shop->price ?>
+                                        </h6>
+                                        <h5 class="">
+                                            <?= $shop->title ?>
+                                        </h5>
+                                        <a href="<?= base_url('addToCart/' . (int) str_replace(',', '', $shop->price) . '/' . $shop->id) ?>"
+                                            class="product-cart-con btn btn-primary btn-lg text-capitalize margin-bottom-30">Add
+                                            To Cart</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
@@ -270,15 +290,17 @@
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <?php
-                                        $i=0;
-                                        if (!empty($handArt)):
+                                    $i = 0;
+                                    if (!empty($handArt)):
                                         foreach ($handArt as $hand):
                                             $i++;
-                                    ?>
-                                            <div class="item <?= $i==1 ? 'active' : '' ?>">
-                                                <img src="<?= isset($hand->mainimage) ? base_url().$hand->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="width:auto;height:300px;object-fit: cover;">
+                                            ?>
+                                            <div class="item <?= $i == 1 ? 'active' : '' ?>">
+                                                <img src="<?= isset($hand->mainimage) ? base_url() . $hand->mainimage : base_url() . 'assets/images/artist/6.jpg' ?>"
+                                                    alt="" class="img-responsive"
+                                                    style="width:auto;height:300px;object-fit: cover;">
                                             </div>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -300,269 +322,272 @@
                 <div class="row rowfix">
                     <?php if (!empty($handArt)): ?>
                         <?php
-                            $i=0;
-                            foreach ($handArt as $hand):
-                                if ($i==4) {
-                                    break;
-                                }
-                                $i++;
-                        ?>
-                        <div class="col-md-3 margin-top-30">
-                            <div class="product text-center">
-                                <div class="product-image ">
-                                        <img src="<?= isset($hand->mainimage) ? base_url().$hand->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
-                                    <h5 class=""><?= $hand->title ?></h5>
+                        $i = 0;
+                        foreach ($handArt as $hand):
+                            if ($i == 4) {
+                                break;
+                            }
+                            $i++;
+                            ?>
+                            <div class="col-md-3 margin-top-30">
+                                <div class="product text-center">
+                                    <div class="product-image ">
+                                        <img src="<?= isset($hand->mainimage) ? base_url() . $hand->mainimage : base_url() . 'assets/images/artist/6.jpg' ?>"
+                                            alt="" class="img-responsive" style="height:300px;object-fit: cover;">
+                                        <h5 class="">
+                                            <?= $hand->title ?>
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </section>
-</section>
-<section class="latest-picture paira-margin-bottom-2">
-    <div class="picture-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 heading-title">
-                    <h2 class="text-capitalize margin-clear pull-left"><span>Best Selling Arts</span></h2>
+    </section>
+    <section class="latest-picture paira-margin-bottom-2">
+        <div class="picture-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-title">
+                        <h2 class="text-capitalize margin-clear pull-left"><span>Best Selling Arts</span></h2>
+                    </div>
+                </div>
+                <div class="row rowfix">
+                    <?php if (!empty($bestsellerlist)): ?>
+                        <?php
+                        $i = 0;
+                        foreach ($bestsellerlist as $bastseller):
+                            if ($i == 3) {
+                                break;
+                            }
+                            $i++;
+                            ?>
+                            <div class="col-md-4 margin-top-30">
+                                <div class="product text-center">
+                                    <div class="product-image position-r">
+                                        <a href="#">
+                                            <div class=""></div>
+                                            <img src="<?= isset($bastseller->mainimage) ? base_url() . $bastseller->mainimage : base_url() . 'assets/images/artist/6.jpg' ?>"
+                                                alt="" class="img-responsive" style="height:300px;object-fit: cover;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
-            <div class="row rowfix">
-                <?php if (!empty($bestsellerlist)): ?>
-                <?php
-                    $i=0;
-                    foreach ($bestsellerlist as $bastseller):
-                        if ($i==3) {
+            <div class="product-container"></div>
+        </div>
+    </section>
+    <section class="latest-collection paira-margin-bottom-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12">
+                    <div class="col-md-12 heading-title margin-bottom-40 margin-top-40">
+                        <h2 class="text-capitalize margin-clear pull-left "><span>Events</span>
+                        </h2>
+                        <a href="<?= base_url() ?>view-event" class="text-uppercase pull-right margin-top-10">View All</a>
+                    </div>
+                    <?php
+                      $i = 0;
+                       foreach ($eventlist as $event):
+                        
+                        if ($i == 3) {
                             break;
                         }
-                        $i++;
-                ?>
-                    <div class="col-md-4 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image position-r">
-                                <a href="#">
-                                    <div class=""></div>
-                                    <img src="<?= isset($bastseller->mainimage) ? base_url().$bastseller->mainimage : base_url().'assets/images/artist/6.jpg' ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
+                        $i++;?>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail " style="border-radius: 6px;">
+                                <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>" style="border-radius: 5px;background-image: url(<?= base_url() . $event->event_image ?>); width: 100%;height: auto;margin: auto;background-size: cover;">
+                                    <h5 class=""> 
+                                    <?php
+                                        if ($event->start_date > date('Y-m-d')) {
+                                            echo '<button class="btn" style="background-color:transparent;border-color: black;color: green;margin-bottom: 250px;">Upcoming</button>';
+                                        } elseif ($event->date < date('Y-m-d')) {
+                                            echo '<button class="btn" style="background-color:transparent;border-color: black;color: red;margin-bottom: 250px;">Past</button>';
+                                        } else {
+                                            echo '<button class="btn" style="background-color:transparent;border-color: black;color: yellow;margin-bottom: 250px;">Running</button>';
+                                        }
+                                    ?>
+                                    </h5>
                                 </a>
+                                <div class="caption">
+                                    <h4><?= $event->name ?></h4>
+                                    <div class="row">
+                                        <h5 class="col-md-6" style="color: gray;"><i class="fa fa-map-marker"></i>
+                                        <?= $event->city ?></h5>
+                                        <h5 class="col-md-6 text-right" style="color: gray;"><i class="fa fa-calendar"></i>
+                                        <?= date('d/m/Y', strtotime($event->date)) ?></h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
-                <?php endif; ?> 
+                </div>
             </div>
         </div>
-        <div class="product-container"></div>
-    </div>
-</section>
-<section class="latest-collection paira-margin-bottom-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-xs-12">
-                <div class="col-md-12 heading-title margin-bottom-40 margin-top-40">
-                    <h2 class="text-capitalize margin-clear pull-left "><span>Events</span>
-                    </h2>
-                    <a href="<?=base_url()?>view-event" class="text-uppercase pull-right margin-top-10">View All</a>
-                </div>
-                <?php foreach ($eventlist as $event): ?>
-                    <div class="col-md-4 col-sm-6 item">
-                        <div style="border-radius: 6px;
-                                background-repeat: no-repeat;
-                                background-image: url(<?= base_url().$event->event_image ?>);
-                                background-color: #000000bf;
-                                color:#ffffff !important;
-                                background-blend-mode: multiply;
-                                background-position-x: center;">
-                            <div style="margin-bottom: 100px;">
-                                <h5>
-                                <?php
-                                    if ($event->start_date > date('Y-m-d')) {
-                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: green;">Upcoming</button>';
-                                    } elseif ($event->date < date('Y-m-d')) {
-                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: red;">Past</button>';
-                                    } else {
-                                        echo '<button class="btn" style="background-color:transparent;border-color: black;color: yellow;">Running</button>';
-                                    }
-                                ?>
-                                </h5>
-                            </div>
-                            <div class="row" style="padding-left:5px;">
-                                <div class="col-md-6" style="bottom: -25px;">
-                                    <a href="<?=base_url('EventController/viewEventDetail/' . $event->id)?>">
-                                        <h5 style="color:#ffffff !important;"><?= $event->name ?></h5>
-                                    </a>
-                                </div>
-                                <div class="col-md-6" style="bottom: -20px;">
-                                    <i class="fa fa-calendar"></i>
-                                    <a style="color:#ffffff !important;" href=""><?= date('d/m/Y', strtotime($event->start_date)) ?> - <?= date('d/m/Y', strtotime($event->date)) ?></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div style="display: flex;justify-content: space-between; padding-left: 10px;padding-right: 10px;">
-                                <h5 style="color:#ffffff !important;">
-                                    <i class="fa fa-map-marker"></i>
-                                    <?= $event->city ?>
-                                </h5>
-                                <h6 style="color:#ffffff !important;"><i class="fa fa-user"></i>
-                                <?= $event->artistname ?></h6>
-                            </div>
-                        </div>
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("september 10, 2024 15:37:25").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("demo2").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("demo3").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("demo4").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                document.getElementById("demo5").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
+
+
+    </section>
+    <section class="gallery paira-margin-bottom-2">
+        <div class="gallery-background margin-top-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-title">
+                        <h2 class="text-capitalize margin-clear"><span>Meet Our Artist</span></h2>
                     </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-    <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("september 10, 2024 15:37:25").getTime();
-
-        // Update the count down every 1 second
-        var x = setInterval(function () {
-
-            // Get today's date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-            document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-            document.getElementById("demo2").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-            document.getElementById("demo3").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-            document.getElementById("demo4").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-            document.getElementById("demo5").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    </script>
-
-
-</section>
-<section class="gallery paira-margin-bottom-2">
-    <div class="gallery-background margin-top-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 heading-title">
-                    <h2 class="text-capitalize margin-clear"><span>Meet Our Artist</span></h2>
-                </div>
-                <div class="col-md-3 col-xs-6 col-sm-6 margin-top-30">
-                    <div class="instragram-desc text-left">
-                        <!-- <h4 class="margin-top-0 margin-bottom-10">Images</h4> -->
-                        <!-- <a href="#" class="margin-bottom-10">@ Email</a> -->
-                        <p class="margin-bottom-15">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit, sed diam nonummy.</p>
-                        <a href="<?= base_url() ?>artist"> <button href="#" class="btn btn-primary btn-lg">View All
-                                Artist</button>
-                        </a>
-                    </div>
-                </div>
-                <?php if (!empty($artistlist)): ?>
-                <?php
-                    $i=0;
-                    foreach ($artistlist as $artist):
-                        if ($i==3) {
-                            break;
-                        }
-                        $i++;
-                ?>
                     <div class="col-md-3 col-xs-6 col-sm-6 margin-top-30">
-                        <div class="instragram">
-                            <div class="instragram-image position-r">
-                                <a href="<?= base_url().'artist-details/'.$artist->id?>">
-                                    <div class=""></div>
-                                    <img src="<?=base_url().$artist->profileimage?>" onerror="this.onerror=null; this.src='<?=base_url()?>artistassets/altuser.jpg'" class="img-responsive" style="height:350px;object-fit: cover;">
-                                </a>
-                                <h5><?= $artist->name ?></h5>
-                                <h6>Artist</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                <?php endif; ?> 
-            </div>
-        </div>
-    </div>
-</section>
-<section class="latest-blog paira-margin-bottom-2">
-    <div class="container">
-        <div class="row rowfix">
-            <div class="col-md-12 heading-title">
-                <h2 class="text-capitalize margin-clear pull-left"><span>Blog</span></h2>
-                <a href="<?=base_url()?>view-blog" class="text-uppercase pull-right margin-top-10">View All</a>
-            </div>
-
-            <?php foreach ($bloglist as $blog): ?>
-                <div class="col-md-4 col-xs-12 col-sm-6 margin-top-30">
-                    <div class="blog">
-                        <div class="blog-image position-r">
-                            <a href="#">
-                                <div class="background-overlay"></div>
-                                <img src="<?= base_url() . $blog->image ?>" alt="" class="img-responsive" style="height:300px;object-fit: cover;">
+                        <div class="instragram-desc text-left">
+                            <!-- <h4 class="margin-top-0 margin-bottom-10">Images</h4> -->
+                            <!-- <a href="#" class="margin-bottom-10">@ Email</a> -->
+                            <p class="margin-bottom-15">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                elit, sed diam nonummy.</p>
+                            <a href="<?= base_url() ?>artist"> <button href="#" class="btn btn-primary btn-lg">View All
+                                    Artist</button>
                             </a>
                         </div>
-                        <div class="blog-hover">
-                            <a href="<?= base_url('BlogController/viewblogdetails/' . $blog->id) ?>"
-                                class="margin-top-10">- See The blog -</a>
-                        </div>
-                        <div class="margin-top-15 text-left">
-                            <p class="margin-bottom-5">
-                                <?= date('M d,Y', strtotime($blog->date)) ?>
-                            </p>
-                            <h5 class="margin-top-0 margin-bottom-10"><a href="<?= base_url() ?>viewblogdetails">
-                                    <?= $blog->name ?>
-                                </a></h5>
-                            <a href="<?= base_url('BlogController/viewblogdetails/' . $blog->id) ?>"
-                                class="text-uppercase read-more">Read More<i
-                                    class="fa fa-long-arrow-right margin-left-5"></i></a>
-                        </div>
                     </div>
+                    <?php if (!empty($artistlist)): ?>
+                        <?php
+                        $i = 0;
+                        foreach ($artistlist as $artist):
+                            if ($i == 3) {
+                                break;
+                            }
+                            $i++;
+                            ?>
+                            <div class="col-md-3 col-xs-6 col-sm-6 margin-top-30">
+                                <div class="instragram">
+                                    <div class="instragram-image position-r">
+                                        <a href="<?= base_url() . 'artist-details/' . $artist->id ?>">
+                                            <div class=""></div>
+                                            <img src="<?= base_url() . $artist->profileimage ?>"
+                                                onerror="this.onerror=null; this.src='<?= base_url() ?>artistassets/altuser.jpg'"
+                                                class="img-responsive" style="height:350px;object-fit: cover;">
+                                        </a>
+                                        <h5>
+                                            <?= $artist->name ?>
+                                        </h5>
+                                        <h6>Artist</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+            </div>
         </div>
-    </div>
-</section>
-<section class="latest-picture paira-margin-bottom-2">
-    <div class="">
+    </section>
+    <section class="latest-blog paira-margin-bottom-2">
         <div class="container">
-            <div class="row">
+            <div class="row rowfix">
                 <div class="col-md-12 heading-title">
-                    <h2 class="text-capitalize margin-clear pull-left"><span>Our Sponsors </span>
-                    </h2>
+                    <h2 class="text-capitalize margin-clear pull-left"><span>Blog</span></h2>
+                    <a href="<?= base_url() ?>view-blog" class="text-uppercase pull-right margin-top-10">View All</a>
                 </div>
-                <?php foreach ($promotivelist as $promotive): ?>
-                    <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
-                        <div class="product text-center">
-                            <div class="product-image ">
-                                <a href="<?= $promotive->link ?>" target="_blank">
-                                    <div class=""></div>
-                                    <img src="<?= base_url() . $promotive->image ?>" alt="" class="img-responsive" style="width: 350px;height:300px;object-fit: cover;">
+
+                <?php foreach ($bloglist as $blog): ?>
+                    <div class="col-md-4 col-xs-12 col-sm-6 margin-top-30">
+                        <div class="blog">
+                            <div class="blog-image position-r">
+                                <a href="#">
+                                    <div class="background-overlay"></div>
+                                    <img src="<?= base_url() . $blog->image ?>" alt="" class="img-responsive"
+                                        style="height:300px;object-fit: cover;">
                                 </a>
-                                <h5 class=""><?= $promotive->name ?></h5>
+                            </div>
+                            <div class="blog-hover">
+                                <a href="<?= base_url('BlogController/viewblogdetails/' . $blog->id) ?>"
+                                    class="margin-top-10">- See The blog -</a>
+                            </div>
+                            <div class="margin-top-15 text-left">
+                                <p class="margin-bottom-5">
+                                    <?= date('M d,Y', strtotime($blog->date)) ?>
+                                </p>
+                                <h5 class="margin-top-0 margin-bottom-10"><a href="<?= base_url() ?>viewblogdetails">
+                                        <?= $blog->name ?>
+                                    </a></h5>
+                                <a href="<?= base_url('BlogController/viewblogdetails/' . $blog->id) ?>"
+                                    class="text-uppercase read-more">Read More<i
+                                        class="fa fa-long-arrow-right margin-left-5"></i></a>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <section class="latest-picture paira-margin-bottom-2">
+        <div class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-title">
+                        <h2 class="text-capitalize margin-clear pull-left"><span>Our Sponsors </span>
+                        </h2>
+                    </div>
+                    <?php foreach ($promotivelist as $promotive): ?>
+                        <div class="col-sm-3 col-md-4 col-xs-12 margin-top-30">
+                            <div class="product text-center">
+                                <div class="product-image ">
+                                    <a href="<?= $promotive->link ?>" target="_blank">
+                                        <div class=""></div>
+                                        <img src="<?= base_url() . $promotive->image ?>" alt="" class="img-responsive"
+                                            style="width: 350px;height:300px;object-fit: cover;">
+                                    </a>
+                                    <h5 class="">
+                                        <?= $promotive->name ?>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>

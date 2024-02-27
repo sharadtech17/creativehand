@@ -59,12 +59,10 @@ if (isset($this->session->userdata['creativehandsuser'])) {
 									</div>
 									<div style="display: flex;  justify-content: center; gap: 6px;">
 										<div class="input-group margin-bottom-20" style="margin-top: 6px;">
-
-											<div><input type="checkbox" name="tandc"></div>
+											<div><input type="checkbox" name="tandc" required></div>
 										</div>
 										<div>
-											<h5> I Accept <a href="<?=base_url()?>" style="color: #c66b15;">  Privacy Policy </a> and <a href="Terms-<?=base_url()?>"  style="color: #c66b15;"> Terms and Conditions</a></h5>
-
+											<h5> I Accept <a href="<?=base_url('HomeController/privacy_policy')?>" style="color: #c66b15;">  Privacy Policy </a> and <a href="<?=base_url('HomeController/term_condition')?>"  style="color: #c66b15;"> Terms and Conditions</a></h5>
 										</div>
 									</div>
 

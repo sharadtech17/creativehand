@@ -1198,7 +1198,7 @@ select::-ms-expand {
 }
 
 .carousel-control {
-    top: 70%;
+    top: 50%;
     left: 65px;
     display: none;
     width: inherit;
@@ -1229,7 +1229,7 @@ select::-ms-expand {
 
 .carousel-control.right {
     right: auto;
-    left: 122px
+    left: 95%
 }
 
 .carousel-caption2 {
