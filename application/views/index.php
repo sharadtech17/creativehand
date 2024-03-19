@@ -47,6 +47,10 @@
             padding: 15px;
             border-radius: 55px;
         }
+        .iti
+        {
+            width: -webkit-fill-available;
+        }
         .iti__country-list{
             z-index: 999;
         }

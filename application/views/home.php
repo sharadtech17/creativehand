@@ -57,7 +57,7 @@
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <div class="banner-small-back">
                         <img src="<?= base_url() ?>assets/images/icon-2.png" alt="" class="img-responsive pull-left">
-                        <h4 class="margin-clear text-capitalize margin-bottom-5"><a href="Painting Arts.html">1000+
+                        <h4 class="margin-clear text-capitalize margin-bottom-5"><a href="<?= base_url() ?>hand-made-art">1000+
                                 arts</a></h4>
                         <p class="margin-bottom-0 margin-top-5">Verum tamen cum de rebus grand</p>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <div class="banner-small-back last">
                         <img src="<?= base_url() ?>assets/images/icon-3.png" alt="" class="img-responsive pull-left">
-                        <h4 class="margin-clear text-capitalize margin-bottom-5"><a href="about.html">Recognised
+                        <h4 class="margin-clear text-capitalize margin-bottom-5"><a href="<?= base_url() ?>view-about">Recognized
                                 In
                                 India</a>
                         </h4>

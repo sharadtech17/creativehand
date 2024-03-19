@@ -178,7 +178,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 									</div>
 									<div class="col-lg-4">
 										<div class="mb-3">
-											<label class="form-check-label" for="switchnumber">Visibal on
+											<label class="form-check-label" for="switchnumber">visible on
 											Your Profile</label>
 											<div class="d-flex gap-2">
 												<h4>No</h4>
@@ -198,7 +198,7 @@ $jsonData = json_decode($artistdata->socialaccount);
 									</div>
 									<div class="col-lg-4">
 										<div class="mb-3">
-											<label class="form-check-label" for="customSwitchsizelg">Visibal on
+											<label class="form-check-label" for="customSwitchsizelg">visible on
 											Your Profile</label>
 											<div class="d-flex gap-2">
 												<h4>No</h4>

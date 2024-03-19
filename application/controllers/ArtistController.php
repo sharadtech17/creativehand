@@ -6,6 +6,8 @@ class ArtistController extends CI_Controller {
 		parent::__construct();
 		$this->load->library('upload');
 		$this->load->model('Artist');
+		$this->load->model('Subscription');
+		
 	}
 	public function index()
 	{
@@ -197,6 +199,7 @@ class ArtistController extends CI_Controller {
 	}
 	public function mysubscription()
 	{
+		$data['Subscriptionlist'] = $this->Subscription->getSubscriptionActiveList();
 		$data['title'] = "My Subscription";
 		$data['content'] = "mysubscription.php";
 		$this->load->view('artist/index',$data);

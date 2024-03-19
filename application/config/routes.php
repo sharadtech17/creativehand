@@ -59,6 +59,10 @@ $route['administrator/artist-list'] = 'AdminController/artistlist';
 $route['administrator/artist-detail/(:any)'] = 'AdminController/artistdetail/$1';
 $route['administrator/list-arts'] = 'AdminController/listarts';
 
+$route['administrator/subscriptionList'] = 'SubscriptionController/ViewSubscriptionList';
+$route['addSubscriptionPost'] = 'SubscriptionController/StoreSubscriptionPost';
+$route['editSubscription'] = 'SubscriptionController/updateSubscription';
+
 // banner
 $route['administrator/banner-list'] = 'BannerController/ViewBannerList';
 $route['addBannerPost'] = 'BannerController/StoreBannerPost';

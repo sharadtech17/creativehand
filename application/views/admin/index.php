@@ -199,6 +199,23 @@ if (isset($this->session->userdata['creativehandsadmin'])) {
 							</div>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link menu-link <?= ($title === 'Subscripition package' || $title === 'Subscription History') ? 'active' : ''; ?>" href="#subscriptionpackage" data-bs-toggle="collapse" role="button"
+								aria-expanded="false" aria-controls="subscriptionpackage">
+								<i class="ri-user-3-line"></i> <span data-key="t-layouts">Subscripition Package</span>
+							</a>
+							<div class="collapse menu-dropdown <?= ($title === 'Subscripition package' || $title === 'Subscription History') ? 'show' : ''; ?>" id="subscriptionpackage">
+								<ul class="nav nav-sm flex-column">
+									<li class="nav-item">
+										<a href="<?=base_url()?>administrator/artist-list" class="nav-link <?= ($title === 'Subscription History') ? 'active' : ''; ?>" data-key="t-horizontal">Subscription History</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?=base_url()?>administrator/subscriptionList" class="nav-link <?= ($title === 'Subscripition package List') ? 'active' : ''; ?>" data-key="t-horizontal">Subscripition package List</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link menu-link <?= ($title === 'Event List') ? 'active' : ''; ?>" href="<?=base_url()?>administrator/event-list" role="button"
 								aria-expanded="false" aria-controls="sidebarLayouts">
 								<i class="ri-calendar-event-fill"></i> <span data-key="t-layouts">Events</span>
