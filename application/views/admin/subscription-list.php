@@ -194,6 +194,13 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
+                                <label for="firstnameInput" class="form-label"> Art QTY</label>
+                                <input type="text" class="form-control" name="qty_art" id="firstnameInput"
+                                    placeholder="Enter QTY" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
                                 <label for="contactnumberInput" class="form-label">
                                     Status</label>
                                     <select class="form-select" id="choices-category-input" name="status" data-choices data-choices-search-false>
@@ -273,6 +280,13 @@
                             <div class="mb-3">
                                 <label for="firstnameInput" class="form-label"> QTY Per Event/Artist</label>
                                 <input type="text" class="form-control" name="qty_value" id="firstnameInput" value="<?= $Subscription->qty_value ?>"
+                                    placeholder="Enter QTY" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="firstnameInput" class="form-label"> Art QTY</label>
+                                <input type="text" class="form-control" name="qty_art" id="firstnameInput" value="<?= $Subscription->qty_art ?>"
                                     placeholder="Enter QTY" required>
                             </div>
                         </div>

@@ -78,7 +78,7 @@
                                             <?php foreach ($subscription_order as $order): ?>
                                                 <tr class="gridjs-tr orderlistdata">
                                                     <td><?=$order->id ?></td>
-                                                    <td><?=$order->name?></td>
+                                                    <td><?=$order->name ?></td>
                                                     <td><?=$order->start_date?> TO <?=$order->end_date?></td>
                                                     <td><?=$order->amount ?></td>
                                                     <td><?=$order->subscription_type ?></td>

@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class AdminController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('SubscriptionOrder');
 	}
 	public function index()
 	{
@@ -209,6 +210,13 @@ class AdminController extends CI_Controller {
 		$data['subcategoriesdata'] = $this->query->fetchsubcategories($category_id);
 		$data['title'] = "Edit Art";
 		$data['content'] = "editart.php";
+		$this->load->view('admin/index',$data);
+	}
+	public function subscriptionOrderHistory()
+	{
+		$data['subscription_order'] = $this->SubscriptionOrder->getSubscriptionOrderList(); 
+		$data['title'] = "Subscription History";
+		$data['content'] = "subscriptionhistory.php";
 		$this->load->view('admin/index',$data);
 	}
 }

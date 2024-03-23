@@ -5,14 +5,15 @@ class SubscriptionController extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('Subscription');
+		$this->load->model('SubscriptionOrder');
 		$this->load->library('upload');
 		$this->load->library('pagination');
 	}
 	public function ViewSubscriptionList()
 	{
 		$this->load->model('Subscription'); // Load the Subscription model if not loaded automatically
-		$data['Subscriptionlist'] = $this->Subscription->getSubscriptionList(); // Retrieve Subscription list from the model
-		$data['title'] = 'Subscription List';
+		$data['Subscriptionlist'] = $this->Subscription->getSubscriptionList(); // Retrieve Subscripition List from the model
+		$data['title'] = 'Subscripition List';
 		$data['content'] = 'subscription-list.php';
 		$this->load->view('admin/index', $data);
 	}
@@ -22,6 +23,7 @@ class SubscriptionController extends CI_Controller {
 			'name'   => $this->input->post('name'),
 			'amount'   => $this->input->post('amount'),
 			'type'   => $this->input->post('type'),
+			'qty_art'   => $this->input->post('qty_art'),
 			'qty_value'   => $this->input->post('qty_value'),
 			'description' => $this->input->post('description'),
 			'status' => $this->input->post('status')
@@ -36,6 +38,7 @@ class SubscriptionController extends CI_Controller {
 			'name'   => $this->input->post('name'),
 			'amount'   => $this->input->post('amount'),
 			'type'   => $this->input->post('type'),
+			'qty_art'   => $this->input->post('qty_art'),
 			'qty_value'   => $this->input->post('qty_value'),
 			'description' => $this->input->post('description'),
 			'status' => $this->input->post('status')
@@ -54,5 +57,27 @@ class SubscriptionController extends CI_Controller {
 		$this->session->set_flashdata('success', 'Subscription removed.');
 		redirect('administrator/subscriptionList');
 	}
-
+	// billing subscription
+	public function storeSubscriptionBilling($id)
+	{
+		$plandata = $this->Subscription->get_Subscription_by_id($id); 
+		$artistid = $this->session->userdata['creativehandsartist']['usr_id'];
+		$end_date = date('Y-m-d', strtotime('+' . $plandata->qty_value . ' years'));
+		$subscription_data = array(
+			'artist_id'         => $artistid,
+			'subscription_id' => $plandata->id,
+			'subscription_type' => $plandata->type,
+			'amount'            => $plandata->amount,
+			'payment_status'    => 0,
+			'payment_type'      => 'Online',
+			'transaction_no'    => 'IUAGHSDAOSHD223OIJ',
+			'start_date'        => date('Y-m-d'), // Current date
+			'end_date'          => $end_date, // End date 30 days from now
+			'status'            => 0
+		);
+		$this->SubscriptionOrder->store_SubscriptionOrder($subscription_data); // Call the correct method on the loaded model
+		$this->session->set_flashdata('success', 'Subscription Order added.');
+		redirect('artist-panel/subscription-history');
+	}
+	
 }

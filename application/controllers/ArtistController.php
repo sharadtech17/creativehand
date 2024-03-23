@@ -7,6 +7,7 @@ class ArtistController extends CI_Controller {
 		$this->load->library('upload');
 		$this->load->model('Artist');
 		$this->load->model('Subscription');
+		$this->load->model('SubscriptionOrder');
 		
 	}
 	public function index()
@@ -176,6 +177,13 @@ class ArtistController extends CI_Controller {
 	public function addart()
 	{
 		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
+		$art = $this->query->myallart($artist_id);
+		$totalart=count($art);
+		$subscription=$this->SubscriptionOrder->getSubscriptionOrderActive($artist_id);
+		if ($totalart >= $subscription->qty_art) {
+			$this->session->set_flashdata('error', 'Please upgrade your subscription plan.');
+			return redirect('artist-panel/my-subscription');
+		}
 		$artistdata = $this->db->select('*')->get_where('artist', ['id' => $artist_id])->row();
 		$category_type=$artistdata->category;
 		$data['categoriesdata'] = $this->query->fetchcategories($category_type);
@@ -206,6 +214,8 @@ class ArtistController extends CI_Controller {
 	}
 	public function subscriptionhistory()
 	{
+		$artistid = $this->session->userdata['creativehandsartist']['usr_id'];
+		$data['subscription_order'] = $this->SubscriptionOrder->get_Subscription_by_artistid($artistid); 
 		$data['title'] = "Subscription History";
 		$data['content'] = "subscriptionhistory.php";
 		$this->load->view('artist/index',$data);
@@ -310,7 +320,8 @@ class ArtistController extends CI_Controller {
 			$data['mainimage']=$image;
 		}
 		$inserted = $this->query->update_art($id, $data);
-		return redirect('artist-panel/view-all-arts')->with('success','Art Updated..');
+		$this->session->set_flashdata('success', 'Art Updated..');
+		return redirect('artist-panel/view-all-arts');
 	}
 	
 	public function deleteart() {

@@ -6,6 +6,7 @@ class EventController extends CI_Controller {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->library('upload');
+		$this->load->model('SubscriptionOrder'); // Load the Event model if not loaded automatically
 		$this->load->model('Event'); // Load the Event model if not loaded automatically
 		$this->load->model('Artist'); // Load the Event model if not loaded automatically
 	}
@@ -53,6 +54,14 @@ class EventController extends CI_Controller {
 	}
 	public function addViewEventArtist()
 	{
+		$artist_id = $this->session->userdata['creativehandsartist']['usr_id'];
+		$event = $this->Event->getEventListByArtist($artist_id);
+		$totalevent=count($event);
+		$subscription=$this->SubscriptionOrder->getSubscriptionOrderEventActive($artist_id);
+		if ($totalevent >= $subscription->qty_value) {
+			$this->session->set_flashdata('error', 'Please upgrade your subscription plan.');
+			return redirect('artist-panel/my-subscription');
+		}
 		$data['title'] = 'Add Event';
 		$data['content'] = 'add-event.php';
 		$this->load->view('artist/index', $data);
